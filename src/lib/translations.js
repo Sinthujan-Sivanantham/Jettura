@@ -138,7 +138,7 @@ export const translations = {
                     required: "Erforderlich",
                     fillAll: "Bitte fülle alle markierten Felder aus!"
                 },
-                noResults: "Keine Flughäfen gefunden",
+                noResults: "Keine Ergebnisse gefunden",
                 searching: "Suche...",
                 outbound: "Hinflug",
                 outboundPlaceholder: "Heute",
@@ -627,7 +627,7 @@ export const translations = {
                     required: "Required",
                     fillAll: "Please fill in all highlighted fields!"
                 },
-                noResults: "No airports found",
+                noResults: "No results found",
                 searching: "Searching...",
                 outbound: "Outbound",
                 outboundPlaceholder: "Today",
