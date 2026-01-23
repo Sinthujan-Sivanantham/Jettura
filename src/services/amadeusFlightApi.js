@@ -60,3 +60,20 @@ export async function searchAirportsAmadeus(keyword) {
         return [];
     }
 }
+
+export async function findNearestAirport(lat, lng) {
+    try {
+        const token = await getAmadeusToken();
+        const res = await fetch(`/api-gds/v1/reference-data/locations/airports?latitude=${lat}&longitude=${lng}&radius=100&page[limit]=1&sort=distance`, {
+            headers: { "Authorization": `Bearer ${token}` }
+        });
+
+        if (!res.ok) throw new Error("Keine Flughäfen in der Nähe gefunden");
+
+        const data = await res.json();
+        return data.data?.[0] || null;
+    } catch (error) {
+        console.error("Fehler bei der Suche nach dem nächstgelegenen Flughafen:", error);
+        return null;
+    }
+}
