@@ -43,4 +43,16 @@ export default defineConfig({
     // Erzwingt die korrekte Auflösung der Mapbox-Module
     include: ["react-map-gl/mapbox", "mapbox-gl"],
   },
+  build: {
+    chunkSizeWarningLimit: 1000, // Erhöht Warnlimit auf 1000 kB (Default 500)
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          mapbox: ["mapbox-gl"],
+          framer: ["framer-motion"],
+          vendor: ["react", "react-dom", "react-router-dom"],
+        },
+      },
+    },
+  },
 })
