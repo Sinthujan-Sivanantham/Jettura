@@ -32,10 +32,29 @@ export default function AirportAutocomplete({ label, icon, placeholder, onSelect
 
   useEffect(() => {
     if (value) {
-      // Avoid overwriting if user is typing or if resolution happened
-      if (!query.includes(value) && !query.includes("(")) { // Basic check
-        setQuery(value);
+      if (query && query.includes(value)) {
+        return;
       }
+
+      if (value.length === 3 && /^[A-Z]{3}$/.test(value)) {
+        const cached = Object.values(autocompleteCache).flat().find(item => item.iataCode === value);
+        if (cached) {
+          setQuery(`${cached.cityName} (${cached.iataCode})`);
+          return;
+        }
+
+        searchAirportsAmadeus(value).then(res => {
+          if (res && res.length > 0) {
+            const match = res.find(r => r.iataCode === value) || res[0];
+            setQuery(`${match.cityName} (${match.iataCode})`);
+          } else {
+            setQuery(value);
+          }
+        }).catch(() => setQuery(value));
+        return;
+      }
+
+      setQuery(value);
     } else {
       setQuery("");
     }
