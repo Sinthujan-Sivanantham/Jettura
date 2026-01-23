@@ -52,6 +52,7 @@ export async function searchAirportsAmadeus(keyword) {
             name: item.name,
             cityName: item.address?.cityName || item.name,
             countryName: item.address?.countryName || "",
+            countryCode: item.address?.countryCode || "",
             type: item.subType === "CITY" ? "city" : "airport"
         }));
 

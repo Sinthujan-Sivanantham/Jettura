@@ -69,8 +69,9 @@ export default function AirportAutocomplete({ label, icon, placeholder, onSelect
         return;
       }
 
-      if (autocompleteCache[trimmedQuery]) {
-        setSuggestions(autocompleteCache[trimmedQuery]);
+      const cacheKey = `${trimmedQuery}-${language}`;
+      if (autocompleteCache[cacheKey]) {
+        setSuggestions(autocompleteCache[cacheKey]);
         return;
       }
 
@@ -78,12 +79,25 @@ export default function AirportAutocomplete({ label, icon, placeholder, onSelect
 
       try {
         // Parallel requests: Amadeus (Airports/Cities) + Mapbox (Places/Addresses)
-        const [amadeusResults, mapboxRes] = await Promise.all([
+        const [amadeusRaw, mapboxRes] = await Promise.all([
           searchAirportsAmadeus(trimmedQuery).catch(e => []),
           fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(trimmedQuery)}.json?access_token=${mapboxToken}&types=country,region,place,locality,address&limit=3&language=${language}`)
             .then(r => r.json())
             .catch(e => ({ features: [] }))
         ]);
+
+        const amadeusResults = amadeusRaw.map(item => {
+          let country = item.countryName;
+          if (item.countryCode) {
+            try {
+              const regionNames = new Intl.DisplayNames([language], { type: 'region' });
+              country = regionNames.of(item.countryCode);
+            } catch (e) {
+              console.error("Locales Error", e);
+            }
+          }
+          return { ...item, countryName: country };
+        });
 
         const mapboxItems = (mapboxRes.features || []).map(f => ({
           id: f.id,
@@ -102,7 +116,7 @@ export default function AirportAutocomplete({ label, icon, placeholder, onSelect
 
         const combined = [...amadeusResults, ...mapboxItems];
 
-        autocompleteCache[trimmedQuery] = combined;
+        autocompleteCache[cacheKey] = combined;
         setSuggestions(combined);
 
       } catch (e) {
