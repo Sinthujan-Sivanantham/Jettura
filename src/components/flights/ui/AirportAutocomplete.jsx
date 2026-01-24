@@ -99,15 +99,32 @@ export default function AirportAutocomplete({ label, icon, placeholder, onSelect
           return { ...item, countryName: country };
         });
 
-        const mapboxItems = (mapboxRes.features || []).map(f => ({
-          id: f.id,
-          name: f.text,
-          cityName: f.place_name, // Full address/name
-          countryName: f.context?.find(c => c.id.startsWith('country'))?.text || "",
-          type: "location", // distinct from 'airport' or 'city'
-          center: f.center, // [lng, lat]
-          source: "mapbox"
-        }));
+        const mapboxItems = (mapboxRes.features || []).map(f => {
+          let country = f.context?.find(c => c.id.startsWith('country'))?.text || "";
+          // Mapbox places often have only the local name or english name.
+          // We can try to rely on context text, but since we asked for language specific response in fetch url (`language=${language}`),
+          // Mapbox should already return localized names for the most part.
+          // However, extra safety:
+          const countryCode = f.context?.find(c => c.id.startsWith('country'))?.short_code?.toUpperCase();
+          if (countryCode) {
+            try {
+              const regionNames = new Intl.DisplayNames([language], { type: 'region' });
+              country = regionNames.of(countryCode);
+            } catch (e) {
+              // fallback
+            }
+          }
+
+          return {
+            id: f.id,
+            name: f.text,
+            cityName: f.place_name,
+            countryName: country,
+            type: "location",
+            center: f.center,
+            source: "mapbox"
+          };
+        });
 
         // Combine: Amadeus first (most relevant for flights), then Mapbox
         // Deduplicate? Amadeus "Paris" vs Mapbox "Paris".
