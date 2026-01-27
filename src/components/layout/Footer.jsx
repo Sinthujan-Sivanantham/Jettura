@@ -5,8 +5,6 @@ import { useLanguage } from "../../context/LanguageContext";
 export default function Footer() {
   const { t } = useLanguage();
 
-
-
   return (
     <footer className="bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 mt-auto">
       <style>{`
@@ -21,11 +19,11 @@ export default function Footer() {
               <div className="p-1.5 rounded-xl" style={{ backgroundColor: "var(--brand-color)" }}>
                 <Plane className="text-white w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <span className="text-xl sm:text-2xl md:text-3xl font-black tracking-tighter italic" style={{ color: "var(--brand-color)" }}>
+              <span className="fluid-h3 font-black tracking-tighter italic" style={{ color: "var(--brand-color)" }}>
                 JETTURA
               </span>
             </Link>
-            <p className="text-xs sm:text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm font-medium italic">
+            <p className="fluid-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm font-medium italic">
               {t("footer.about")}
             </p>
             <div className="flex gap-3 sm:gap-4 pt-2">
@@ -37,8 +35,8 @@ export default function Footer() {
 
           {/* QUICK LINKS */}
           <div>
-            <h3 className="text-base sm:text-lg font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.navTitle")}</h3>
-            <ul className="space-y-3 sm:space-y-4 text-xs sm:text-sm font-bold uppercase italic">
+            <h3 className="text-sm sm:text-base font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.navTitle")}</h3>
+            <ul className="space-y-3 sm:space-y-4 fluid-xs font-bold uppercase italic">
               <li><Link to="/" className="text-slate-500 dark:text-slate-400 hover-brand transition">{t("nav.flights")}</Link></li>
               <li><Link to="/blog" className="text-slate-500 dark:text-slate-400 hover-brand transition">{t("nav.blog")}</Link></li>
               <li><Link to="/ai-planner" className="text-slate-500 dark:text-slate-400 hover-brand transition">{t("nav.planner")}</Link></li>
@@ -48,8 +46,8 @@ export default function Footer() {
 
           {/* SERVICES */}
           <div>
-            <h3 className="text-base sm:text-lg font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.partnerTitle")}</h3>
-            <ul className="space-y-3 sm:space-y-4 text-xs sm:text-sm font-bold uppercase italic">
+            <h3 className="text-sm sm:text-base font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.partnerTitle")}</h3>
+            <ul className="space-y-3 sm:space-y-4 fluid-xs font-bold uppercase italic">
               <li className="text-slate-500 dark:text-slate-400">{t("footer.links.cars")}</li>
               <li className="text-slate-500 dark:text-slate-400">{t("footer.links.insurance")}</li>
               <li className="text-[10px] sm:text-xs pt-2 italic text-slate-400 font-black tracking-widest uppercase">
@@ -60,16 +58,16 @@ export default function Footer() {
 
           {/* TRUST */}
           <div className="space-y-3 sm:space-y-4">
-            <h3 className="text-base sm:text-lg font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.securityTitle")}</h3>
-            <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-black uppercase italic text-slate-500 dark:text-slate-400">
+            <h3 className="text-sm sm:text-base font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.securityTitle")}</h3>
+            <div className="flex items-center gap-2 sm:gap-3 fluid-xs font-black uppercase italic text-slate-500 dark:text-slate-400">
               <ShieldCheck size={18} className="sm:w-5 sm:h-5 text-green-500" />
               <span>{t("footer.security.ssl")}</span>
             </div>
-            <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-black uppercase italic text-slate-500 dark:text-slate-400">
+            <div className="flex items-center gap-2 sm:gap-3 fluid-xs font-black uppercase italic text-slate-500 dark:text-slate-400">
               <CreditCard size={18} className="sm:w-5 sm:h-5" style={{ color: "var(--brand-color)" }} />
               <span>{t("footer.security.payment")}</span>
             </div>
-            <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-black uppercase italic text-slate-500 dark:text-slate-400">
+            <div className="flex items-center gap-2 sm:gap-3 fluid-xs font-black uppercase italic text-slate-500 dark:text-slate-400">
               <Globe size={18} className="sm:w-5 sm:h-5 text-purple-500" />
               <span>{t("footer.security.support")}</span>
             </div>

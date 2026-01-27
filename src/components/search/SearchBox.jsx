@@ -23,14 +23,14 @@ export default function SearchBox({ onSearchSuccess }) {
 
   return (
     <Card className="border-transparent bg-white/50 dark:bg-slate-950/40 backdrop-blur-2xl rounded-none relative z-20 overflow-visible transition-all duration-500 shadow-none border-none">
-      <CardContent className="px-6 py-8 sm:px-12 sm:py-10 pb-8 overflow-visible">
+      <CardContent className="px-[var(--space-sm)] py-[var(--space-md)] sm:px-[var(--space-md)] sm:py-[var(--space-md)] overflow-visible">
         {!user ? (
           <AuthGate />
         ) : (
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full overflow-visible">
             {/* Header: Tabs & Intelligence Status */}
-            <div className="flex flex-col min-[760px]:flex-row justify-between items-center gap-4 mb-4 sm:mb-6 overflow-visible relative">
-              <TabsList className="flex justify-center min-[760px]:justify-start min-[760px]:ml-4 lg:ml-8 bg-transparent p-0 gap-3 sm:gap-6">
+            <div className="flex flex-col min-[760px]:flex-row justify-between items-center gap-4 mb-6 overflow-visible relative">
+              <TabsList className="flex justify-center min-[760px]:justify-start min-[760px]:ml-4 bg-transparent p-0 gap-[var(--space-sm)]">
                 <TabsTrigger value="flights" className="search-tab-trigger">
                   {t("search.tabs.flights")}
                 </TabsTrigger>
@@ -50,28 +50,25 @@ export default function SearchBox({ onSearchSuccess }) {
                   padding: 0;
                   border: none;
                   background: transparent;
-                  font-size: 10px;
+                  font-size: var(--font-size-sm);
                   font-weight: 900;
                   text-transform: uppercase;
                   font-style: italic;
-                  letter-spacing: 0.025em;
+                  letter-spacing: 0.05em;
                   transition: all 0.3s;
                 }
-                @media (min-width: 640px) { .search-tab-trigger { font-size: 14px; } }
-                @media (min-width: 760px) { .search-tab-trigger { font-size: 16px; } }
-                @media (min-width: 1024px) { .search-tab-trigger { font-size: 18px; } }
                 
                 .search-tab-trigger[data-state=active] {
                   color: var(--brand-color) !important;
                   background: transparent !important;
                   box-shadow: none !important;
-                  transform: scale(1.1);
+                  transform: scale(1.05);
                 }
                 .search-tab-trigger:not([data-state=active]) {
-                  color: rgba(39, 39, 42, 0.6);
+                  color: rgba(39, 39, 42, 0.4);
                 }
                 .dark .search-tab-trigger:not([data-state=active]) {
-                  color: rgba(161, 161, 170, 1);
+                  color: rgba(161, 161, 170, 0.6);
                 }
               `}</style>
 

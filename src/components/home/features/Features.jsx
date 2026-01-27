@@ -115,7 +115,7 @@ export default function Features() {
           viewport={{ once: true }}
           className="inline-block px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 mb-4"
         >
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--brand-color)]">
+          <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-[var(--brand-color)]">
             {tSafe("features.badge", "Premium Experience")}
           </span>
         </motion.div>
@@ -125,7 +125,7 @@ export default function Features() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-[1000] italic uppercase tracking-tighter text-zinc-900 dark:text-white leading-[0.9]"
+          className="fluid-h1 font-[1000] italic uppercase tracking-tighter text-zinc-900 dark:text-white leading-[0.9]"
         >
           {tSafe("features.headline", "One App.\nEverything.")}
         </motion.h2>
@@ -135,7 +135,7 @@ export default function Features() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-zinc-500 dark:text-zinc-400 text-sm sm:text-lg max-w-2xl mx-auto font-medium"
+          className="text-zinc-500 dark:text-zinc-400 fluid-p max-w-2xl mx-auto font-medium"
         >
           {tSafe("features.subheadline", "From AI-powered flight search to curated hotels and community stories. Experience the future of travel planning.")}
         </motion.p>

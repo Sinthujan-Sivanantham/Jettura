@@ -12,7 +12,7 @@ export default function Impressum() {
             section1: {
                 title: "Angaben gemäß § 5 TMG",
                 text: <>
-                    Simona Sinthujan<br />
+                 Sinthujan Sivanantham <br />
                     Friedrich-Ebert-Platz 18<br />
                     30459 Hannover<br />
                     Deutschland

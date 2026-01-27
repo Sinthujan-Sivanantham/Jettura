@@ -30,7 +30,7 @@ export default function StandardSearch({
     const outboundP = format(today, datePlaceholderFormat);
     const inboundP = format(nextWeek, datePlaceholderFormat);
 
-    const rowStyle = "bg-white/10 dark:bg-zinc-900/10 backdrop-blur-xl p-6 min-[760px]:p-8 rounded-[2rem] sm:rounded-[3rem] border border-transparent shadow-sm transition-all duration-300 my-4";
+    const rowStyle = "bg-white/10 dark:bg-zinc-900/10 backdrop-blur-xl fluid-padding rounded-[2rem] sm:rounded-[3rem] border border-transparent shadow-sm transition-all duration-300 my-[var(--space-sm)]";
 
     return (
         <div className={`relative z-40 grid grid-cols-1 min-[760px]:grid-cols-2 gap-x-6 gap-y-4 ${rowStyle}`}>

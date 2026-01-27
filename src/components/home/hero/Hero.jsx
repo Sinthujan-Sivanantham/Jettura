@@ -61,10 +61,10 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
         />
       </div>
 
-      <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-5xl mb-8 min-[760px]:mb-24">
+      <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-5xl mb-8 min-[760px]:mb-24 px-[var(--space-sm)]">
         <motion.div
           // ... (animation props)
-          className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-widest mb-3 sm:mb-4"
+          className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-widest mb-3 sm:mb-4 fluid-xs"
         >
           <Sparkles size={10} className="sm:w-3 sm:h-3" /> <span>{displayTag}</span>
         </motion.div>
@@ -73,7 +73,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tight mb-3 sm:mb-4 drop-shadow-lg italic uppercase leading-tight"
+          className="fluid-h1 font-black tracking-tight mb-3 sm:mb-4 drop-shadow-lg italic uppercase leading-tight"
         >
           {displayTitle}
         </motion.h1>
@@ -82,7 +82,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 1 }}
-          className="text-xs sm:text-sm md:text-base lg:text-lg text-white/90 leading-relaxed max-w-xl mx-auto font-medium drop-shadow-md italic"
+          className="fluid-p text-white/90 leading-relaxed max-w-xl mx-auto font-medium drop-shadow-md italic"
         >
           {displaySubtitle}
         </motion.p>
@@ -95,6 +95,6 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
           </div>
         )
       }
-    </section >
+    </section>
   );
 }

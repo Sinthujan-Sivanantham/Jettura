@@ -197,7 +197,7 @@ const FlightResultCard = memo(({ flight, dictionaries, onSaveChange, isSavedView
             <div className="text-center w-full">
               <span className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.2em] italic block mb-2">{t("search.flight.details.from") || "AB"}</span>
               <div className="flex items-baseline justify-center gap-1">
-                <span className="text-3xl sm:text-4xl font-black italic tracking-tighter text-zinc-900 dark:text-white">
+                <span className="fluid-h2 font-black italic tracking-tighter text-zinc-900 dark:text-white">
                   {/* Handle non-numeric prices (e.g., 'Check') */}
                   {!isNaN(parseFloat(price)) ? Math.round(price) : price}
                 </span>
@@ -206,7 +206,7 @@ const FlightResultCard = memo(({ flight, dictionaries, onSaveChange, isSavedView
             </div>
 
             <div className="w-full space-y-3">
-              <button onClick={() => isSavedView ? navigate(`/profile/saved-flight/${savedId}`) : setShowDetails(true)} className="w-full h-11 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 font-black italic uppercase text-[10px] tracking-[0.15em] border border-zinc-200 flex items-center justify-center gap-2">
+              <button onClick={() => isSavedView ? navigate(`/profile/saved-flight/${savedId}`) : setShowDetails(true)} className="w-full h-11 sm:h-12 rounded-2xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 font-black italic uppercase text-[10px] sm:text-xs tracking-[0.15em] border border-zinc-200 flex items-center justify-center gap-2">
                 <Info size={14} strokeWidth={2.5} style={{ color: "var(--brand-color)" }} />
                 <span>{t("common.learnMore") || "MEHR ERFAHREN"}</span>
               </button>

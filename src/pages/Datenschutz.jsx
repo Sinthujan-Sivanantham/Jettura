@@ -25,7 +25,7 @@ export default function Datenschutz() {
                 subtitle2: "Hinweis zur verantwortlichen Stelle",
                 text2: <>
                     Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:<br /><br />
-                    Simona Sinthujan<br />
+                    Sinthujan Sivanantham<br />
                     Friedrich-Ebert-Platz 18<br />
                     30459 Hannover<br />
                     Deutschland<br />
