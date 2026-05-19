@@ -310,7 +310,7 @@ export default function CookieBanner() {
                           <button
                             onClick={() => toggleCategory(key)}
                             disabled={isNecessary}
-                            className={`relative w-10 sm:w-11 h-5.5 sm:h-6 rounded-full transition-all flex-shrink-0 ${
+                            className={`relative w-11 h-6 rounded-full transition-all flex-shrink-0 ${
                               consent[key]
                                 ? "bg-[#3b60ff]"
                                 : "bg-zinc-300 dark:bg-zinc-700"
@@ -318,8 +318,8 @@ export default function CookieBanner() {
                             aria-label={catT.label}
                           >
                             <span
-                              className={`absolute top-0.5 left-0.5 h-4.5 sm:h-5 w-4.5 sm:w-5 rounded-full bg-white shadow-sm transition-transform duration-200 ${
-                                consent[key] ? "translate-x-4.5 sm:translate-x-5" : "translate-x-0"
+                              className={`absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-200 ${
+                                consent[key] ? "translate-x-5" : "translate-x-0"
                               }`}
                             />
                           </button>
