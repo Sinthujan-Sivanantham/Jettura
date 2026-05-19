@@ -419,17 +419,17 @@ export function useCookieConsent() {
 }
 
 // Button to re-open cookie settings (for footer/privacy page)
-export function CookieSettingsButton({ label }) {
+export function CookieSettingsButton({ label, className }) {
   return (
     <button
       onClick={() => {
         localStorage.removeItem(STORAGE_KEY);
         window.location.reload();
       }}
-      className="text-xs text-zinc-400 hover:text-[#3b60ff] transition-colors flex items-center gap-1.5"
+      className={className || "text-xs text-zinc-400 hover:text-[#3b60ff] transition-colors flex items-center gap-1.5"}
     >
-      <Cookie size={12} />
-      {label || "Cookie-Einstellungen"}
+      <Cookie size={12} className="flex-shrink-0" />
+      <span>{label || "Cookie-Einstellungen"}</span>
     </button>
   );
 }

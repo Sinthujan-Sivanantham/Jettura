@@ -77,13 +77,16 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="border-t border-slate-100 dark:border-slate-800 mt-12 sm:mt-16 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs md:text-sm text-slate-400 uppercase tracking-tight font-black italic">
+        <div className="border-t border-slate-100 dark:border-slate-800 mt-12 sm:mt-16 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs md:text-sm text-slate-400 uppercase tracking-tight font-black italic text-center md:text-left">
           <p>{t("footer.copyright")}</p>
-          <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-8 items-center">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 sm:gap-6 md:gap-8 items-center justify-center">
             <Link href="/impressum" className="hover-brand cursor-pointer transition-colors">{t("footer.impressum")}</Link>
             <Link href="/datenschutz" className="hover-brand cursor-pointer transition-colors">{t("footer.privacy")}</Link>
             <Link href="/agb" className="hover-brand cursor-pointer transition-colors">{t("footer.terms")}</Link>
-            <CookieSettingsButton label="Cookie-Einstellungen" />
+            <CookieSettingsButton 
+              label="Cookie-Einstellungen" 
+              className="hover-brand cursor-pointer transition-colors flex items-center gap-1 font-black uppercase italic" 
+            />
           </div>
         </div>
       </div>
