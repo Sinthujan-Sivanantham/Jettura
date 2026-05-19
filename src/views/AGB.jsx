@@ -31,7 +31,10 @@ export default function AGB() {
         <p className="text-xs font-black uppercase tracking-widest mb-2" style={{ color: "var(--brand-color)" }}>
           {de ? "Rechtliches" : "Legal"}
         </p>
-        <h1 className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter text-slate-900 dark:text-white">
+        <h1 
+          className="text-2xl sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-slate-900 dark:text-white"
+          style={{ hyphens: "auto", wordBreak: "break-word" }}
+        >
           {de ? "Allgemeine Vermittlungsbedingungen (AGB)" : "General Terms and Conditions of Agency (T&C)"}
         </h1>
         <p className="text-xs text-slate-400 mt-2">
