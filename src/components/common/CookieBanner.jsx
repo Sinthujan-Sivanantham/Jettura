@@ -360,11 +360,11 @@ export default function CookieBanner() {
 
           {/* Sticky Footer */}
           <div className="p-4 sm:p-6 border-t border-zinc-100 dark:border-zinc-800/80 bg-zinc-50/80 dark:bg-zinc-900/80 flex-shrink-0 flex flex-col gap-4">
-            {/* Action buttons (Grid Layout for balanced spacing) */}
-            <div className="grid grid-cols-2 gap-2 sm:gap-3">
+            {/* Action buttons (Uniform layout on mobile) */}
+            <div className="flex flex-col md:flex-row gap-2 sm:gap-3">
               <button
                 onClick={handleAcceptAll}
-                className="col-span-2 py-2.5 sm:py-3 px-4 rounded-xl text-white text-[11px] sm:text-xs font-black uppercase italic tracking-wider shadow-lg shadow-[#3b60ff]/25 hover:opacity-90 transition-all"
+                className="flex-1 order-1 md:order-3 py-3 px-4 rounded-xl text-white text-[11px] sm:text-xs font-black uppercase italic tracking-wider shadow-lg shadow-[#3b60ff]/25 hover:opacity-90 transition-all"
                 style={{ backgroundColor: "#3b60ff" }}
               >
                 {t.acceptAll}
@@ -373,7 +373,7 @@ export default function CookieBanner() {
               {expanded && (
                 <button
                   onClick={handleSaveSelection}
-                  className="col-span-1 py-2.5 sm:py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[10px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-center"
+                  className="flex-1 order-2 md:order-2 py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-center"
                 >
                   {t.saveSelection}
                 </button>
@@ -381,7 +381,7 @@ export default function CookieBanner() {
 
               <button
                 onClick={handleRejectAll}
-                className={`${expanded ? "col-span-1" : "col-span-2"} py-2.5 sm:py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[10px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-center`}
+                className="flex-1 order-3 md:order-1 py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-center"
               >
                 {t.rejectAll}
               </button>
