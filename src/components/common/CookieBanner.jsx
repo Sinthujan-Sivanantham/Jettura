@@ -361,10 +361,10 @@ export default function CookieBanner() {
           {/* Sticky Footer */}
           <div className="p-4 sm:p-6 border-t border-zinc-100 dark:border-zinc-800/80 bg-zinc-50/80 dark:bg-zinc-900/80 flex-shrink-0 flex flex-col gap-3">
             {/* Action buttons */}
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+            <div className="flex flex-col md:flex-row gap-2 md:gap-3">
               <button
                 onClick={handleRejectAll}
-                className="flex-1 py-2.5 sm:py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all"
+                className="flex-1 order-3 md:order-1 py-2.5 sm:py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all"
               >
                 {t.rejectAll}
               </button>
@@ -372,7 +372,7 @@ export default function CookieBanner() {
               {expanded && (
                 <button
                   onClick={handleSaveSelection}
-                  className="flex-1 py-2.5 sm:py-3 px-4 rounded-xl border border-[#3b60ff] text-[#3b60ff] text-[11px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-[#3b60ff]/5 transition-all"
+                  className="flex-1 order-2 md:order-2 py-2.5 sm:py-3 px-4 rounded-xl border border-[#3b60ff] text-[#3b60ff] text-[11px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-[#3b60ff]/5 transition-all"
                 >
                   {t.saveSelection}
                 </button>
@@ -380,7 +380,7 @@ export default function CookieBanner() {
 
               <button
                 onClick={handleAcceptAll}
-                className="flex-1 py-2.5 sm:py-3 px-4 text-white text-[11px] sm:text-xs font-black uppercase italic tracking-wider shadow-lg shadow-[#3b60ff]/25 hover:opacity-90 transition-all"
+                className="flex-1 order-1 md:order-3 py-2.5 sm:py-3 px-4 text-white text-[11px] sm:text-xs font-black uppercase italic tracking-wider shadow-lg shadow-[#3b60ff]/25 hover:opacity-90 transition-all"
                 style={{ backgroundColor: "#3b60ff" }}
               >
                 {t.acceptAll}
