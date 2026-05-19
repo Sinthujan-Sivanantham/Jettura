@@ -65,13 +65,13 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
                             className="group flex items-center gap-3 px-6 py-3 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-all active:scale-95 shadow-sm hover:shadow-md backdrop-blur-xl"
                         >
                             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                            <span className="text-[11px] font-black uppercase tracking-[0.2em] italic">{t("nav.back") || "Zurück"}</span>
+                            <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] italic">{t("nav.back") || "Zurück"}</span>
                         </motion.button>
 
                         <motion.div
                             initial={{ opacity: 0, x: 10 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--brand-color)]/10 border border-[var(--brand-color)]/20 text-[11px] font-black uppercase italic tracking-widest"
+                            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--brand-color)]/10 border border-[var(--brand-color)]/20 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] font-black uppercase italic tracking-widest"
                             style={{ color: brandColor }}
                         >
                             <ShieldCheck size={14} fill="currentColor" className="opacity-20" />
@@ -87,7 +87,7 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
                         className="text-center space-y-4"
                     >
                         <div className="inline-flex flex-col items-center">
-                            <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-7xl font-black italic uppercase tracking-wide text-zinc-900 dark:text-white leading-[0.9] mb-4">
+                            <h1 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl sm:text-3xl md:text-4xl sm:text-5xl lg:text-5xl xl:text-7xl font-black italic uppercase tracking-wide text-zinc-900 dark:text-white leading-[0.9] mb-4">
                                 Intelligence <span style={{ color: brandColor }}>{t("search.tabs.hotels") || "Hotels"}</span>
                             </h1>
                             <div className="h-1.5 w-24 bg-[var(--brand-color)] rounded-full mb-6 opacity-30 blur-[1px]" />
@@ -95,7 +95,7 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
 
                         <div className="flex items-center justify-center gap-4">
                             <div className="h-[1px] w-8 sm:w-16 bg-zinc-200 dark:bg-zinc-800" />
-                            <p className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.3em] italic">
+                            <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.3em] italic">
                                 {filteredHotels.length} {language === "de" ? "Unterkünfte gefunden" : "Hotels found"}
                             </p>
                             <div className="h-[1px] w-8 sm:w-16 bg-zinc-200 dark:bg-zinc-800" />
@@ -107,7 +107,7 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
                     {/* SIDEBAR Filter */}
                     <aside className="w-full lg:w-60 xl:w-72 space-y-5 shrink-0">
                         <div className="bg-white dark:bg-[#0c0c0e] border border-zinc-200 dark:border-zinc-800 p-6 rounded-[2.2rem] shadow-sm sticky top-8">
-                            <h3 className="text-[11px] font-black uppercase italic mb-6 flex items-center gap-2" style={{ color: brandColor }}>
+                            <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] font-black uppercase italic mb-6 flex items-center gap-2" style={{ color: brandColor }}>
                                 <Filter size={12} /> Intelligence Filter
                             </h3>
 
@@ -116,13 +116,13 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
                                 <div className="mb-6">
                                     <div className="flex items-center gap-2 mb-3">
                                         <DollarSign size={12} className="text-zinc-400" />
-                                        <label className="text-[10px] font-black uppercase italic text-zinc-600 dark:text-zinc-400">
+                                        <label className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase italic text-zinc-600 dark:text-zinc-400">
                                             {language === "de" ? "Preis" : "Price"}
                                         </label>
                                     </div>
                                     <div className="space-y-3">
                                         <div>
-                                            <label className="text-[9px] text-zinc-500 mb-1 block">
+                                            <label className="text-[7px] sm:text-[8px] sm:text-[9px] text-zinc-500 mb-1 block">
                                                 {language === "de" ? "Max" : "Max"}: {filters.maxPrice} EUR
                                             </label>
                                             <input
@@ -145,7 +145,7 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
                             <div className="mb-6">
                                 <div className="flex items-center gap-2 mb-3">
                                     <Star size={12} className="text-zinc-400" />
-                                    <label className="text-[10px] font-black uppercase italic text-zinc-600 dark:text-zinc-400">
+                                    <label className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase italic text-zinc-600 dark:text-zinc-400">
                                         {language === "de" ? "Bewertung" : "Rating"}
                                     </label>
                                 </div>
@@ -154,7 +154,7 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
                                         <button
                                             key={rating}
                                             onClick={() => setFilters({ ...filters, minRating: rating })}
-                                            className={`flex-1 py-2 px-3 rounded-xl text-[10px] font-black italic uppercase transition-all ${filters.minRating === rating
+                                            className={`flex-1 py-2 px-3 rounded-xl text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black italic uppercase transition-all ${filters.minRating === rating
                                                 ? 'text-white shadow-lg'
                                                 : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:bg-zinc-200 dark:hover:bg-zinc-800'
                                                 }`}
@@ -170,12 +170,12 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
                             <div className="mb-6">
                                 <div className="flex items-center gap-2 mb-3">
                                     <MapPin size={12} className="text-zinc-400" />
-                                    <label className="text-[10px] font-black uppercase italic text-zinc-600 dark:text-zinc-400">
+                                    <label className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase italic text-zinc-600 dark:text-zinc-400">
                                         {language === "de" ? "Entfernung" : "Distance"}
                                     </label>
                                 </div>
                                 <div>
-                                    <label className="text-[9px] text-zinc-500 mb-1 block">
+                                    <label className="text-[7px] sm:text-[8px] sm:text-[9px] text-zinc-500 mb-1 block">
                                         {language === "de" ? "Max" : "Max"}: {filters.maxDistance} KM
                                     </label>
                                     <input
@@ -194,13 +194,13 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
 
                             {/* Price Availability Filter */}
                             <div className="mb-6">
-                                <label className="text-[10px] font-black uppercase italic text-zinc-600 dark:text-zinc-400 mb-3 block">
+                                <label className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase italic text-zinc-600 dark:text-zinc-400 mb-3 block">
                                     {language === "de" ? "Verfügbarkeit" : "Availability"}
                                 </label>
                                 <div className="space-y-2">
                                     <button
                                         onClick={() => setFilters({ ...filters, hasPrice: null })}
-                                        className={`w-full py-2 px-3 rounded-xl text-[9px] font-black italic uppercase transition-all ${filters.hasPrice === null
+                                        className={`w-full py-2 px-3 rounded-xl text-[7px] sm:text-[8px] sm:text-[9px] font-black italic uppercase transition-all ${filters.hasPrice === null
                                             ? 'text-white shadow-lg'
                                             : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:bg-zinc-200 dark:hover:bg-zinc-800'
                                             }`}
@@ -210,7 +210,7 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
                                     </button>
                                     <button
                                         onClick={() => setFilters({ ...filters, hasPrice: true })}
-                                        className={`w-full py-2 px-3 rounded-xl text-[9px] font-black italic uppercase transition-all ${filters.hasPrice === true
+                                        className={`w-full py-2 px-3 rounded-xl text-[7px] sm:text-[8px] sm:text-[9px] font-black italic uppercase transition-all ${filters.hasPrice === true
                                             ? 'text-white shadow-lg'
                                             : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:bg-zinc-200 dark:hover:bg-zinc-800'
                                             }`}
@@ -220,7 +220,7 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
                                     </button>
                                     <button
                                         onClick={() => setFilters({ ...filters, hasPrice: false })}
-                                        className={`w-full py-2 px-3 rounded-xl text-[9px] font-black italic uppercase transition-all ${filters.hasPrice === false
+                                        className={`w-full py-2 px-3 rounded-xl text-[7px] sm:text-[8px] sm:text-[9px] font-black italic uppercase transition-all ${filters.hasPrice === false
                                             ? 'text-white shadow-lg'
                                             : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:bg-zinc-200 dark:hover:bg-zinc-800'
                                             }`}
@@ -240,7 +240,7 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
                                     maxDistance: 50,
                                     hasPrice: null
                                 })}
-                                className="w-full py-3 px-4 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 text-[10px] font-black italic uppercase hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all"
+                                className="w-full py-3 px-4 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black italic uppercase hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all"
                             >
                                 {language === "de" ? "Filter Zurücksetzen" : "Reset Filters"}
                             </button>
@@ -262,7 +262,7 @@ export default function HotelResultsPage({ hotels = [], onBack }) {
                             ))
                         ) : (
                             <div className="py-32 text-center border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-[3rem] flex flex-col items-center justify-center gap-4 bg-zinc-50/50 dark:bg-zinc-900/20">
-                                <p className="text-sm font-black uppercase italic text-zinc-400 tracking-widest">
+                                <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm font-black uppercase italic text-zinc-400 tracking-widest">
                                     {language === "de" ? "Keine Hotels gefunden." : "No hotels found."}
                                 </p>
                             </div>

@@ -12,17 +12,17 @@ export default function MapContainer({ route, selectedStep, originStep }) {
     latitude: 52.52, longitude: 13.40, zoom: 12
   });
 
-  const mapToken = import.meta.env.VITE_MAPBOX_TOKEN;
+  const mapToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
   // ROUTE BERECHNEN (Directions API)
   useEffect(() => {
     if (selectedStep && route) {
 
       // Nutze originStep als Startpunkt, oder fallback auf Destination Center (route.lat/lng)
-      const startLat = originStep ? originStep.lat : route.lat;
-      const startLng = originStep ? originStep.lng : route.lng;
-      const endLat = selectedStep.lat;
-      const endLng = selectedStep.lng;
+      const startLat = originStep ? parseFloat(originStep.lat) : parseFloat(route.lat);
+      const startLng = originStep ? parseFloat(originStep.lng) : parseFloat(route.lng);
+      const endLat = parseFloat(selectedStep.lat);
+      const endLng = parseFloat(selectedStep.lng);
 
       const getRoute = async () => {
         try {
@@ -50,12 +50,14 @@ export default function MapContainer({ route, selectedStep, originStep }) {
       }
 
       // Karte zum Ziel bewegen
-      setViewState({
-        latitude: selectedStep.lat,
-        longitude: selectedStep.lng,
-        zoom: 15,
-        transitionDuration: 1500
-      });
+      if (!isNaN(endLat) && !isNaN(endLng)) {
+        setViewState({
+          latitude: endLat,
+          longitude: endLng,
+          zoom: 15,
+          transitionDuration: 1500
+        });
+      }
     }
   }, [selectedStep, route, originStep]);
 
@@ -67,10 +69,10 @@ export default function MapContainer({ route, selectedStep, originStep }) {
       {useMapboxFallback ? (
         <div className="w-full h-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-900">
           <div className="text-center p-8">
-            <p className="text-sm font-bold text-zinc-600 dark:text-zinc-400 mb-2">
+            <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm font-bold text-zinc-600 dark:text-zinc-400 mb-2">
               Mapbox Token fehlt oder ist ungültig
             </p>
-            <p className="text-xs text-zinc-500 dark:text-zinc-500">
+            <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-500">
               Bitte füge einen gültigen Mapbox Token in der .env Datei hinzu
             </p>
           </div>

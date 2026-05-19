@@ -1,9 +1,10 @@
+"use client";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/context/ThemeContext";
-import { useLanguage } from "../../context/LanguageContext";
-import { supabase } from "../../lib/supabase";
+import { useLanguage } from "@/context/LanguageContext";
+import { supabase } from "@/lib/supabase";
 
 import Logo from "./Navbar/Logo";
 import DesktopNav from "./Navbar/DesktopNav";
@@ -16,15 +17,12 @@ export default function Navbar() {
   const themeContext = useTheme();
   const setColor = themeContext?.setColor || (() => { });
   const { t } = useLanguage();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     async function fetchProfile() {
-      if (!user) {
-        setProfile(null);
-        return;
-      }
+      if (!user) { setProfile(null); return; }
       const { data } = await supabase
         .from("profiles")
         .select("avatar_url")
@@ -38,12 +36,11 @@ export default function Navbar() {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setIsMobileMenuOpen(false);
-    navigate("/auth");
+    router.push("/auth");
   };
 
   const navLinkStyles = ({ isActive }) => ({
-    className: `transition-colors duration-200 font-black uppercase tracking-tight text-xs lg:text-sm ${isActive ? "italic" : "text-zinc-600 dark:text-zinc-400 hover:text-[var(--brand-color)]"
-      }`,
+    className: `transition-colors duration-200 font-black uppercase tracking-tight text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs lg:text-sm ${isActive ? "italic" : "text-zinc-600 dark:text-zinc-400 hover:text-[var(--brand-color)]"}`,
     style: isActive ? { color: "var(--brand-color)" } : undefined
   });
 
@@ -56,15 +53,9 @@ export default function Navbar() {
 
   return (
     <nav className="border-b sticky top-0 z-[100] bg-background/80 backdrop-blur-md border-zinc-200 dark:border-zinc-800">
-      <div className="max-w-[1440px] mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-4 h-14 sm:h-16 flex items-center justify-between">
         <Logo />
-
-        <DesktopNav
-          navItems={navItems}
-          navLinkStyles={navLinkStyles}
-          t={t}
-        />
-
+        <DesktopNav navItems={navItems} navLinkStyles={navLinkStyles} t={t} />
         <DesktopActions
           user={user}
           profile={profile}
@@ -73,7 +64,6 @@ export default function Navbar() {
           navLinkStyles={navLinkStyles}
           t={t}
         />
-
         <MobileMenu
           isOpen={isMobileMenuOpen}
           setIsOpen={setIsMobileMenuOpen}

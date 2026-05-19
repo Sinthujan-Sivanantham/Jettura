@@ -2,8 +2,8 @@
 const fetch = require('node-fetch-commonjs');
 require('dotenv').config();
 
-const CLIENT_ID = process.env.VITE_AMADEUS_CLIENT_ID;
-const CLIENT_SECRET = process.env.VITE_AMADEUS_CLIENT_SECRET;
+const CLIENT_ID = process.env.NEXT_PUBLIC_AMADEUS_CLIENT_ID;
+const CLIENT_SECRET = process.env.NEXT_PUBLIC_AMADEUS_CLIENT_SECRET;
 const TOKEN_URL = "https://test.api.amadeus.com/v1/security/oauth2/token";
 const BASE_URL = "https://test.api.amadeus.com/v2/shopping/flight-offers";
 
@@ -28,7 +28,7 @@ async function searchFlights() {
         const url = new URL(BASE_URL);
         url.searchParams.append("originLocationCode", "BER");
         url.searchParams.append("destinationLocationCode", "JFK");
-        url.searchParams.append("departureDate", "2026-03-01");
+        url.searchParams.append("departureDate", "2026-08-01");
         url.searchParams.append("adults", "1");
         url.searchParams.append("max", "1");
 

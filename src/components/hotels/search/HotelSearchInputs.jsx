@@ -3,6 +3,7 @@ import DatePicker from "../../flights/ui/DatePicker";
 import CityAutocomplete from "../ui/CityAutocomplete";
 import { useLanguage } from "@/context/LanguageContext";
 import { format, addDays, startOfDay } from "date-fns";
+import { de, enGB } from "date-fns/locale";
 
 import { MapPin } from "lucide-react";
 
@@ -20,12 +21,12 @@ export default function HotelSearchInputs({
     shakeKey
 }) {
     const { t, language } = useLanguage();
+    const currentLocale = language === "de" ? de : enGB;
 
     const today = new Date();
     const tomorrow = addDays(today, 1);
-    const datePlaceholderFormat = language === "de" ? "dd.MM.yyyy" : "MM/dd/yyyy";
-    const checkInP = format(today, datePlaceholderFormat);
-    const checkOutP = format(tomorrow, datePlaceholderFormat);
+    const checkInP = format(today, "eee, dd. MMM", { locale: currentLocale });
+    const checkOutP = format(tomorrow, "eee, dd. MMM", { locale: currentLocale });
 
     const rowStyle = "bg-white/10 dark:bg-zinc-900/10 backdrop-blur-xl p-6 min-[760px]:p-8 rounded-[2rem] sm:rounded-[3rem] border border-transparent shadow-sm transition-all duration-300 my-4";
 

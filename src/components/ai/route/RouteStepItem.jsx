@@ -19,24 +19,29 @@ export default function RouteStepItem({ step, i, selectedId, onSelect, searchId 
                 : "border-transparent bg-white/10 dark:bg-zinc-900/10 hover:bg-white/20 dark:hover:bg-zinc-900/20 backdrop-blur-md"
                 }`}
         >
-            <div className="h-20 relative overflow-hidden">
-                <img src={imageUrl} className="w-full h-full object-cover opacity-90 hover:scale-110 transition-transform duration-700" alt="" />
-                <div className="absolute top-2 left-2 bg-[var(--brand-color)] px-2 py-0.5 rounded-lg text-[8px] font-black text-white uppercase italic tracking-wider shadow-sm">
+            <div className="h-28 sm:h-32 relative overflow-hidden bg-zinc-200 dark:bg-zinc-800">
+                <img 
+                    src={imageUrl} 
+                    className="w-full h-full object-cover opacity-90 hover:scale-110 transition-transform duration-700" 
+                    alt="" 
+                    onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?q=80&w=600'; }}
+                />
+                <div className="absolute top-2 left-2 bg-[var(--brand-color)] px-2 py-0.5 rounded-lg text-[7px] sm:text-[8px] font-black text-white uppercase italic tracking-wider shadow-sm">
                     {t("aiPlanner.results.day")} {step.day}
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <p className="absolute bottom-2 left-3 font-black text-[11px] text-white truncate uppercase italic tracking-tight drop-shadow-md pr-2">
+                <p className="absolute bottom-2 left-3 font-black text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] text-white truncate uppercase italic tracking-tight drop-shadow-md pr-2">
                     {step.activity}
                 </p>
             </div>
 
             <div className="p-3 space-y-1.5 active:scale-[0.98] transition-transform">
-                <div className="flex items-center gap-1.5 text-[9px] text-zinc-600 dark:text-zinc-300 font-bold uppercase tracking-wide truncate opacity-80">
+                <div className="flex items-center gap-1.5 text-[7px] sm:text-[8px] sm:text-[9px] text-zinc-600 dark:text-zinc-300 font-bold uppercase tracking-wide truncate opacity-80">
                     <MapPin size={10} className="shrink-0 text-[var(--brand-color)]" />
                     <span className="truncate">{step.address}</span>
                 </div>
 
-                <div className="flex justify-between items-center text-[8px] font-black text-zinc-500 dark:text-zinc-400 uppercase pt-2 border-t border-white/10 dark:border-white/5 mt-1">
+                <div className="flex justify-between items-center text-[7px] sm:text-[8px] font-black text-zinc-500 dark:text-zinc-400 uppercase pt-2 border-t border-white/10 dark:border-white/5 mt-1">
                     <span className="flex items-center gap-1 bg-white/30 dark:bg-black/30 px-1.5 py-0.5 rounded-md">
                         <Clock size={9} /> {step.duration}
                     </span>

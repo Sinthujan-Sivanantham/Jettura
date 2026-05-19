@@ -20,7 +20,7 @@ export default function CarLocationAutocomplete({ label, placeholder, onSelect, 
     const wrapperRef = useRef(null);
     const controls = useAnimation();
 
-    const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN;
+    const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
     useEffect(() => {
         if (value) {
@@ -158,7 +158,7 @@ export default function CarLocationAutocomplete({ label, placeholder, onSelect, 
                     <div className="relative w-full text-left">
                         <motion.div animate={controls}>
                             {label && (
-                                <label className="text-xs font-black uppercase tracking-[0.2em] text-zinc-700 dark:text-zinc-300 mb-2 ml-1 flex items-center gap-1.5 italic leading-none">
+                                <label className="search-label-text font-black uppercase tracking-[0.2em] text-zinc-700 dark:text-zinc-300 mb-2 ml-1 flex items-center gap-1.5 italic leading-none">
                                     {label}
                                 </label>
                             )}
@@ -179,7 +179,7 @@ export default function CarLocationAutocomplete({ label, placeholder, onSelect, 
                                     placeholder={error ? (t("search.flight.errors.required") || "Required") : (placeholder || "City or Airport...")}
                                     className={cn(
                                         "h-11 min-[760px]:h-14 bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md rounded-2xl font-black italic transition-all focus:ring-0 focus:border-[var(--brand-color)] focus-visible:ring-0 focus-visible:ring-offset-0",
-                                        "text-xs min-[760px]:text-sm min-[1200px]:text-base uppercase",
+                                        "search-input-text uppercase",
                                         error
                                             ? "border-rose-500 dark:border-rose-500"
                                             : "border-zinc-200 dark:border-zinc-800",
@@ -219,21 +219,21 @@ export default function CarLocationAutocomplete({ label, placeholder, onSelect, 
                                                         <MapPin size={14} className="text-[var(--brand-color)]" />}
                                             </div>
                                             <div className="flex flex-col overflow-hidden">
-                                                <span className="font-black text-xs text-zinc-700 dark:text-zinc-200 uppercase tracking-tighter truncate italic">
+                                                <span className="font-black text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs text-zinc-700 dark:text-zinc-200 uppercase tracking-tighter truncate italic">
                                                     {s.name}
                                                 </span>
-                                                <span className="text-[10px] text-zinc-400 font-bold uppercase truncate">
+                                                <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] text-zinc-400 font-bold uppercase truncate">
                                                     {s.cityName} {s.countryName ? `, ${s.countryName}` : ""}
                                                 </span>
                                             </div>
                                         </div>
                                         {s.iataCode && (
-                                            <span className="font-black bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded text-[10px] italic shrink-0 text-[var(--brand-color)]">
+                                            <span className="font-black bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] italic shrink-0 text-[var(--brand-color)]">
                                                 {s.iataCode}
                                             </span>
                                         )}
                                         {s.type === "location" && (
-                                            <span className="font-bold text-[9px] bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded italic shrink-0 text-zinc-400">
+                                            <span className="font-bold text-[7px] sm:text-[8px] sm:text-[9px] bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded italic shrink-0 text-zinc-400">
                                                 → IATA
                                             </span>
                                         )}
@@ -241,7 +241,7 @@ export default function CarLocationAutocomplete({ label, placeholder, onSelect, 
                                 ))
                             ) : (
                                 <div className="p-4 text-center">
-                                    <span className="text-xs font-bold text-zinc-400 italic">
+                                    <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs font-bold text-zinc-400 italic">
                                         {loading ? (t("search.flight.searching") || "Suche...") : (t("search.flight.noResults") || "Keine Ergebnisse")}
                                     </span>
                                 </div>

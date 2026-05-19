@@ -14,7 +14,7 @@ export default function FlightResultsEmptyState() {
             <div className="p-4 bg-zinc-100 dark:bg-zinc-800 rounded-full text-zinc-400">
                 <SearchX size={32} />
             </div>
-            <p className="text-sm font-black uppercase italic text-zinc-400 tracking-widest">
+            <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm font-black uppercase italic text-zinc-400 tracking-widest">
                 {t("results.noResults") || "Keine Flüge gefunden."}
             </p>
         </motion.div>

@@ -36,7 +36,7 @@ export default function ESIMTrustBadges() {
             <span className={b.color}>{b.icon}</span>
           </div>
           <h4 className="font-bold text-zinc-900 dark:text-white">{b.title}</h4>
-          <p className="text-sm text-zinc-500">{b.desc}</p>
+          <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm text-zinc-500">{b.desc}</p>
         </div>
       ))}
     </div>

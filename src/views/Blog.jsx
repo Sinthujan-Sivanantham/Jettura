@@ -75,7 +75,7 @@ export default function Blog() {
         {loading ? (
           <div className="flex flex-col items-center justify-center py-32 gap-6 text-center">
             <Loader2 className="w-12 h-12 animate-spin" style={{ color: "var(--brand-color)" }} />
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">
+            <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">
               {t("blog.loading")}
             </p>
           </div>

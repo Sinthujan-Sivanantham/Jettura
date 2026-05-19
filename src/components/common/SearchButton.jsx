@@ -7,7 +7,7 @@ export default function SearchButton({ onClick, loading, label, className = "" }
         <Button
             onClick={onClick}
             disabled={loading}
-            className={`h-11 lg:h-14 bg-[var(--brand-color)] hover:bg-opacity-90 text-white font-black italic uppercase text-xs min-[760px]:text-base rounded-xl lg:rounded-2xl shadow-inner active:scale-95 transition-all flex items-center justify-center gap-2 md:gap-3 border-none ${className}`}
+            className={`h-12 md:h-14 bg-[var(--brand-color)] hover:bg-opacity-90 text-white font-black italic uppercase search-button-text rounded-xl lg:rounded-2xl shadow-inner active:scale-95 transition-all flex items-center justify-center gap-2 md:gap-3 border-none ${className}`}
         >
             {loading ? (
                 <Loader2 className="animate-spin" size={16} />

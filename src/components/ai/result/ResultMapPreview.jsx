@@ -21,7 +21,7 @@ export default function ResultMapPreview({ route }) {
                 {...viewport}
                 onMove={evt => setViewport(evt.viewState)}
                 mapStyle={theme === "dark" ? "mapbox://styles/mapbox/dark-v11" : "mapbox://styles/mapbox/streets-v12"}
-                mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
+                mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
                 style={{ width: "100%", height: "100%" }}
             >
                 <NavigationControl position="top-right" />

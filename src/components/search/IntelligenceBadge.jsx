@@ -14,7 +14,7 @@ export default function IntelligenceBadge() {
             }}
         >
             <Zap size={10} className="sm:w-[14px] sm:h-[14px]" style={{ color: "var(--brand-color)", fill: "var(--brand-color)" }} />
-            <span className="text-[8px] sm:text-[10px] md:text-[11px] font-black italic uppercase tracking-widest whitespace-nowrap" style={{ color: "var(--brand-color)" }}>
+            <span className="text-[7px] sm:text-[8px] sm:text-[10px] md:text-[11px] font-black italic uppercase tracking-widest whitespace-nowrap" style={{ color: "var(--brand-color)" }}>
                 {t("search.intelligenceActive", "Intelligence Engine Aktiv")}
             </span>
         </div>

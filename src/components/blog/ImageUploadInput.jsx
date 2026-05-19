@@ -49,13 +49,13 @@ export default function ImageUploadInput({ onFileSelect, label, lang = "de" }) {
         </div>
 
         <div className="text-center">
-          <p className={`text-[9px] font-black uppercase italic tracking-[0.25em] ${fileName ? "text-blue-600 dark:text-blue-400" : "text-zinc-400 dark:text-zinc-500"}`}>
+          <p className={`text-[7px] sm:text-[8px] sm:text-[9px] font-black uppercase italic tracking-[0.25em] ${fileName ? "text-blue-600 dark:text-blue-400" : "text-zinc-400 dark:text-zinc-500"}`}>
             {lang === "de" ? "BILD AUSWÄHLEN" : "UPLOAD PHOTO"}
           </p>
           {fileName && (
             <button
               onClick={handleRemove}
-              className="mt-2 text-[10px] font-black uppercase italic text-red-500 hover:text-red-400 transition-colors"
+              className="mt-2 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase italic text-red-500 hover:text-red-400 transition-colors"
             >
               ENTFERNEN
             </button>

@@ -52,7 +52,7 @@ export default function StatusPopup({
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className={`relative w-full max-w-md overflow-hidden rounded-[2.5rem] border ${config.border} ${config.bg} p-8 shadow-2xl backdrop-blur-xl`}
+                        className={`relative w-full max-w-md overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] border ${config.border} ${config.bg} p-6 sm:p-8 shadow-2xl backdrop-blur-xl`}
                     >
                         <div className="flex flex-col items-center text-center space-y-6">
                             <div className={`p-4 rounded-[1.5rem] bg-white dark:bg-zinc-900 shadow-xl ${config.icon}`}>
@@ -62,17 +62,17 @@ export default function StatusPopup({
                             </div>
 
                             <div className="space-y-2">
-                                <h3 className="text-xl font-black uppercase italic tracking-tighter dark:text-white">
+                                <h3 className="text-lg sm:text-xl font-black uppercase italic tracking-tighter dark:text-white">
                                     {displayTitle}
                                 </h3>
-                                <p className="text-sm font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest italic leading-relaxed">
+                                <p className="text-[10px] sm:text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest italic leading-relaxed">
                                     {message}
                                 </p>
                             </div>
 
                             <Button
                                 onClick={onClose}
-                                className="w-full h-14 text-white font-black italic uppercase text-xs sm:text-sm tracking-widest rounded-2xl shadow-xl active:scale-95 transition-all"
+                                className="w-full h-12 md:h-14 text-white font-black italic uppercase text-[10px] sm:text-xs md:text-sm tracking-widest rounded-[1.5rem] shadow-xl active:scale-95 transition-all"
                                 style={{ backgroundColor: "var(--brand-color)" }}
                             >
                                 {t("common.understood") || "Verstanden"}

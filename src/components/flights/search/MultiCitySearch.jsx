@@ -43,7 +43,7 @@ export default function MultiCitySearch({ segments, setSegments, errors = [], sh
 
             <Button
                 onClick={addSegment}
-                className="w-full h-11 lg:h-14 border border-white/10 bg-white/5 dark:bg-zinc-900/5 backdrop-blur-md rounded-xl lg:rounded-[2rem] text-xs sm:text-sm lg:text-base font-black uppercase italic tracking-[0.2em] text-[var(--brand-color)] hover:bg-white/10 dark:hover:bg-zinc-900/10 transition-all shadow-sm"
+                className="w-full h-11 lg:h-14 border border-white/10 bg-white/5 dark:bg-zinc-900/5 backdrop-blur-md rounded-xl lg:rounded-[2rem] search-input-text font-black uppercase italic tracking-[0.2em] text-[var(--brand-color)] hover:bg-white/10 dark:hover:bg-zinc-900/10 transition-all shadow-sm"
             >
                 + {t("search.flight.addLeg")}
             </Button>

@@ -12,7 +12,7 @@ export default function ESIMSearchBar({ value, onChange }) {
         size={20}
       />
       <Input
-        className="pl-12 h-14 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 rounded-2xl text-zinc-900 dark:text-white text-lg shadow-sm focus:ring-2"
+        className="pl-12 h-14 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 rounded-2xl text-zinc-900 dark:text-white text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg shadow-sm focus:ring-2"
         style={{ "--tw-ring-color": "var(--brand-color)" }}
         placeholder={t("esimShop.search.placeholder")}
         value={value}

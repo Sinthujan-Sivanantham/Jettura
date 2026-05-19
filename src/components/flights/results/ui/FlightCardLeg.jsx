@@ -24,7 +24,7 @@ export default function FlightCardLeg({
         <div className="relative">
             <div className="absolute -top-7 left-0">
                 <span
-                    className="text-[10px] font-black uppercase italic tracking-widest bg-zinc-100 dark:bg-zinc-900 px-2 py-0.5 rounded-md border border-zinc-200 dark:border-zinc-800"
+                    className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase italic tracking-widest bg-zinc-100 dark:bg-zinc-900 px-2 py-0.5 rounded-md border border-zinc-200 dark:border-zinc-800"
                     style={{ color: "var(--brand-color)" }}
                 >
                     {itinerariesCount === 2
@@ -47,19 +47,19 @@ export default function FlightCardLeg({
 
                 <div className="flex-1 grid grid-cols-3 items-center">
                     <div className="text-left">
-                        <span className="text-[10px] sm:text-[11px] font-black text-zinc-400 block mb-0.5 tracking-tighter">
+                        <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] font-black text-zinc-400 block mb-0.5 tracking-tighter">
                             {formatFlightDateShort(first.departure.at, language)}
                         </span>
-                        <p className="text-xl sm:text-2xl font-black italic uppercase leading-none tracking-tighter">
+                        <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl font-black italic uppercase leading-none tracking-tighter">
                             {formatFlightTime(first.departure.at, language)}
                         </p>
-                        <p className="text-xs sm:text-sm font-bold uppercase italic mt-1 truncate max-w-[150px]" style={{ color: "var(--brand-color)" }}>
+                        <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm font-bold uppercase italic mt-1 truncate max-w-[150px]" style={{ color: "var(--brand-color)" }}>
                             {getLocationName(first.departure.iataCode, dictionaries, language)}
                         </p>
                     </div>
 
                     <div className="flex flex-col items-center px-4 relative">
-                        <span className="text-[9px] font-black text-zinc-400 mb-2 uppercase tracking-widest leading-none">
+                        <span className="text-[7px] sm:text-[8px] sm:text-[9px] font-black text-zinc-400 mb-2 uppercase tracking-widest leading-none">
                             {itinerary.duration?.replace('PT', '').toLowerCase() || '--'}
                         </span>
                         <div className="w-full h-[1.5px] bg-zinc-100 dark:bg-zinc-800 relative flex items-center justify-center">
@@ -75,7 +75,7 @@ export default function FlightCardLeg({
                                 />
                             </motion.div>
                         </div>
-                        <p className="text-[9px] font-black text-zinc-400 uppercase mt-2 italic leading-none">
+                        <p className="text-[7px] sm:text-[8px] sm:text-[9px] font-black text-zinc-400 uppercase mt-2 italic leading-none">
                             {segs.length > 1
                                 ? `${segs.length - 1} ${segs.length === 2 ? t("search.flight.details.stop") : t("search.flight.details.stops")}`
                                 : t("search.flight.details.direct")}
@@ -83,13 +83,13 @@ export default function FlightCardLeg({
                     </div>
 
                     <div className="text-right">
-                        <span className="text-[10px] sm:text-[11px] font-black text-zinc-400 block mb-0.5 tracking-tighter">
+                        <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] font-black text-zinc-400 block mb-0.5 tracking-tighter">
                             {formatFlightDateShort(last.arrival.at, language)}
                         </span>
-                        <p className="text-xl sm:text-2xl font-black italic uppercase leading-none tracking-tighter">
+                        <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl font-black italic uppercase leading-none tracking-tighter">
                             {formatFlightTime(last.arrival.at, language)}
                         </p>
-                        <p className="text-xs sm:text-sm font-bold uppercase italic mt-1 truncate max-w-[150px]" style={{ color: "var(--brand-color)" }}>
+                        <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm font-bold uppercase italic mt-1 truncate max-w-[150px]" style={{ color: "var(--brand-color)" }}>
                             {getLocationName(last.arrival.iataCode, dictionaries, language)}
                         </p>
                     </div>

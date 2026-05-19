@@ -4,7 +4,7 @@ export default function BlogPostContent({ content }) {
       {content.split("\n").map((para, i) => (
         <p
           key={i}
-          className="mb-6 text-xl md:text-2xl leading-relaxed text-zinc-700 dark:text-zinc-300 font-medium opacity-90"
+          className="mb-6 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl md:text-2xl leading-relaxed text-zinc-700 dark:text-zinc-300 font-medium opacity-90"
         >
           {para}
         </p>

@@ -19,8 +19,6 @@ export async function searchHotelsByCity(params) {
         url.searchParams.append("radiusUnit", "KM");
         url.searchParams.append("hotelSource", "ALL");
 
-        console.log("🏨 Step 1: Searching Hotels by City:", url.pathname + url.search);
-
         const res = await fetch(url.toString(), {
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -33,7 +31,6 @@ export async function searchHotelsByCity(params) {
         }
 
         const json = await res.json();
-        console.log("✅ Step 1 Complete: Found", json.data?.length || 0, "hotels");
         return json;
 
     } catch (e) {
@@ -65,8 +62,6 @@ export async function getHotelOffers(params) {
         url.searchParams.append("paymentPolicy", "NONE");
         url.searchParams.append("bestRateOnly", "true");
 
-        console.log("💰 Step 2: Getting Hotel Offers:", url.pathname + url.search);
-
         const res = await fetch(url.toString(), {
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -79,7 +74,6 @@ export async function getHotelOffers(params) {
         }
 
         const json = await res.json();
-        console.log("✅ Step 2 Complete: Found", json.data?.length || 0, "offers");
         return json;
 
     } catch (e) {

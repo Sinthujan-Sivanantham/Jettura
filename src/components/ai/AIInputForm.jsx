@@ -52,7 +52,7 @@ export default function AIInputForm({
   }, [watchedValues, setOrigin, setDestination, setDate, setDays, setPassengers, setTravelClass]);
 
   const rowStyle = "bg-white/10 dark:bg-zinc-900/10 backdrop-blur-xl p-6 min-[760px]:p-8 rounded-[2rem] sm:rounded-[3rem] border border-transparent shadow-sm transition-all duration-300";
-  const inputStyle = "h-11 lg:h-14 text-xs min-[760px]:text-base font-black italic uppercase rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md shadow-inner outline-none focus:ring-0 focus:border-[var(--brand-color)] transition-all flex items-center px-4 w-full";
+  const inputStyle = "h-11 lg:h-14 search-input-text font-black italic uppercase rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md shadow-inner outline-none focus:ring-0 focus:border-[var(--brand-color)] transition-all flex items-center px-4 w-full [&>span]:pr-1.5";
 
   return (
     <Card className="border-transparent bg-white/30 dark:bg-slate-950/20 backdrop-blur-2xl rounded-none relative z-20 overflow-visible transition-all duration-500 shadow-none border-none px-6 py-8 sm:px-12 sm:py-10 pb-8">

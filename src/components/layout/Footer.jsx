@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+"use client";
+import Link from "next/link";
 import { Plane, Instagram, Twitter, Facebook, Globe, ShieldCheck, CreditCard } from "lucide-react";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { CookieSettingsButton } from "@/components/common/CookieBanner";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -11,11 +13,11 @@ export default function Footer() {
         .hover-brand:hover { color: var(--brand-color) !important; }
       `}</style>
       <div className="mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full max-w-[1440px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12">
+        <div className="grid grid-cols-2 min-[760px]:grid-cols-4 gap-8 sm:gap-10 md:gap-12">
 
           {/* BRANDING */}
-          <div className="space-y-3 sm:space-y-4">
-            <Link to="/" className="flex items-center gap-2 sm:gap-3">
+          <div className="space-y-3 sm:space-y-4 col-span-2 min-[760px]:col-span-1">
+            <Link href="/" className="flex items-center gap-2 sm:gap-3">
               <div className="p-1.5 rounded-xl" style={{ backgroundColor: "var(--brand-color)" }}>
                 <Plane className="text-white w-5 h-5 sm:w-6 sm:h-6" />
               </div>
@@ -34,31 +36,31 @@ export default function Footer() {
           </div>
 
           {/* QUICK LINKS */}
-          <div>
-            <h3 className="text-sm sm:text-base font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.navTitle")}</h3>
+          <div className="col-span-1">
+            <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.navTitle")}</h3>
             <ul className="space-y-3 sm:space-y-4 fluid-xs font-bold uppercase italic">
-              <li><Link to="/" className="text-slate-500 dark:text-slate-400 hover-brand transition">{t("nav.flights")}</Link></li>
-              <li><Link to="/blog" className="text-slate-500 dark:text-slate-400 hover-brand transition">{t("nav.blog")}</Link></li>
-              <li><Link to="/ai-planner" className="text-slate-500 dark:text-slate-400 hover-brand transition">{t("nav.planner")}</Link></li>
-              <li><Link to="/esim" className="text-slate-500 dark:text-slate-400 hover-brand transition">{t("nav.esim")}</Link></li>
+              <li><Link href="/" className="text-slate-500 dark:text-slate-400 hover-brand transition">{t("nav.flights")}</Link></li>
+              <li><Link href="/blog" className="text-slate-500 dark:text-slate-400 hover-brand transition">{t("nav.blog")}</Link></li>
+              <li><Link href="/ai-planner" className="text-slate-500 dark:text-slate-400 hover-brand transition">{t("nav.planner")}</Link></li>
+              <li><Link href="/esim" className="text-slate-500 dark:text-slate-400 hover-brand transition">{t("nav.esim")}</Link></li>
             </ul>
           </div>
 
           {/* SERVICES */}
-          <div>
-            <h3 className="text-sm sm:text-base font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.partnerTitle")}</h3>
+          <div className="col-span-1">
+            <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.partnerTitle")}</h3>
             <ul className="space-y-3 sm:space-y-4 fluid-xs font-bold uppercase italic">
               <li className="text-slate-500 dark:text-slate-400">{t("footer.links.cars")}</li>
               <li className="text-slate-500 dark:text-slate-400">{t("footer.links.insurance")}</li>
-              <li className="text-[10px] sm:text-xs pt-2 italic text-slate-400 font-black tracking-widest uppercase">
+              <li className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs pt-2 italic text-slate-400 font-black tracking-widest uppercase">
                 {t("footer.poweredBy")}
               </li>
             </ul>
           </div>
 
           {/* TRUST */}
-          <div className="space-y-3 sm:space-y-4">
-            <h3 className="text-sm sm:text-base font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.securityTitle")}</h3>
+          <div className="space-y-3 sm:space-y-4 col-span-2 min-[760px]:col-span-1">
+            <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base font-black uppercase tracking-widest mb-4 sm:mb-6 italic" style={{ color: "var(--brand-color)" }}>{t("footer.securityTitle")}</h3>
             <div className="flex items-center gap-2 sm:gap-3 fluid-xs font-black uppercase italic text-slate-500 dark:text-slate-400">
               <ShieldCheck size={18} className="sm:w-5 sm:h-5 text-green-500" />
               <span>{t("footer.security.ssl")}</span>
@@ -75,18 +77,19 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="border-t border-slate-100 dark:border-slate-800 mt-12 sm:mt-16 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-[10px] sm:text-xs md:text-sm text-slate-400 uppercase tracking-tight font-black italic">
+        <div className="border-t border-slate-100 dark:border-slate-800 mt-12 sm:mt-16 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs md:text-sm text-slate-400 uppercase tracking-tight font-black italic">
           <p>{t("footer.copyright")}</p>
-          <div className="flex gap-4 sm:gap-6 md:gap-8">
-            <Link to="/impressum" className="hover-brand cursor-pointer transition-colors">{t("footer.impressum")}</Link>
-            <Link to="/datenschutz" className="hover-brand cursor-pointer transition-colors">{t("footer.privacy")}</Link>
-            <Link to="/agb" className="hover-brand cursor-pointer transition-colors">{t("footer.terms")}</Link>
+          <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-8 items-center">
+            <Link href="/impressum" className="hover-brand cursor-pointer transition-colors">{t("footer.impressum")}</Link>
+            <Link href="/datenschutz" className="hover-brand cursor-pointer transition-colors">{t("footer.privacy")}</Link>
+            <Link href="/agb" className="hover-brand cursor-pointer transition-colors">{t("footer.terms")}</Link>
+            <CookieSettingsButton label="Cookie-Einstellungen" />
           </div>
         </div>
       </div>
 
       {/* AFFILIATE DISCLAIMER */}
-      <div className="bg-slate-900 dark:bg-zinc-950 text-white py-3 sm:py-4 text-[10px] sm:text-xs font-black italic text-center uppercase tracking-[0.15em] sm:tracking-[0.2em] px-4">
+      <div className="bg-slate-900 dark:bg-zinc-950 text-white py-3 sm:py-4 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs font-black italic text-center uppercase tracking-[0.15em] sm:tracking-[0.2em] px-4">
         {t("footer.disclaimer")}
       </div>
     </footer>

@@ -1,4 +1,5 @@
-import { useParams, useNavigate } from "react-router-dom";
+"use client";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { motion } from "framer-motion";
@@ -57,7 +58,7 @@ const genericTravelImage = "https://images.unsplash.com/photo-1476514525535-07fb
 
 export default function SavedFlightPage() {
     const { id } = useParams();
-    const navigate = useNavigate();
+    const router = useRouter();
     const { t, language } = useLanguage();
     const { theme } = useTheme();
     const [savedFlight, setSavedFlight] = useState(null);
@@ -128,17 +129,17 @@ export default function SavedFlightPage() {
             {/* Header */}
             <div className="flex flex-col gap-6 sm:gap-8">
                 <button
-                    onClick={() => navigate(-1)}
-                    className="flex items-center gap-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors uppercase text-[9px] sm:text-[10px] font-black tracking-[0.2em]"
+                    onClick={() => router.back()}
+                    className="flex items-center gap-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black tracking-[0.2em]"
                 >
                     <ArrowLeft size={14} /> {t("profile.flights.details.back")}
                 </button>
 
                 <div className="space-y-3 sm:space-y-4">
-                    <h1 className="text-2xl min-[360px]:text-3xl sm:text-4xl font-[1000] italic uppercase tracking-tighter leading-[0.9] sm:leading-[0.85] text-zinc-900 dark:text-white break-words hyphens-auto">
+                    <h1 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl min-[360px]:text-3xl sm:text-4xl font-[1000] italic uppercase tracking-tighter leading-[0.9] sm:leading-[0.85] text-zinc-900 dark:text-white break-words hyphens-auto">
                         {destName.split(',')[0]}
                     </h1>
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-[9px] min-[360px]:text-[10px] sm:text-xs font-black uppercase tracking-widest text-zinc-400">
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-[7px] sm:text-[8px] sm:text-[9px] min-[360px]:text-[10px] sm:text-xs font-black uppercase tracking-widest text-zinc-400">
                         <span className="flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
                             {new Date(savedFlight.created_at).toLocaleDateString()}
@@ -162,9 +163,9 @@ export default function SavedFlightPage() {
                 <div className="absolute top-4 left-4 sm:top-8 sm:left-8">
                     <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl px-4 py-2 sm:px-6 sm:py-3 rounded-[1.2rem] sm:rounded-2xl flex items-center gap-2 sm:gap-3 shadow-2xl border border-white/20">
                         <div className="bg-[var(--brand-color)] p-1.5 sm:p-2 rounded-lg sm:rounded-xl text-white shadow-lg">
-                            <MapPin size={14} sm:size={18} strokeWidth={3} />
+                            <MapPin size={14} strokeWidth={3} />
                         </div>
-                        <span className="font-black italic uppercase text-[10px] sm:text-sm tracking-widest text-zinc-900 dark:text-white">
+                        <span className="font-black italic uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-sm tracking-widest text-zinc-900 dark:text-white">
                             {destName}
                         </span>
                     </div>
@@ -201,11 +202,11 @@ export default function SavedFlightPage() {
                     <div className="space-y-4 sm:space-y-6">
                         <div className="flex items-center gap-4">
                             <div className="w-8 h-[1px] bg-[var(--brand-color)]" />
-                            <h2 className="text-lg sm:text-xl font-black italic uppercase tracking-widest text-zinc-900 dark:text-white">
+                            <h2 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl font-black italic uppercase tracking-widest text-zinc-900 dark:text-white">
                                 {t("profile.flights.details.journey")}
                             </h2>
                         </div>
-                        <p className="text-lg sm:text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed font-medium">
+                        <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed font-medium">
                             {culture[language]}
                         </p>
                     </div>
@@ -213,7 +214,7 @@ export default function SavedFlightPage() {
                     <div className="space-y-6 sm:space-y-8">
                         {flight.itineraries.map((itinerary, idx) => (
                             <div key={idx} className="bg-zinc-50 dark:bg-zinc-900/50 p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800">
-                                <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-[var(--brand-color)] mb-4 sm:mb-6 block italic">
+                                <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-[var(--brand-color)] mb-4 sm:mb-6 block italic">
                                     {idx === 0 ? t("profile.flights.details.outbound") : t("profile.flights.details.inbound")}
                                 </span>
                                 <div className="space-y-8 sm:space-y-10">
@@ -227,18 +228,18 @@ export default function SavedFlightPage() {
                                             <div className="flex-1 space-y-3 sm:space-y-4">
                                                 <div className="flex justify-between items-start gap-4">
                                                     <div>
-                                                        <p className="text-xl sm:text-3xl font-black italic uppercase tracking-tighter">
+                                                        <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-3xl font-black italic uppercase tracking-tighter">
                                                             {formatFlightTime(seg.departure.at, language)}
                                                         </p>
-                                                        <p className="text-[8px] sm:text-xs font-bold text-zinc-400 uppercase tracking-widest mt-0.5 sm:mt-1">
+                                                        <p className="text-[7px] sm:text-[8px] sm:text-xs font-bold text-zinc-400 uppercase tracking-widest mt-0.5 sm:mt-1">
                                                             {seg.departure.iataCode} • {formatFlightDate(seg.departure.at, language)}
                                                         </p>
                                                     </div>
                                                     <div className="text-right">
-                                                        <p className="text-xl sm:text-3xl font-black italic uppercase tracking-tighter">
+                                                        <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-3xl font-black italic uppercase tracking-tighter">
                                                             {formatFlightTime(seg.arrival.at, language)}
                                                         </p>
-                                                        <p className="text-[8px] sm:text-xs font-bold text-zinc-400 uppercase tracking-widest mt-0.5 sm:mt-1">
+                                                        <p className="text-[7px] sm:text-[8px] sm:text-xs font-bold text-zinc-400 uppercase tracking-widest mt-0.5 sm:mt-1">
                                                             {seg.arrival.iataCode} • {formatFlightDate(seg.arrival.at, language)}
                                                         </p>
                                                     </div>
@@ -250,7 +251,7 @@ export default function SavedFlightPage() {
                                                         alt="Airline"
                                                     />
                                                     <div className="flex-1">
-                                                        <p className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-zinc-900 dark:text-white">
+                                                        <p className="text-[7px] sm:text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-zinc-900 dark:text-white">
                                                             {seg.carrierCode} {seg.number}
                                                         </p>
                                                         <p className="text-[7px] sm:text-[9px] font-bold text-zinc-400 uppercase mt-0.5">
@@ -270,21 +271,21 @@ export default function SavedFlightPage() {
                 <div className="space-y-6 sm:space-y-8">
                     <div className="bg-zinc-900 p-8 sm:p-10 rounded-[2.5rem] sm:rounded-[3rem] text-white shadow-2xl relative overflow-hidden group">
                         <div className="relative z-10 space-y-4 sm:space-y-6">
-                            <h3 className="text-xl sm:text-2xl font-black italic uppercase leading-tight tracking-tighter">
+                            <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl font-black italic uppercase leading-tight tracking-tighter">
                                 {t("profile.flights.details.interested")}
                             </h3>
-                            <p className="text-zinc-400 text-xs sm:text-sm font-medium leading-relaxed">
+                            <p className="text-zinc-400 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm font-medium leading-relaxed">
                                 {t("profile.flights.details.aiPromo")}
                             </p>
                             <button
-                                onClick={() => navigate("/ai-planner", { state: { destination: destName } })}
-                                className="w-full bg-[var(--brand-color)] hover:brightness-110 h-12 sm:h-14 rounded-xl sm:rounded-2xl font-black italic uppercase text-[10px] sm:text-xs tracking-[0.2em] transition-all shadow-lg active:scale-95"
+                                onClick={() => router.push(`/ai-planner?destination=${encodeURIComponent(destName)}`)}
+                                className="w-full bg-[var(--brand-color)] hover:brightness-110 h-12 sm:h-14 rounded-xl sm:rounded-2xl font-black italic uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs tracking-[0.2em] transition-all shadow-lg active:scale-95"
                             >
                                 {t("profile.flights.details.planNow")}
                             </button>
                         </div>
                         <div className="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform duration-700 pointer-events-none">
-                            <Plane size={100} sm:size={140} />
+                            <Plane size={100} />
                         </div>
                     </div>
 
@@ -292,31 +293,31 @@ export default function SavedFlightPage() {
                         <div className="flex items-center gap-3 p-4 bg-emerald-500/10 rounded-2xl border border-emerald-500/20">
                             <ShieldCheck className="text-emerald-500" size={20} />
                             <div>
-                                <p className="text-[10px] font-black uppercase text-emerald-500 italic">
+                                <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase text-emerald-500 italic">
                                     {t("profile.hotels.details.verified") || "Verifiziert"}
                                 </p>
-                                <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest">
+                                <p className="text-[7px] sm:text-[8px] sm:text-[9px] font-bold text-zinc-400 uppercase tracking-widest">
                                     {t("profile.hotels.details.gdsSync") || "GDS SYNC AKTIV"}
                                 </p>
                             </div>
                         </div>
                         <div className="flex items-center justify-between p-4 bg-white dark:bg-zinc-800 rounded-2xl border border-zinc-100 dark:border-zinc-700">
-                            <span className="text-[10px] font-black uppercase text-zinc-400 italic">{t("common.totalPrice") || "GESAMTPREIS"}</span>
+                            <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase text-zinc-400 italic">{t("common.totalPrice") || "GESAMTPREIS"}</span>
                             <div className="flex items-baseline gap-1">
                                 {savedFlight.price ? (
                                     <>
-                                        <span className="text-2xl font-black italic">{Math.round(savedFlight.price.total)}</span>
-                                        <span className="text-[10px] font-bold uppercase opacity-60">{savedFlight.price.currency}</span>
+                                        <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl font-black italic">{Math.round(savedFlight.price.total)}</span>
+                                        <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-bold uppercase opacity-60">{savedFlight.price.currency}</span>
                                     </>
                                 ) : (
-                                    <span className="text-2xl font-black italic text-zinc-500">N/A</span>
+                                    <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl font-black italic text-zinc-500">N/A</span>
                                 )}
                             </div>
                         </div>
 
                         <div className="space-y-3">
                             <button
-                                className="w-full h-11 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 font-black italic uppercase text-[10px] tracking-[0.15em] border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all active:scale-95 flex items-center justify-center gap-2"
+                                className="w-full h-11 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 font-black italic uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] tracking-[0.15em] border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all active:scale-95 flex items-center justify-center gap-2"
                             >
                                 <Info size={14} strokeWidth={2.5} style={{ color: "var(--brand-color)" }} />
                                 <span>MEHR ERFAHREN</span>
@@ -324,7 +325,7 @@ export default function SavedFlightPage() {
 
                             <button
                                 onClick={() => window.open(`https://www.google.com/travel/flights?q=flights+to+${destName}`, '_blank')}
-                                className="w-full h-12 rounded-2xl text-white font-black italic uppercase text-[11px] tracking-[0.15em] shadow-xl hover:shadow-2xl active:scale-95 transition-all relative overflow-hidden group/btn bg-[var(--brand-color)]"
+                                className="w-full h-12 rounded-2xl text-white font-black italic uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] tracking-[0.15em] shadow-xl hover:shadow-2xl active:scale-95 transition-all relative overflow-hidden group/btn bg-[var(--brand-color)]"
                             >
                                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
                                 <span className="relative z-10">JETZT BUCHEN</span>
@@ -333,21 +334,21 @@ export default function SavedFlightPage() {
                     </div>
 
                     <div className="bg-white dark:bg-zinc-900/50 p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 space-y-4 sm:space-y-6">
-                        <h4 className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-zinc-400 italic">
+                        <h4 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-zinc-400 italic">
                             {t("profile.flights.details.quickInfo")}
                         </h4>
                         <div className="space-y-3 sm:space-y-4">
                             {[
-                                { icon: <Landmark size={16} sm:size={18} />, label: t("profile.flights.details.landmarks"), value: "8 UNESCO" },
-                                { icon: <Utensils size={16} sm:size={18} />, label: t("profile.flights.details.food"), value: "Spicy & Fresh" },
-                                { icon: <Globe size={16} sm:size={18} />, label: t("profile.flights.details.language"), value: "English & Local" }
+                                { icon: <Landmark size={16} />, label: t("profile.flights.details.landmarks"), value: "8 UNESCO" },
+                                { icon: <Utensils size={16} />, label: t("profile.flights.details.food"), value: "Spicy & Fresh" },
+                                { icon: <Globe size={16} />, label: t("profile.flights.details.language"), value: "English & Local" }
                             ].map((item, i) => (
                                 <div key={i} className="flex items-center justify-between border-b border-zinc-50 dark:border-zinc-800 pb-3 sm:pb-4 last:border-0 last:pb-0">
                                     <div className="flex items-center gap-2 sm:gap-3">
                                         <div className="text-[var(--brand-color)]">{item.icon}</div>
-                                        <span className="text-[9px] sm:text-[11px] font-bold text-zinc-500 uppercase">{item.label}</span>
+                                        <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[11px] font-bold text-zinc-500 uppercase">{item.label}</span>
                                     </div>
-                                    <span className="text-[9px] sm:text-[11px] font-black text-zinc-900 dark:text-white uppercase italic">{item.value}</span>
+                                    <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[11px] font-black text-zinc-900 dark:text-white uppercase italic">{item.value}</span>
                                 </div>
                             ))}
                         </div>

@@ -21,25 +21,25 @@ export default function ESIMCard({ esim, onBook, isBooking }) {
     <Card className="overflow-hidden border-none bg-white dark:bg-zinc-900 shadow-xl rounded-[2rem]">
       {/* Header Blau */}
       <div className="bg-[#3b60ff] p-5 flex justify-between items-center text-white">
-        <span className="text-xl font-bold tracking-tight">{esim.country}</span>
+        <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl font-bold tracking-tight">{esim.country}</span>
         <Wifi size={20} />
       </div>
 
       <CardContent className="p-8 space-y-4">
-        <div className="flex justify-between text-sm border-b pb-2 border-zinc-100 dark:border-zinc-800">
+        <div className="flex justify-between text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm border-b pb-2 border-zinc-100 dark:border-zinc-800">
           <span className="text-zinc-400">{t("esimShop.card.data")}</span>
           <span className="font-bold text-zinc-900 dark:text-zinc-100">
             {renderData()}
           </span>
         </div>
-        <div className="flex justify-between text-sm border-b pb-2 border-zinc-100 dark:border-zinc-800">
+        <div className="flex justify-between text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm border-b pb-2 border-zinc-100 dark:border-zinc-800">
           <span className="text-zinc-400 capitalize">{t("esimShop.card.days")}</span>
           <span className="font-bold text-zinc-900 dark:text-zinc-100">
             {renderDuration()}
           </span>
         </div>
         {/* Preis in Blau-Akzent oder Schwarz */}
-        <div className="text-4xl font-black text-center pt-6 text-zinc-900 dark:text-white">
+        <div className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl sm:text-3xl md:text-4xl font-black text-center pt-6 text-zinc-900 dark:text-white">
           €{esim.price}
         </div>
       </CardContent>

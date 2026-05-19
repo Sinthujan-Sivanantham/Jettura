@@ -9,7 +9,7 @@ export default function SubmitButton({ isLoading }) {
         <Button
             type="submit"
             disabled={isLoading}
-            className="w-full h-14 text-white font-black italic uppercase text-xs sm:text-sm md:text-base rounded-2xl shadow-xl active:scale-95 transition-all tracking-widest flex items-center justify-center gap-2 overflow-hidden group relative border-none"
+            className="w-full h-10 sm:h-12 md:h-14 text-white font-black italic uppercase search-input-text rounded-[1.5rem] md:rounded-2xl shadow-xl active:scale-95 transition-all tracking-widest flex items-center justify-center gap-2 overflow-hidden group relative border-none"
             style={{ backgroundColor: "var(--brand-color)" }}
         >
             {isLoading ? (

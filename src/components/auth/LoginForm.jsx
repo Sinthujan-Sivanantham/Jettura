@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { supabase } from "../../lib/supabase";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Loader2, AlertCircle, Mail } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -20,7 +20,7 @@ export default function LoginForm() {
   const [socialLoading, setSocialLoading] = useState(null);
   const [error, setError] = useState("");
   const [showEmailForm, setShowEmailForm] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(loginSchema)
@@ -34,7 +34,7 @@ export default function LoginForm() {
       setError(t("auth.errors.loginFailed") + ": " + authError.message);
       setLoading(false);
     } else {
-      navigate("/");
+      router.push("/");
     }
   };
 
@@ -84,7 +84,7 @@ export default function LoginForm() {
       {!showEmailForm ? (
         <Button
           onClick={() => setShowEmailForm(true)}
-          className="w-full h-12 bg-white dark:bg-zinc-900 border border-slate-300 dark:border-zinc-700 text-slate-700 dark:text-slate-200 font-bold text-base rounded-lg hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2 shadow-sm"
+          className="w-full h-12 bg-white dark:bg-zinc-900 border border-slate-300 dark:border-zinc-700 text-slate-700 dark:text-slate-200 font-bold text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base rounded-lg hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2 shadow-sm"
         >
           <Mail className="w-5 h-5" />
           Anmelden mit E-Mail
@@ -95,7 +95,7 @@ export default function LoginForm() {
 
           <Button
             type="submit"
-            className="w-full h-12 bg-[#ff7b1c] hover:bg-[#e66a15] text-white font-bold text-base rounded-lg shadow-sm transition-all"
+            className="w-full h-12 bg-[#ff7b1c] hover:bg-[#e66a15] text-white font-bold text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base rounded-lg shadow-sm transition-all"
             disabled={loading || !!socialLoading}
           >
             {loading ? <Loader2 className="animate-spin" /> : t("auth.loginButton")}

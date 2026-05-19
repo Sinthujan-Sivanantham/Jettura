@@ -1,5 +1,7 @@
+"use client";
 import React, { useState, memo, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Info, Heart, Share2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FlightDetailsModal from "./FlightDetailsModal";
@@ -9,9 +11,10 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/lib/supabase";
 import StatusPopup from "../../ui/StatusPopup";
+import { trackBooking } from "@/lib/bookingTracker";
 
 const FlightResultCard = memo(({ flight, dictionaries, onSaveChange, isSavedView, savedId }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { t, language } = useLanguage();
   const { user } = useAuth();
   const [showDetails, setShowDetails] = useState(false);
@@ -121,6 +124,22 @@ const FlightResultCard = memo(({ flight, dictionaries, onSaveChange, isSavedView
   const itineraries = flight.itineraries;
 
   const handleBooking = async () => {
+    // Log booking in local state
+    trackBooking({
+      type: "flight",
+      price: flight.price.total,
+      currency: flight.price.currency,
+      details: {
+        airline: itineraries[0]?.segments[0]?.carrierCode || "Jettura Airline",
+        route: `${itineraries[0]?.segments[0]?.departure?.iataCode || "FRA"} ➔ ${itineraries[0]?.segments?.at(-1)?.arrival?.iataCode || "CDG"}`,
+        departureDate: itineraries[0]?.segments[0]?.departure?.at 
+          ? new Date(itineraries[0].segments[0].departure.at).toLocaleDateString("de-DE") 
+          : new Date().toLocaleDateString("de-DE"),
+        stops: itineraries[0]?.segments ? (itineraries[0].segments.length - 1) : 0
+      },
+      user
+    });
+
     if (flight.id && String(flight.id).startsWith("showcase-")) {
       window.open(`https://www.google.com/travel/flights`, "_blank");
       return;
@@ -184,7 +203,7 @@ const FlightResultCard = memo(({ flight, dictionaries, onSaveChange, isSavedView
           </button>
         </div>
 
-        <div className="absolute top-4 right-8 opacity-[0.02] pointer-events-none select-none text-4xl sm:text-5xl lg:text-7xl font-black italic uppercase">Jettura</div>
+        <div className="absolute top-4 right-8 opacity-[0.02] pointer-events-none select-none text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl sm:text-3xl md:text-4xl sm:text-5xl lg:text-7xl font-black italic uppercase">Jettura</div>
 
         <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row items-center gap-6">
           <div className="flex-1 w-full space-y-10">
@@ -195,23 +214,23 @@ const FlightResultCard = memo(({ flight, dictionaries, onSaveChange, isSavedView
 
           <div className="flex flex-col justify-center gap-4 border-t md:border-t-0 md:border-l lg:border-l-0 lg:border-t xl:border-l xl:border-t-0 border-zinc-100 dark:border-zinc-800 w-full md:w-52 lg:w-full xl:w-64 p-5 bg-zinc-50/50 dark:bg-zinc-900/20 rounded-[2rem]">
             <div className="text-center w-full">
-              <span className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.2em] italic block mb-2">{t("search.flight.details.from") || "AB"}</span>
+              <span className="text-[7px] sm:text-[8px] sm:text-[9px] font-black uppercase text-zinc-400 tracking-[0.2em] italic block mb-2">{t("search.flight.details.from") || "AB"}</span>
               <div className="flex items-baseline justify-center gap-1">
                 <span className="fluid-h2 font-black italic tracking-tighter text-zinc-900 dark:text-white">
                   {/* Handle non-numeric prices (e.g., 'Check') */}
                   {!isNaN(parseFloat(price)) ? Math.round(price) : price}
                 </span>
-                <span className="text-sm font-black uppercase opacity-60">{currency}</span>
+                <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm font-black uppercase opacity-60">{currency}</span>
               </div>
             </div>
 
             <div className="w-full space-y-3">
-              <button onClick={() => isSavedView ? navigate(`/profile/saved-flight/${savedId}`) : setShowDetails(true)} className="w-full h-11 sm:h-12 rounded-2xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 font-black italic uppercase text-[10px] sm:text-xs tracking-[0.15em] border border-zinc-200 flex items-center justify-center gap-2">
+              <button onClick={() => isSavedView ? router.push(`/profile/saved-flight/${savedId}`) : setShowDetails(true)} className="w-full h-11 sm:h-12 rounded-2xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 font-black italic uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs tracking-[0.15em] border border-zinc-200 flex items-center justify-center gap-2">
                 <Info size={14} strokeWidth={2.5} style={{ color: "var(--brand-color)" }} />
                 <span>{t("common.learnMore") || "MEHR ERFAHREN"}</span>
               </button>
 
-              <button onClick={handleBooking} className="w-full h-12 rounded-2xl text-white font-black italic uppercase text-[11px] tracking-[0.15em] shadow-xl bg-[var(--brand-color)]">
+              <button onClick={handleBooking} className="w-full h-12 rounded-2xl text-white font-black italic uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] tracking-[0.15em] shadow-xl bg-[var(--brand-color)]">
                 <span className="relative z-10">{t("search.flight.details.book") || "JETZT BUCHEN"}</span>
               </button>
             </div>

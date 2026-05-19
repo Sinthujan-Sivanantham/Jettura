@@ -1,18 +1,20 @@
+"use client";
 import React, { useState, useEffect, useRef, memo } from "react";
 import { Hotel, Star, MapPin, ShieldCheck, Check, Navigation, Wifi, Coffee, Utensils, Waves, Dumbbell, Car, Heart, Share2, Loader2, Info } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/lib/supabase";
 import StatusPopup from "../../ui/StatusPopup";
+import { trackBooking } from "@/lib/bookingTracker";
 import HotelShareModal from "./HotelShareModal";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const HotelResultCard = memo(({ hotel, isSavedView, savedId, onSaveChange }) => {
   const { t, language } = useLanguage();
   const { user } = useAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [showMap, setShowMap] = useState(false);
   const [showShare, setShowShare] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
@@ -145,7 +147,7 @@ const HotelResultCard = memo(({ hotel, isSavedView, savedId, onSaveChange }) => 
       if (map.current) { map.current.remove(); map.current = null; }
       return;
     }
-    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
+    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
     if (!map.current) {
       map.current = new mapboxgl.Map({
         container: mapContainer.current,
@@ -214,13 +216,13 @@ const HotelResultCard = memo(({ hotel, isSavedView, savedId, onSaveChange }) => 
             {rating > 0 && (
               <div className="absolute top-4 right-4 bg-white/95 dark:bg-black/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg z-10">
                 <Star size={11} className="fill-amber-400 text-amber-400" />
-                <span className="text-[11px] font-black italic text-zinc-900 dark:text-white">{rating}.0</span>
+                <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] font-black italic text-zinc-900 dark:text-white">{rating}.0</span>
               </div>
             )}
             {distance && (
               <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-black/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 z-10">
                 <Navigation size={10} style={{ color: brandColor }} />
-                <span className="text-[9px] font-black italic uppercase tracking-wider text-zinc-900 dark:text-white">
+                <span className="text-[7px] sm:text-[8px] sm:text-[9px] font-black italic uppercase tracking-wider text-zinc-900 dark:text-white">
                   {distance.toFixed(2)} {distanceUnit}
                 </span>
               </div>
@@ -230,37 +232,37 @@ const HotelResultCard = memo(({ hotel, isSavedView, savedId, onSaveChange }) => 
           <div className="flex-1 p-5 md:p-6 lg:p-8 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-[9px] font-black uppercase italic tracking-[0.2em] text-zinc-400">
+                <span className="text-[7px] sm:text-[8px] sm:text-[9px] font-black uppercase italic tracking-[0.2em] text-zinc-400">
                   {t("search.intelligenceActive") || "Intelligence Engine Aktiv"}
                 </span>
                 <div className="h-[1px] flex-1 bg-zinc-200 dark:bg-zinc-800" />
               </div>
-              <h3 className="text-lg xl:text-2xl font-black italic uppercase tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-5 group-hover:translate-x-1 transition-transform">
+              <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg xl:text-2xl font-black italic uppercase tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-5 group-hover:translate-x-1 transition-transform">
                 {hotelName}
               </h3>
               <div className="flex items-start gap-2 text-zinc-500 dark:text-zinc-400 mb-4">
                 <MapPin size={13} style={{ color: brandColor }} className="mt-0.5" />
                 <div className="flex flex-col">
-                  <span className="text-[11px] font-black uppercase italic tracking-tight text-zinc-700 dark:text-zinc-300">{street || city}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 mt-0.5">{addressLine2}</span>
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 mt-0.5">{addressLine3}</span>
+                  <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] font-black uppercase italic tracking-tight text-zinc-700 dark:text-zinc-300">{street || city}</span>
+                  <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-zinc-500 mt-0.5">{addressLine2}</span>
+                  <span className="text-[7px] sm:text-[8px] sm:text-[9px] font-bold uppercase tracking-widest text-zinc-400 mt-0.5">{addressLine3}</span>
                 </div>
               </div>
               <div className="flex flex-wrap gap-4 mb-6">
                 {hotel.amenities?.slice(0, 5).map((amenity, idx) => {
                   const props = { size: 12 };
-                  if (amenity.includes("WIFI")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Wifi {...props} /><span className="text-[9px] font-bold uppercase tracking-tight">{t("common.wifi") || "WiFi"}</span></div>;
-                  if (amenity.includes("POOL")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Waves {...props} /><span className="text-[9px] font-bold uppercase tracking-tight">{t("common.pool") || "Pool"}</span></div>;
-                  if (amenity.includes("RESTAURANT")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Utensils {...props} /><span className="text-[9px] font-bold uppercase tracking-tight">{t("common.dining") || "Dining"}</span></div>;
-                  if (amenity.includes("GYM")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Dumbbell {...props} /><span className="text-[9px] font-bold uppercase tracking-tight">{t("common.gym") || "Gym"}</span></div>;
-                  if (amenity.includes("PARKING")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Car {...props} /><span className="text-[9px] font-bold uppercase tracking-tight">{t("common.parking") || "Parking"}</span></div>;
-                  if (amenity.includes("BREAKFAST")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Coffee {...props} /><span className="text-[9px] font-bold uppercase tracking-tight">{t("common.breakfast") || "Breakfast"}</span></div>;
+                  if (amenity.includes("WIFI")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Wifi {...props} /><span className="text-[7px] sm:text-[8px] sm:text-[9px] font-bold uppercase tracking-tight">{t("common.wifi") || "WiFi"}</span></div>;
+                  if (amenity.includes("POOL")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Waves {...props} /><span className="text-[7px] sm:text-[8px] sm:text-[9px] font-bold uppercase tracking-tight">{t("common.pool") || "Pool"}</span></div>;
+                  if (amenity.includes("RESTAURANT")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Utensils {...props} /><span className="text-[7px] sm:text-[8px] sm:text-[9px] font-bold uppercase tracking-tight">{t("common.dining") || "Dining"}</span></div>;
+                  if (amenity.includes("GYM")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Dumbbell {...props} /><span className="text-[7px] sm:text-[8px] sm:text-[9px] font-bold uppercase tracking-tight">{t("common.gym") || "Gym"}</span></div>;
+                  if (amenity.includes("PARKING")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Car {...props} /><span className="text-[7px] sm:text-[8px] sm:text-[9px] font-bold uppercase tracking-tight">{t("common.parking") || "Parking"}</span></div>;
+                  if (amenity.includes("BREAKFAST")) return <div key={idx} className="flex items-center gap-1 text-zinc-400"><Coffee {...props} /><span className="text-[7px] sm:text-[8px] sm:text-[9px] font-bold uppercase tracking-tight">{t("common.breakfast") || "Breakfast"}</span></div>;
                   return null;
                 })}
               </div>
               <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1.5 text-[9px] font-black uppercase italic text-emerald-500"><Check size={11} strokeWidth={3} /><span>{t("common.available")}</span></div>
-                <div className="flex items-center gap-1.5 text-[9px] font-black uppercase italic text-zinc-400"><ShieldCheck size={11} strokeWidth={3} /><span>{t("profile.hotels.details.customerService")}</span></div>
+                <div className="flex items-center gap-1.5 text-[7px] sm:text-[8px] sm:text-[9px] font-black uppercase italic text-emerald-500"><Check size={11} strokeWidth={3} /><span>{t("common.available")}</span></div>
+                <div className="flex items-center gap-1.5 text-[7px] sm:text-[8px] sm:text-[9px] font-black uppercase italic text-zinc-400"><ShieldCheck size={11} strokeWidth={3} /><span>{t("profile.hotels.details.customerService")}</span></div>
               </div>
             </div>
           </div>
@@ -268,15 +270,15 @@ const HotelResultCard = memo(({ hotel, isSavedView, savedId, onSaveChange }) => 
           <div className="w-full md:w-52 lg:w-full xl:w-64 p-6 xl:p-8 border-t md:border-t-0 md:border-l lg:border-l-0 lg:border-t xl:border-l xl:border-t-0 border-zinc-100 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20 flex flex-col justify-center items-center text-center gap-4">
             {price ? (
               <div className="w-full">
-                <span className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.2em] italic block mb-2">{t("common.totalPrice")}</span>
+                <span className="text-[7px] sm:text-[8px] sm:text-[9px] font-black uppercase text-zinc-400 tracking-[0.2em] italic block mb-2">{t("common.totalPrice")}</span>
                 <div className="flex items-baseline justify-center gap-2">
-                  <span className="text-xs uppercase opacity-40 font-bold not-italic">{t("common.from")}</span>
-                  <span className="text-4xl font-black italic tracking-tighter text-zinc-900 dark:text-white">{Math.round(price)}</span>
-                  <span className="text-sm font-black uppercase opacity-60">{currency}</span>
+                  <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs uppercase opacity-40 font-bold not-italic">{t("common.from")}</span>
+                  <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl sm:text-3xl md:text-4xl font-black italic tracking-tighter text-zinc-900 dark:text-white">{Math.round(price)}</span>
+                  <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm font-black uppercase opacity-60">{currency}</span>
                 </div>
                 <button
-                  onClick={() => isSavedView ? navigate(`/profile/saved-hotel/${savedId}`) : showAlert("Details", "Please save this hotel to view full Intelligence details.", "info")}
-                  className="w-full h-11 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 font-black italic uppercase text-[10px] tracking-[0.15em] border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all active:scale-95 flex items-center justify-center gap-2"
+                  onClick={() => isSavedView ? router.push(`/profile/saved-hotel/${savedId}`) : showAlert("Details", "Please save this hotel to view full Intelligence details.", "info")}
+                  className="w-full h-11 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 font-black italic uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] tracking-[0.15em] border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all active:scale-95 flex items-center justify-center gap-2"
                 >
                   <Info size={14} strokeWidth={2.5} style={{ color: "var(--brand-color)" }} />
                   {t("common.learnMore") || "Mehr erfahren"}
@@ -285,21 +287,35 @@ const HotelResultCard = memo(({ hotel, isSavedView, savedId, onSaveChange }) => 
             ) : (
               <div className="w-full space-y-3">
                 <div className="w-full">
-                  <span className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.2em] italic block mb-2">{t("common.totalPrice")}</span>
-                  <div className="text-2xl font-black italic tracking-tighter text-zinc-400 opacity-50">N/A</div>
+                  <span className="text-[7px] sm:text-[8px] sm:text-[9px] font-black uppercase text-zinc-400 tracking-[0.2em] italic block mb-2">{t("common.totalPrice")}</span>
+                  <div className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl font-black italic tracking-tighter text-zinc-400 opacity-50">N/A</div>
                 </div>
                 <button
-                  onClick={() => isSavedView ? navigate(`/profile/saved-hotel/${savedId}`) : showAlert("Details", "Please save this hotel to view full Intelligence details.", "info")}
-                  className="w-full h-11 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 font-black italic uppercase text-[10px] tracking-[0.15em] border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all active:scale-95 flex items-center justify-center gap-2"
+                  onClick={() => isSavedView ? router.push(`/profile/saved-hotel/${savedId}`) : showAlert("Details", "Please save this hotel to view full Intelligence details.", "info")}
+                  className="w-full h-11 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 font-black italic uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] tracking-[0.15em] border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all active:scale-95 flex items-center justify-center gap-2"
                 >
                   <Info size={14} strokeWidth={2.5} style={{ color: "var(--brand-color)" }} />
                   {t("common.learnMore") || "Mehr erfahren"}
                 </button>
               </div>
             )}
-            <button
-              onClick={() => window.open(`https://www.google.com/search?q=${encodeURIComponent(hotelName + " " + city + " booking")}`, '_blank')}
-              className="w-full h-12 rounded-2xl text-white font-black italic uppercase text-[11px] tracking-[0.15em] shadow-xl hover:shadow-2xl active:scale-95 transition-all relative overflow-hidden group/btn"
+             <button
+              onClick={() => {
+                trackBooking({
+                  type: "hotel",
+                  price: hotel.price?.total || 120,
+                  currency: hotel.price?.currency || "EUR",
+                  details: {
+                    hotelName,
+                    city,
+                    address: street || "Hauptstraße 45",
+                    rating: hotel.rating || 4
+                  },
+                  user
+                });
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(hotelName + " " + city + " booking")}`, '_blank');
+              }}
+              className="w-full h-12 rounded-2xl text-white font-black italic uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] tracking-[0.15em] shadow-xl hover:shadow-2xl active:scale-95 transition-all relative overflow-hidden group/btn"
               style={{ backgroundColor: brandColor }}
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />

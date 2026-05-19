@@ -7,14 +7,14 @@ export default function CabinSelector({ cabin, setCabin }) {
 
     return (
         <div className="flex flex-col text-left gap-2">
-            <label className="text-xs font-black uppercase text-zinc-700 dark:text-zinc-300 ml-1 tracking-[0.2em] italic leading-none">
+            <label className="search-label-text font-black uppercase text-zinc-700 dark:text-zinc-300 ml-1 tracking-[0.2em] italic leading-none">
                 {t("search.flight.class")}
             </label>
             <Select value={cabin} onValueChange={setCabin}>
-                <SelectTrigger className="h-11 lg:h-14 text-xs min-[760px]:text-base font-black italic uppercase rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md shadow-inner outline-none">
+                <SelectTrigger className="h-11 lg:h-14 search-input-text font-black italic uppercase rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md shadow-inner outline-none [&>span]:pr-1.5">
                     <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="rounded-2xl font-black italic uppercase text-xs">
+                <SelectContent className="rounded-2xl font-black italic uppercase search-input-text">
                     <SelectItem value="ECONOMY">{t("search.flight.details.cabins.ECONOMY")}</SelectItem>
                     <SelectItem value="BUSINESS">{t("search.flight.details.cabins.BUSINESS")}</SelectItem>
                     <SelectItem value="FIRST">{t("search.flight.details.cabins.FIRST")}</SelectItem>

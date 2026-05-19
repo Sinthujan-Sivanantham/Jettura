@@ -10,12 +10,12 @@ export default function ESIMHero() {
       animate={{ opacity: 1, y: 0 }}
       className="text-center space-y-4 pt-10"
     >
-      <h1 className="text-5xl md:text-6xl font-black tracking-tight text-zinc-900 dark:text-white">
+      <h1 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl md:text-3xl sm:text-4xl md:text-5xl md:text-6xl font-black tracking-tight text-zinc-900 dark:text-white">
         {t("esimShop.hero.title").split("Jettura eSIM")[0]}
         <span style={{ color: "var(--brand-color)" }}>Jettura eSIM</span>
         {t("esimShop.hero.title").split("Jettura eSIM")[1]}
       </h1>
-      <p className="text-zinc-500 dark:text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto">
+      <p className="text-zinc-500 dark:text-zinc-400 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
         {t("esimShop.hero.subtitle")}
       </p>
     </motion.section>

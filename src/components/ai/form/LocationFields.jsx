@@ -1,7 +1,9 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import AIAddressInput from "./AIAddressInput";
+import dynamic from "next/dynamic";
 import { useLanguage } from "@/context/LanguageContext";
+
+const AIAddressInput = dynamic(() => import("./AIAddressInput"), { ssr: false });
 
 export default function LocationFields({ control, errors, rowStyle }) {
     const { t } = useLanguage();

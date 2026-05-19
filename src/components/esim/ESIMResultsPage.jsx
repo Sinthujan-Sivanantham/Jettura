@@ -24,12 +24,12 @@ export default function ESIMResultsPage({ searchData, onBack }) {
                             className="group mb-4 flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-500 hover:text-[var(--brand-color)] transition-all active:scale-95 shadow-sm"
                         >
                             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-                            <span className="text-[10px] font-black uppercase tracking-widest italic">{t("nav.back") || "Zurück"}</span>
+                            <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase tracking-widest italic">{t("nav.back") || "Zurück"}</span>
                         </button>
-                        <h1 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tighter text-zinc-900 dark:text-white leading-none">
+                        <h1 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl sm:text-3xl font-black italic uppercase tracking-tighter text-zinc-900 dark:text-white leading-none">
                             Intelligence <span style={{ color: brandColor }}>eSIM</span>
                         </h1>
-                        <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest italic mt-3">
+                        <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs font-bold text-zinc-500 uppercase tracking-widest italic mt-3">
                             Verfügbare Pakete für {searchData?.destination || "Ihr Reiseziel"}
                         </p>
                     </motion.div>
@@ -37,7 +37,7 @@ export default function ESIMResultsPage({ searchData, onBack }) {
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="flex items-center gap-2 text-xs font-black uppercase italic"
+                        className="flex items-center gap-2 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs font-black uppercase italic"
                         style={{ color: brandColor }}
                     >
                         <ShieldCheck size={16} /> Global Connectivity

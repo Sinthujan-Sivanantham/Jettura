@@ -115,31 +115,31 @@ export default function Features() {
           viewport={{ once: true }}
           className="inline-block px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 mb-4"
         >
-          <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-[var(--brand-color)]">
+          <span className="search-label-text font-black uppercase tracking-[0.2em] text-[var(--brand-color)]">
             {tSafe("features.badge", "Premium Experience")}
           </span>
         </motion.div>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="fluid-h1 font-[1000] italic uppercase tracking-tighter text-zinc-900 dark:text-white leading-[0.9]"
-        >
-          {tSafe("features.headline", "One App.\nEverything.")}
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="text-zinc-500 dark:text-zinc-400 fluid-p max-w-2xl mx-auto font-medium"
-        >
-          {tSafe("features.subheadline", "From AI-powered flight search to curated hotels and community stories. Experience the future of travel planning.")}
-        </motion.p>
       </div>
+
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="fluid-h1 font-[1000] italic uppercase tracking-tighter text-zinc-900 dark:text-white leading-[0.9]"
+      >
+        {tSafe("features.headline", "One App.\nEverything.")}
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="text-zinc-500 dark:text-zinc-400 fluid-p max-w-2xl mx-auto font-medium"
+      >
+        {tSafe("features.subheadline", "From AI-powered flight search to curated hotels and community stories. Experience the future of travel planning.")}
+      </motion.p>
 
       <div className="max-w-4xl mx-auto px-4 relative z-10">
         <Tabs defaultValue="flights" onValueChange={setActiveTab} className="w-full">
@@ -149,7 +149,7 @@ export default function Features() {
                 <TabsTriggerBase
                   key={tab}
                   value={tab}
-                  className="rounded-full px-6 py-2.5 text-[10px] sm:text-xs font-black uppercase tracking-widest data-[state=active]:bg-white dark:data-[state=active]:bg-zinc-800 data-[state=active]:text-[var(--brand-color)] data-[state=active]:shadow-lg transition-all"
+                  className="rounded-full px-6 py-2.5 search-input-text font-black uppercase tracking-widest data-[state=active]:bg-white dark:data-[state=active]:bg-zinc-800 data-[state=active]:text-[var(--brand-color)] data-[state=active]:shadow-lg transition-all"
                 >
                   {tab === "flights" && (t("common.flights") || "Flights")}
                   {tab === "hotels" && (t("common.hotels") || "Hotels")}

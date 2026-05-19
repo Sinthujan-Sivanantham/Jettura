@@ -31,14 +31,14 @@ export default function FlexibleView({ date, handleDateSelect, brandColor, minDa
                         style={isSelected ? { backgroundColor: brandColor } : {}}
                     >
                         <span className={cn(
-                            "text-[10px] sm:text-xs lg:text-base font-black uppercase italic tracking-tighter text-center break-words w-full px-1"
+                            "search-input-text font-black uppercase italic tracking-tighter text-center break-words w-full px-1"
                         )}
                             style={!isSelected ? { color: brandColor, opacity: 0.8 } : { color: "white" }}
                         >
                             <span className="lg:hidden">{m.shortName}</span>
                             <span className="hidden lg:inline">{m.name}</span>
                         </span>
-                        <span className="text-[9px] sm:text-[10px] lg:text-xs font-bold opacity-40 mt-0.5">{m.year}</span>
+                        <span className="search-label-text font-bold opacity-40 mt-0.5">{m.year}</span>
                     </button>
                 );
             })}

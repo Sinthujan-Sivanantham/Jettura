@@ -1,5 +1,6 @@
+"use client";
 import { useEffect, useState, useCallback } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "../context/AuthContext";
 import { AnimatePresence } from "framer-motion";
@@ -105,16 +106,16 @@ export default function Profile() {
           <Lock size={32} className="text-zinc-400" />
         </div>
         <div className="space-y-2 max-w-md">
-          <h3 className="text-xl font-black italic uppercase tracking-tight text-zinc-900 dark:text-white">
+          <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl font-black italic uppercase tracking-tight text-zinc-900 dark:text-white">
             {t("profile.login.title")}
           </h3>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed">
+          <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed">
             {t("profile.login.description")}
           </p>
         </div>
         <Link to="/auth">
           <button
-            className="h-12 px-8 rounded-xl text-white font-black italic uppercase text-xs tracking-widest shadow-lg active:scale-95 transition-all flex items-center gap-2 hover:opacity-90"
+            className="h-12 px-8 rounded-xl text-white font-black italic uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs tracking-widest shadow-lg active:scale-95 transition-all flex items-center gap-2 hover:opacity-90"
             style={{ backgroundColor: "var(--brand-color)" }}
           >
             {t("profile.login.button")}
@@ -142,7 +143,7 @@ export default function Profile() {
         <div className="flex flex-col md:flex-row bg-zinc-50 dark:bg-zinc-900/50 p-1 rounded-[1.2rem] sm:p-1.5 sm:rounded-[1.5rem] border border-zinc-100 dark:border-zinc-800 shadow-sm w-full md:w-auto">
           <button
             onClick={() => setActiveTab("stories")}
-            className={`w-full md:w-auto flex-1 md:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-3 md:py-2 rounded-[1rem] sm:rounded-[1.2rem] text-[11px] md:text-[10px] font-black uppercase italic tracking-widest transition-all ${activeTab === "stories"
+            className={`w-full md:w-auto flex-1 md:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-3 md:py-2 rounded-[1rem] sm:rounded-[1.2rem] text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] md:text-[10px] font-black uppercase italic tracking-widest transition-all ${activeTab === "stories"
               ? "bg-white dark:bg-zinc-800 text-[var(--brand-color)] shadow-sm"
               : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
               }`}
@@ -151,7 +152,7 @@ export default function Profile() {
           </button>
           <button
             onClick={() => setActiveTab("flights")}
-            className={`w-full md:w-auto flex-1 md:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-3 md:py-2 rounded-[1rem] sm:rounded-[1.2rem] text-[11px] md:text-[10px] font-black uppercase italic tracking-widest transition-all ${activeTab === "flights"
+            className={`w-full md:w-auto flex-1 md:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-3 md:py-2 rounded-[1rem] sm:rounded-[1.2rem] text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] md:text-[10px] font-black uppercase italic tracking-widest transition-all ${activeTab === "flights"
               ? "bg-white dark:bg-zinc-800 text-[var(--brand-color)] shadow-sm"
               : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
               }`}
@@ -160,7 +161,7 @@ export default function Profile() {
           </button>
           <button
             onClick={() => setActiveTab("hotels")}
-            className={`w-full md:w-auto flex-1 md:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-3 md:py-2 rounded-[1rem] sm:rounded-[1.2rem] text-[11px] md:text-[10px] font-black uppercase italic tracking-widest transition-all ${activeTab === "hotels"
+            className={`w-full md:w-auto flex-1 md:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-3 md:py-2 rounded-[1rem] sm:rounded-[1.2rem] text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] md:text-[10px] font-black uppercase italic tracking-widest transition-all ${activeTab === "hotels"
               ? "bg-white dark:bg-zinc-800 text-[var(--brand-color)] shadow-sm"
               : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
               }`}
@@ -172,17 +173,17 @@ export default function Profile() {
         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full md:w-auto">
           <Button
             onClick={() => setIsPosting(true)}
-            className="w-full sm:w-auto hover:opacity-90 text-white rounded-xl sm:rounded-2xl px-6 sm:px-8 font-black italic uppercase text-[9px] sm:text-[10px] h-11 sm:h-12 shadow-xl gap-2 transition-all active:scale-95"
+            className="w-full sm:w-auto hover:opacity-90 text-white rounded-xl sm:rounded-2xl px-6 sm:px-8 font-black italic uppercase text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] h-11 sm:h-12 shadow-xl gap-2 transition-all active:scale-95"
             style={{ backgroundColor: "var(--brand-color)" }}
           >
-            <Plus size={14} sm:size={16} /> {t("profile.post.newStory")}
+            <Plus size={14} /> {t("profile.post.newStory")}
           </Button>
 
           <button
             onClick={() => supabase.auth.signOut()}
-            className="text-zinc-400 hover:text-red-500 font-black uppercase text-[8px] sm:text-[9px] tracking-widest transition-all flex items-center gap-2 italic px-4 py-2"
+            className="text-zinc-400 hover:text-red-500 font-black uppercase text-[7px] sm:text-[8px] sm:text-[9px] tracking-widest transition-all flex items-center gap-2 italic px-4 py-2"
           >
-            <LogOut size={12} sm:size={14} /> {t("nav.logout")}
+            <LogOut size={12} /> {t("nav.logout")}
           </button>
         </div>
       </div>

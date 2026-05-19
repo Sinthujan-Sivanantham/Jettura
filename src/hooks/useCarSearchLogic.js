@@ -70,8 +70,6 @@ export function useCarSearchLogic(onSearchSuccess) {
             await new Promise(resolve => setTimeout(resolve, 1000));
             const result = { data: [] }; // Mock empty response for now
 
-            console.log("🚘 Car Search (Mock):", result);
-
             onSearchSuccess?.({
                 type: 'cars',
                 data: {

@@ -63,7 +63,7 @@ export default function TimePicker({ label, value, onChange, error, shakeKey }) 
     return (
         <div className="flex flex-col gap-0 w-full relative">
             {label && (
-                <label className="text-xs font-black uppercase tracking-[0.2em] text-zinc-700 dark:text-zinc-300 mb-2 ml-1 flex items-center gap-1.5 italic leading-none">
+                <label className="search-label-text font-black uppercase tracking-[0.2em] text-zinc-700 dark:text-zinc-300 mb-2 ml-1 flex items-center gap-1.5 italic leading-none">
                     {label}
                 </label>
             )}
@@ -73,7 +73,7 @@ export default function TimePicker({ label, value, onChange, error, shakeKey }) 
                     <PopoverTrigger asChild>
                         <button
                             className={cn(
-                                "h-11 min-[760px]:h-14 w-full text-xs sm:text-sm lg:text-base font-black italic uppercase bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 rounded-xl lg:rounded-2xl flex items-center transition-all shadow-inner outline-none focus:ring-2 relative",
+                                "h-11 min-[760px]:h-14 w-full search-input-text font-black italic uppercase bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 rounded-xl lg:rounded-2xl flex items-center transition-all shadow-inner outline-none focus:ring-2 relative",
                                 error ? "border-rose-500 dark:border-rose-500" : "hover:border-zinc-300 dark:hover:border-zinc-700",
                                 "pl-14 min-[760px]:pl-[48px] min-[1200px]:pl-[64px] pr-4"
                             )}
@@ -86,7 +86,7 @@ export default function TimePicker({ label, value, onChange, error, shakeKey }) 
                                 className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10 w-5 h-5 shrink-0"
                                 style={{ color: error ? "#f43f5e" : brandColor }}
                             />
-                            <span className={cn("text-sm min-[760px]:text-base min-[1200px]:text-xl font-black italic uppercase truncate", value ? "text-zinc-900 dark:text-zinc-100" : (error ? "text-rose-500" : "text-zinc-400"))}>
+                            <span className={cn("search-input-text font-black italic uppercase truncate", value ? "text-zinc-900 dark:text-zinc-100" : (error ? "text-rose-500" : "text-zinc-400"))}>
                                 {value || (error ? "AUSWÄHLEN!" : "Zeit wählen")}
                             </span>
                         </button>
@@ -101,9 +101,9 @@ export default function TimePicker({ label, value, onChange, error, shakeKey }) 
                     <div className="flex flex-col">
                         {/* Header */}
                         <div className="px-6 py-4 border-b border-zinc-100 dark:border-zinc-900 flex items-center justify-between bg-zinc-50/50 dark:bg-zinc-900/50">
-                            <span className="text-[10px] font-black uppercase italic tracking-widest text-zinc-400">Intelligence Time</span>
+                            <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase italic tracking-widest text-zinc-400">Intelligence Time</span>
                             <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-white dark:bg-zinc-800 border dark:border-zinc-700 shadow-sm">
-                                <span className="text-xs font-black italic" style={{ color: brandColor }}>{selectedHour}:{selectedMinute}</span>
+                                <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs font-black italic" style={{ color: brandColor }}>{selectedHour}:{selectedMinute}</span>
                             </div>
                         </div>
 
@@ -111,7 +111,7 @@ export default function TimePicker({ label, value, onChange, error, shakeKey }) 
                         <div className="flex h-64">
                             {/* Hours Column */}
                             <div className="flex-1 overflow-y-auto custom-scrollbar border-r border-zinc-100 dark:border-zinc-900 py-2">
-                                <p className="text-[8px] font-black text-center text-zinc-300 uppercase tracking-tighter mb-2">Stunden</p>
+                                <p className="text-[7px] sm:text-[8px] font-black text-center text-zinc-300 uppercase tracking-tighter mb-2">Stunden</p>
                                 {hours.map((h) => (
                                     <button
                                         key={h}
@@ -121,7 +121,7 @@ export default function TimePicker({ label, value, onChange, error, shakeKey }) 
                                             handleSelect(h, selectedMinute);
                                         }}
                                         className={cn(
-                                            "w-full py-2.5 text-sm font-black italic transition-all relative flex items-center justify-center translate-x-0 active:scale-90",
+                                            "w-full py-2.5 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm font-black italic transition-all relative flex items-center justify-center translate-x-0 active:scale-90",
                                             selectedHour === h ? "text-white scale-110" : "text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
                                         )}
                                     >
@@ -139,7 +139,7 @@ export default function TimePicker({ label, value, onChange, error, shakeKey }) 
 
                             {/* Minutes Column */}
                             <div className="flex-1 overflow-y-auto custom-scrollbar py-2">
-                                <p className="text-[8px] font-black text-center text-zinc-300 uppercase tracking-tighter mb-2">Minuten</p>
+                                <p className="text-[7px] sm:text-[8px] font-black text-center text-zinc-300 uppercase tracking-tighter mb-2">Minuten</p>
                                 {minutes.map((m) => (
                                     <button
                                         key={m}
@@ -149,7 +149,7 @@ export default function TimePicker({ label, value, onChange, error, shakeKey }) 
                                             handleSelect(selectedHour, m);
                                         }}
                                         className={cn(
-                                            "w-full py-2.5 text-sm font-black italic transition-all relative flex items-center justify-center translate-x-0 active:scale-90",
+                                            "w-full py-2.5 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm font-black italic transition-all relative flex items-center justify-center translate-x-0 active:scale-90",
                                             selectedMinute === m ? "text-white scale-110" : "text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
                                         )}
                                     >
@@ -170,7 +170,7 @@ export default function TimePicker({ label, value, onChange, error, shakeKey }) 
                         <div className="p-3 bg-zinc-50/50 dark:bg-zinc-900/50 border-t border-zinc-100 dark:border-zinc-900">
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="w-full h-10 rounded-xl text-white font-black italic uppercase text-[10px] tracking-widest shadow-xl active:scale-95 transition-all"
+                                className="w-full h-10 rounded-xl text-white font-black italic uppercase search-input-text tracking-widest shadow-xl active:scale-95 transition-all"
                                 style={{ backgroundColor: brandColor }}
                             >
                                 Fertig

@@ -8,19 +8,34 @@ const ThemeContext = createContext({
 });
 
 export function ThemeProvider({ children }) {
-  // 1. Initialer State: Prüfe LocalStorage oder System-Einstellung
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("jettura-theme") || "light";
-  });
+  const [theme, setTheme] = useState("light");
 
   const [color, setColor] = useState(() => {
-    return localStorage.getItem("jettura-color") || "#3b60ff";
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("jettura-color") || "#3b60ff";
+    }
+    return "#3b60ff";
   });
 
-  // 2. useEffect: Wenn sich das Theme ändert, update die HTML-Klasse
+  // Theme aus System lesen und auf Änderungen hören
   useEffect(() => {
-    const root = window.document.documentElement; // Das <html> Element
-    localStorage.setItem("jettura-theme", theme);
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Initial setzen
+    setTheme(mediaQuery.matches ? "dark" : "light");
+
+    // Event Listener für System-Änderungen
+    const handleChange = (e) => {
+      setTheme(e.matches ? "dark" : "light");
+    };
+    
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  // HTML-Klasse updaten
+  useEffect(() => {
+    const root = window.document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
     } else {
@@ -28,16 +43,15 @@ export function ThemeProvider({ children }) {
     }
   }, [theme]);
 
-  // 3. useEffect: Brand Color aktualisieren
+  // Brand Color updaten
   useEffect(() => {
     const root = window.document.documentElement;
     localStorage.setItem("jettura-color", color);
     root.style.setProperty("--brand-color", color);
   }, [color]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  // Dummy-Funktion, falls noch irgendwo aufgerufen
+  const toggleTheme = () => {};
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, color, setColor }}>

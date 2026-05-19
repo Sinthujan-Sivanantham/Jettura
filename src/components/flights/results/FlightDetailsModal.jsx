@@ -33,10 +33,10 @@ export default function FlightDetailsModal({ flight, onClose, logo, dictionaries
               <img src={logo} alt="airline" className="max-w-full max-h-full object-contain" />
             </div>
             <div>
-              <h2 className="text-sm md:text-base lg:text-lg xl:text-xl font-black italic uppercase tracking-tighter leading-none">
+              <h2 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-black italic uppercase tracking-tighter leading-none">
                 {t("search.flight.details.title") || "Flight Details"}
               </h2>
-              <p className="text-[8px] md:text-[10px] xl:text-xs font-bold uppercase tracking-widest mt-0.5" style={{ color: brandColor }}>Intelligence Engine</p>
+              <p className="text-[7px] sm:text-[8px] md:text-[10px] xl:text-xs font-bold uppercase tracking-widest mt-0.5" style={{ color: brandColor }}>Intelligence Engine</p>
             </div>
           </div>
           <button onClick={onClose} className="p-2 bg-zinc-100 dark:bg-zinc-900 rounded-full hover:bg-red-500/10 hover:text-red-500 transition-all">
@@ -50,7 +50,7 @@ export default function FlightDetailsModal({ flight, onClose, logo, dictionaries
             <div key={itineraryIdx}>
 
               <div className="mb-6 flex items-center gap-3">
-                <span className="text-[9px] md:text-xs lg:text-sm xl:text-base font-black uppercase italic px-3 py-1 rounded-lg border tracking-widest"
+                <span className="text-[7px] sm:text-[8px] sm:text-[9px] md:text-xs lg:text-sm xl:text-base font-black uppercase italic px-3 py-1 rounded-lg border tracking-widest"
                   style={{
                     color: brandColor,
                     backgroundColor: `color-mix(in srgb, ${brandColor} 10%, transparent)`,
@@ -68,7 +68,7 @@ export default function FlightDetailsModal({ flight, onClose, logo, dictionaries
 
                 return (
                   <FlightSegmentItem
-                    key={seg.id}
+                    key={seg.id || `${itineraryIdx}-${i}`}
                     segment={seg}
                     nextSegment={itinerary.segments[i + 1]}
                     itineraryIndex={itineraryIdx}
@@ -119,13 +119,13 @@ export default function FlightDetailsModal({ flight, onClose, logo, dictionaries
               searchPath += `${adults}`;
               window.open(`https://www.aviasales.com/search/${searchPath}?marker=${marker}&market=us`, "_blank");
             }}
-            className="w-full h-16 rounded-[2rem] text-white font-black italic uppercase text-sm tracking-[0.2em] shadow-2xl active:scale-[0.98] transition-all relative overflow-hidden group flex items-center justify-center gap-4"
+            className="w-full h-12 sm:h-14 md:h-16 rounded-[2rem] text-white font-black italic uppercase text-[10px] sm:text-xs md:text-sm tracking-[0.2em] shadow-2xl active:scale-[0.98] transition-all relative overflow-hidden group flex items-center justify-center gap-4"
             style={{ backgroundColor: brandColor }}
           >
             <span className="relative z-10 flex items-center gap-2 sm:gap-3 md:text-base lg:text-lg">
               {t("search.flight.details.book") || "Book"} <span className="opacity-40 font-bold not-italic">|</span>
-              <span className="text-base sm:text-lg md:text-xl lg:text-2xl">
-                <span className="text-[9px] md:text-xs uppercase opacity-60 mr-1 not-italic font-bold">{t("search.flight.details.from") || "from"}</span>
+              <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg md:text-xl lg:text-2xl">
+                <span className="text-[7px] sm:text-[8px] sm:text-[9px] md:text-xs uppercase opacity-60 mr-1 not-italic font-bold">{t("search.flight.details.from") || "from"}</span>
                 {flight.price.total} {flight.price.currency}
               </span>
             </span>

@@ -94,10 +94,10 @@ export default function FlightShareModal({ isOpen, onClose, flight, dictionaries
                         onClick={onClose}
                         className="absolute top-6 right-6 sm:top-10 sm:right-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors shadow-sm z-10"
                     >
-                        <X size={18} sm:size={24} className="text-zinc-500" />
+                        <X size={18} className="text-zinc-500" />
                     </button>
 
-                    <h2 className="text-3xl sm:text-5xl font-[1000] italic uppercase tracking-tight mb-6 sm:mb-8 leading-[0.9] pr-12 sm:pr-0">
+                    <h2 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl md:text-3xl sm:text-5xl font-[1000] italic uppercase tracking-tight mb-6 sm:mb-8 leading-[0.9] pr-12 sm:pr-0">
                         {t("search.flight.share.title") || "Share this flight"}
                     </h2>
 
@@ -112,17 +112,17 @@ export default function FlightShareModal({ isOpen, onClose, flight, dictionaries
                         </div>
                         <div className="flex-1">
                             <div className="flex justify-between items-start gap-2">
-                                <h3 className="text-sm sm:text-lg font-black italic uppercase tracking-normal">
+                                <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-lg font-black italic uppercase tracking-normal">
                                     {origin} - {destination}
                                 </h3>
                                 <div className="text-right">
-                                    <p className="text-sm sm:text-lg font-black italic tracking-normal leading-none">
-                                        {price} <span className="text-[8px] sm:text-[10px] not-italic font-bold opacity-60 uppercase">{currency}</span>
+                                    <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-lg font-black italic tracking-normal leading-none">
+                                        {price} <span className="text-[7px] sm:text-[8px] sm:text-[10px] not-italic font-bold opacity-60 uppercase">{currency}</span>
                                     </p>
                                     <p className="text-[7px] sm:text-[9px] font-bold text-zinc-500 uppercase mt-1 tracking-widest leading-none">{t("search.flight.share.perPerson") || "per person"}</p>
                                 </div>
                             </div>
-                            <p className="text-[9px] sm:text-[11px] font-bold text-zinc-400 uppercase tracking-[0.15em] sm:tracking-[0.2em] mt-1 italic">
+                            <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[11px] font-bold text-zinc-400 uppercase tracking-[0.15em] sm:tracking-[0.2em] mt-1 italic">
                                 {t("search.flight.share.multipleAirlines") || "Multiple Airlines"} • Di {date}
                             </p>
                         </div>

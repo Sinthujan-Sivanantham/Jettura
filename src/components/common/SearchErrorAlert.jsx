@@ -19,7 +19,7 @@ export default function SearchErrorAlert({ errors, shakeKey }) {
     return (
         <div key={shakeKey} className="flex items-center gap-3 p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-400 animate-shake">
             <AlertCircle className="h-5 w-5 shrink-0" />
-            <span className="text-xs sm:text-sm font-black uppercase italic tracking-widest">
+            <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm font-black uppercase italic tracking-widest">
                 {t("search.flight.errors.fillAll")}
             </span>
         </div>

@@ -414,6 +414,7 @@ export const translations = {
                     book: "JETZT BUCHEN",
                     from: "ab",
                     notFound: "Hotel nicht gefunden",
+                    customerService: "Kundenservice",
                     journeyContent: "Entdecke diesen exklusiven Aufenthalt. Die Unterkunft bietet erstklassigen Komfort und eine unschlagbare Lage für deine Reiseerlebnisse."
                 }
             },
@@ -903,6 +904,7 @@ export const translations = {
                     book: "BOOK NOW",
                     from: "from",
                     notFound: "Hotel not found",
+                    customerService: "Customer Service",
                     journeyContent: "Discover this exclusive stay. The accommodation offers first-class comfort and an unbeatable location for your travel experiences."
                 }
             },

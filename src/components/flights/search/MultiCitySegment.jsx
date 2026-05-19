@@ -30,7 +30,7 @@ export default function MultiCitySegment({
             {/* Row 1: Route Header Centered */}
             <div className="flex items-center justify-center relative mb-2">
                 <span
-                    className="text-xs min-[760px]:text-sm font-black uppercase italic tracking-[0.15em] px-4 min-[760px]:px-6 py-1.5 min-[760px]:py-2.5 rounded-full border border-white/10 backdrop-blur-md shadow-sm transition-all"
+                    className="search-label-text font-black uppercase italic tracking-[0.15em] px-4 min-[760px]:px-6 py-1.5 min-[760px]:py-2.5 rounded-full border border-white/10 backdrop-blur-md shadow-sm transition-all"
                     style={{
                         color: "var(--brand-color)",
                         backgroundColor: "rgba(var(--brand-color-rgb), 0.1)",

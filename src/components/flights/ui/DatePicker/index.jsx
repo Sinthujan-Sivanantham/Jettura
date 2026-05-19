@@ -62,7 +62,7 @@ export default function DatePicker({
                             <button
                                 onClick={() => setActiveTab("concrete")}
                                 className={cn(
-                                    "flex-1 lg:flex-none px-3 lg:px-6 py-2 text-[10px] sm:text-xs lg:text-sm font-black uppercase italic rounded-lg transition-all",
+                                    "flex-1 lg:flex-none px-3 lg:px-6 py-2 search-input-text font-black uppercase italic rounded-lg transition-all",
                                     activeTab === "concrete" ? "bg-white dark:bg-zinc-800 shadow-sm" : "text-zinc-400"
                                 )}
                                 style={activeTab === "concrete" ? { color: brandColor } : {}}
@@ -72,7 +72,7 @@ export default function DatePicker({
                             <button
                                 onClick={() => setActiveTab("flexible")}
                                 className={cn(
-                                    "flex-1 lg:flex-none px-3 lg:px-6 py-2 text-[10px] sm:text-xs lg:text-sm font-black uppercase italic rounded-lg transition-all",
+                                    "flex-1 lg:flex-none px-3 lg:px-6 py-2 search-input-text font-black uppercase italic rounded-lg transition-all",
                                     activeTab === "flexible" ? "bg-white dark:bg-zinc-800 shadow-sm" : "text-zinc-400"
                                 )}
                                 style={activeTab === "flexible" ? { color: brandColor } : {}}

@@ -25,8 +25,8 @@ export default function PassengerPicker({ passengers, setPassengers }) {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <div className="cursor-pointer text-left group">
-          <label className="text-xs font-black uppercase text-zinc-700 dark:text-zinc-300 mb-2 ml-1 tracking-[0.2em] italic leading-none">{t("search.passengerTypes.total")}</label>
-          <div className="h-11 min-[760px]:h-14 flex items-center px-4 lg:px-8 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md hover:bg-white/20 dark:hover:bg-zinc-900/20 text-xs min-[760px]:text-base font-black italic shadow-inner transition-all text-zinc-900 dark:text-white group-hover:border-[var(--brand-color)]">
+          <label className="search-label-text font-black uppercase text-zinc-700 dark:text-zinc-300 mb-2 ml-1 tracking-[0.2em] italic leading-none">{t("search.passengerTypes.total")}</label>
+          <div className="h-11 min-[760px]:h-14 flex items-center px-4 lg:px-8 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md hover:bg-white/20 dark:hover:bg-zinc-900/20 search-input-text font-black italic uppercase shadow-inner transition-all text-zinc-900 dark:text-white group-hover:border-[var(--brand-color)]">
             <Users className="w-4 h-4 min-[760px]:w-5 min-[760px]:h-5 mr-3 min-[760px]:mr-4 text-zinc-400 group-hover:opacity-100 transition-colors" style={{ color: "var(--brand-color)" }} />
             {total} {t("search.passengerTypes.total")}
           </div>
@@ -44,10 +44,10 @@ export default function PassengerPicker({ passengers, setPassengers }) {
           ].map(({ id, label, desc }) => (
             <div key={id} className="flex items-center justify-between group">
               <div className="flex flex-col">
-                <span className="text-xs sm:text-sm font-black italic uppercase text-zinc-900 dark:text-white transition-colors group-hover:text-zinc-600 dark:group-hover:text-zinc-300 leading-tight">
+                <span className="search-input-text font-black italic uppercase text-zinc-900 dark:text-white transition-colors group-hover:text-zinc-600 dark:group-hover:text-zinc-300 leading-tight">
                   {label}
                 </span>
-                <span className="text-[10px] font-bold text-zinc-400 uppercase italic">
+                <span className="search-label-text font-bold text-zinc-400 uppercase italic">
                   {desc}
                 </span>
               </div>
@@ -59,7 +59,7 @@ export default function PassengerPicker({ passengers, setPassengers }) {
                 >
                   <Minus size={12} strokeWidth={3} />
                 </button>
-                <span className="text-sm sm:text-base font-black w-5 text-center italic">
+                <span className="search-input-text font-black w-5 text-center italic">
                   {passengers[id]}
                 </span>
                 <button
@@ -78,14 +78,14 @@ export default function PassengerPicker({ passengers, setPassengers }) {
         <div className="p-4 border-t border-zinc-100 dark:border-zinc-800 space-y-3 bg-zinc-50/50 dark:bg-zinc-900/50">
           <div className="flex items-center gap-2 text-zinc-400">
             <Info size={12} style={{ color: "var(--brand-color)" }} />
-            <span className="text-[10px] font-black uppercase tracking-tighter italic">
+            <span className="search-label-text font-black uppercase tracking-tighter italic">
               {t("search.passengerTypes.standard")}
             </span>
           </div>
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="w-full text-white font-black italic uppercase text-xs rounded-xl py-2.5 shadow-xl active:scale-95 transition-all hover:opacity-90"
+            className="w-full text-white font-black italic uppercase search-input-text rounded-xl py-2.5 shadow-xl active:scale-95 transition-all hover:opacity-90"
             style={{ backgroundColor: "var(--brand-color)" }}
           >
             {t("search.passengerTypes.apply")}

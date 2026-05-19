@@ -14,10 +14,10 @@ export default function BlogEmptyState({ lang }) {
       <div className="bg-[#001aff]/10 p-6 rounded-3xl mb-6">
         <MessageSquarePlus size={48} className="text-[#001aff]" />
       </div>
-      <h3 className="text-3xl font-black uppercase italic text-zinc-400 dark:text-zinc-500 tracking-tighter mb-2">
+      <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl md:text-3xl font-black uppercase italic text-zinc-400 dark:text-zinc-500 tracking-tighter mb-2">
         {t.empty}
       </h3>
-      <p className="text-zinc-500 dark:text-zinc-400 text-lg font-medium">
+      <p className="text-zinc-500 dark:text-zinc-400 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg font-medium">
         {t.startStory}
       </p>
     </motion.div>

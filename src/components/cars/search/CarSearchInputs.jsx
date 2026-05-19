@@ -4,6 +4,7 @@ import DatePicker from "../../flights/ui/DatePicker";
 import CarLocationAutocomplete from "./CarLocationAutocomplete"; // New component
 import { useLanguage } from "@/context/LanguageContext";
 import { format, addDays, startOfDay } from "date-fns";
+import { de, enGB } from "date-fns/locale";
 
 export default function CarSearchInputs({
     location, setLocation,
@@ -17,12 +18,12 @@ export default function CarSearchInputs({
 }) {
     const { t, language } = useLanguage();
     const brandColor = "var(--brand-color)";
+    const currentLocale = language === "de" ? de : enGB;
 
     const today = new Date();
     const nextWeek = addDays(today, 3);
-    const datePlaceholderFormat = language === "de" ? "MM.dd.yyyy" : "MM/dd/yyyy";
-    const pickupP = format(today, datePlaceholderFormat);
-    const returnP = format(nextWeek, datePlaceholderFormat);
+    const pickupP = format(today, "eee, dd. MMM", { locale: currentLocale });
+    const returnP = format(nextWeek, "eee, dd. MMM", { locale: currentLocale });
 
     const rowStyle = "bg-white/10 dark:bg-zinc-900/10 backdrop-blur-xl p-6 min-[760px]:p-8 rounded-[2rem] sm:rounded-[3rem] border border-transparent shadow-sm transition-all duration-300 my-4";
 
@@ -46,7 +47,7 @@ export default function CarSearchInputs({
                     />
                 </div>
 
-                <div className="flex flex-col text-[8px] min-[760px]:text-[10px] font-black uppercase italic tracking-[0.1em] text-zinc-700 dark:text-zinc-300 leading-tight transition-colors group-hover:text-[var(--brand-color)]">
+                <div className="flex flex-col search-label-text font-black uppercase italic tracking-[0.1em] text-zinc-700 dark:text-zinc-300 leading-tight transition-colors group-hover:text-[var(--brand-color)]">
                     <span>{t("search.car.differentReturn", "Different Return Location").split(' ').shift()}</span>
                     <span>{t("search.car.differentReturn", "Different Return Location").split(' ').slice(1).join(' ')}</span>
                 </div>

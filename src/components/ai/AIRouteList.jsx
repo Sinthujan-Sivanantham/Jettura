@@ -5,7 +5,7 @@ export default function AIRouteList({ steps, onSelectStep, selectedId, searchId 
   const { t } = useLanguage();
   return (
     <div className="space-y-2 max-h-[550px] overflow-y-auto pr-2 custom-scrollbar text-left">
-      <h3 className="font-black text-xs dark:text-white uppercase italic mb-3 tracking-tighter flex items-center gap-2 px-2">
+      <h3 className="font-black text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs dark:text-white uppercase italic mb-3 tracking-tighter flex items-center gap-2 px-2">
         <div className="w-1 h-3 bg-[var(--brand-color)]" /> {t("aiPlanner.results.stations")}
       </h3>
 

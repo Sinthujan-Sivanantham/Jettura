@@ -11,12 +11,12 @@ export default function EsimSearchControls({
 }) {
     const { t } = useLanguage();
     const rowStyle = "bg-white/10 dark:bg-zinc-900/10 backdrop-blur-xl p-6 min-[760px]:p-8 rounded-[2rem] sm:rounded-[3rem] border border-transparent shadow-sm transition-all duration-300 my-4";
-    const selectTriggerStyle = "h-11 lg:h-14 text-xs min-[760px]:text-base font-black italic uppercase rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md shadow-inner outline-none focus:ring-0 focus:border-[var(--brand-color)] transition-all";
+    const selectTriggerStyle = "h-11 lg:h-14 search-input-text font-black italic uppercase rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md shadow-inner outline-none focus:ring-0 focus:border-[var(--brand-color)] transition-all [&>span]:pr-1.5";
 
     return (
         <div className={`grid grid-cols-1 min-[760px]:grid-cols-3 gap-6 sm:gap-4 items-end ${rowStyle}`}>
             <div className="min-[760px]:col-span-2 flex flex-col text-left gap-2">
-                <label className="text-xs font-black uppercase text-zinc-700 dark:text-zinc-300 ml-1 tracking-[0.2em] italic flex items-center gap-2 leading-none">
+                <label className="search-label-text font-black uppercase text-zinc-700 dark:text-zinc-300 ml-1 tracking-[0.2em] italic flex items-center gap-2 leading-none">
                     <Clock size={14} style={{ color: "var(--brand-color)" }} />
                     {t("search.esim.duration")}
                 </label>

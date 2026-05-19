@@ -79,7 +79,7 @@ export default function WeatherBadge({ cityCode }) {
   return (
     <div className="flex items-center gap-1 px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full shrink-0">
       <WeatherIcon main={main} />
-      <span className="text-[9px] font-black italic text-zinc-800 dark:text-zinc-200">{temp}°C</span>
+      <span className="text-[7px] sm:text-[8px] sm:text-[9px] font-black italic text-zinc-800 dark:text-zinc-200">{temp}°C</span>
     </div>
   );
 }

@@ -24,7 +24,7 @@ export default function DatePickerTrigger({
 
     return (
         <>
-            <label className="text-xs font-black uppercase text-zinc-700 dark:text-zinc-300 mb-2 ml-1 tracking-[0.2em] italic flex items-center gap-2 leading-none">
+            <label className="search-label-text font-black uppercase text-zinc-700 dark:text-zinc-300 mb-2 ml-1 tracking-[0.2em] italic flex items-center gap-2 leading-none">
                 {label || t("search.flight.date")}
             </label>
 
@@ -47,7 +47,7 @@ export default function DatePickerTrigger({
                             style={{ color: error ? "#f43f5e" : brandColor }}
                         />
                         <span className={cn(
-                            "truncate text-xs min-[760px]:text-sm min-[1200px]:text-base font-black uppercase italic",
+                            "truncate search-input-text font-black uppercase italic",
                             !date ? (error ? "text-rose-500" : "text-zinc-400") : "text-zinc-900 dark:text-white"
                         )}>
                             {date ? format(date, "eee, dd. MMM", { locale: currentLocale }) : (error ? t("search.flight.errors.required") : (placeholder || t("search.flight.selectDate")))}

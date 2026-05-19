@@ -55,8 +55,6 @@ export async function searchFlightsAmadeus(params) {
                 };
             }
 
-            console.log("✈️ Searching Amadeus Multi-City:", JSON.stringify(body, null, 2));
-
             const res = await fetch(url.toString(), {
                 method: "POST",
                 headers: {
@@ -72,7 +70,6 @@ export async function searchFlightsAmadeus(params) {
             }
 
             const json = await res.json();
-            console.log("📦 Amadeus Multi-City Result:", json);
             return json;
         }
 
@@ -101,8 +98,6 @@ export async function searchFlightsAmadeus(params) {
         url.searchParams.append("currencyCode", params.currency || "EUR");
         url.searchParams.append("max", 5); // Reduce to 5 to avoid System Error 141
 
-        console.log("✈️ Searching Amadeus:", url.pathname + url.search);
-
         const res = await fetch(url.toString(), {
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -125,7 +120,6 @@ export async function searchFlightsAmadeus(params) {
         }
 
         const json = await res.json();
-        console.log("📦 Amadeus Result:", json);
         return json;
 
     } catch (e) {

@@ -1,7 +1,7 @@
 // src/services/amadeusApi.js
 
-const CLIENT_ID = import.meta.env.VITE_AMADEUS_CLIENT_ID;
-const CLIENT_SECRET = import.meta.env.VITE_AMADEUS_CLIENT_SECRET;
+const CLIENT_ID = process.env.NEXT_PUBLIC_AMADEUS_CLIENT_ID;
+const CLIENT_SECRET = process.env.NEXT_PUBLIC_AMADEUS_CLIENT_SECRET;
 const AUTH_URL = "/api-gds/v1/security/oauth2/token";
 
 let cachedToken = null;
@@ -32,7 +32,6 @@ export async function getAmadeusToken() {
         cachedToken = data.access_token;
         tokenExpiration = now + (data.expires_in * 1000) - 60000;
 
-        console.log("🔑 Neuer Amadeus Token bereit");
         return cachedToken;
     } catch (e) {
         console.error("Token Fehler:", e);

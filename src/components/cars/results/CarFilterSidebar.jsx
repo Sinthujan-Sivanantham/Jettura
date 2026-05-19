@@ -22,7 +22,7 @@ export default function CarFilterSidebar({ filters, setFilters, availableCategor
         <div className="w-full lg:w-80 space-y-8">
             {/* PRICE FILTER */}
             <div className="bg-white dark:bg-zinc-900/50 p-7 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 shadow-sm">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-6 italic flex items-center gap-2">
+                <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-6 italic flex items-center gap-2">
                     {t("filters.maxPrice")} <span className="text-zinc-900 dark:text-white ml-auto">{filters.price}€</span>
                 </h3>
                 <Slider
@@ -31,7 +31,7 @@ export default function CarFilterSidebar({ filters, setFilters, availableCategor
                     step={10}
                     onValueChange={(val) => setFilters({ ...filters, price: val[0] })}
                 />
-                <div className="flex justify-between mt-4 text-[9px] font-bold text-zinc-400 uppercase italic">
+                <div className="flex justify-between mt-4 text-[7px] sm:text-[8px] sm:text-[9px] font-bold text-zinc-400 uppercase italic">
                     <span>0€</span>
                     <span>1000€+</span>
                 </div>
@@ -39,7 +39,7 @@ export default function CarFilterSidebar({ filters, setFilters, availableCategor
 
             {/* CATEGORY FILTER */}
             <div className="bg-white dark:bg-zinc-900/50 p-7 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 shadow-sm">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-6 italic flex items-center gap-2">
+                <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-6 italic flex items-center gap-2">
                     {t("search.car.results.seats")}
                 </h3>
                 <div className="space-y-4">
@@ -50,7 +50,7 @@ export default function CarFilterSidebar({ filters, setFilters, availableCategor
                                     checked={filters.categories.includes(cat)}
                                     onCheckedChange={() => toggleFilter('categories', cat)}
                                 />
-                                <span className="text-[11px] font-black uppercase italic text-zinc-600 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors capitalize">
+                                <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] font-black uppercase italic text-zinc-600 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors capitalize">
                                     {cat.toLowerCase()}
                                 </span>
                             </div>
@@ -62,7 +62,7 @@ export default function CarFilterSidebar({ filters, setFilters, availableCategor
 
             {/* TRANSMISSION FILTER */}
             <div className="bg-white dark:bg-zinc-900/50 p-7 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 shadow-sm">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-6 italic flex items-center gap-2">
+                <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-6 italic flex items-center gap-2">
                     {t("filters.stops")}
                 </h3>
                 <div className="space-y-4">
@@ -76,7 +76,7 @@ export default function CarFilterSidebar({ filters, setFilters, availableCategor
                                     checked={filters.transmission.includes(type.id)}
                                     onCheckedChange={() => toggleFilter('transmission', type.id)}
                                 />
-                                <span className="text-[11px] font-black uppercase italic text-zinc-600 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
+                                <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] font-black uppercase italic text-zinc-600 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
                                     {type.label}
                                 </span>
                             </div>
@@ -88,7 +88,7 @@ export default function CarFilterSidebar({ filters, setFilters, availableCategor
 
             {/* PROVIDER FILTER */}
             <div className="bg-white dark:bg-zinc-900/50 p-7 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 shadow-sm">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-6 italic flex items-center gap-2">
+                <h3 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-6 italic flex items-center gap-2">
                     {t("filters.airlines")}
                 </h3>
                 <div className="space-y-4">
@@ -99,7 +99,7 @@ export default function CarFilterSidebar({ filters, setFilters, availableCategor
                                     checked={filters.providers.includes(provider)}
                                     onCheckedChange={() => toggleFilter('providers', provider)}
                                 />
-                                <span className="text-[11px] font-black uppercase italic text-zinc-600 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
+                                <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-[11px] font-black uppercase italic text-zinc-600 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
                                     {provider}
                                 </span>
                             </div>

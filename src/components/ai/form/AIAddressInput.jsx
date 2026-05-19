@@ -14,7 +14,7 @@ export default function AIAddressInput({
     name
 }) {
     const { t, language } = useLanguage();
-    const token = import.meta.env.VITE_MAPBOX_TOKEN;
+    const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
     const [val, setVal] = useState(value || "");
 
     useEffect(() => {
@@ -24,11 +24,21 @@ export default function AIAddressInput({
     const handleRetrieve = (res) => {
         if (res?.features?.length > 0) {
             const feature = res.features[0];
-            const place = feature.properties.place_name || feature.properties.full_address;
-            setVal(place);
-            if (onChange) {
-                onChange(place);
+            const p = feature.properties;
+            // Versuch die volle Adresse inkl. PLZ zusammenzubauen
+            let place = p.full_address || p.place_name || p.name;
+            
+            if (p.postcode && !place.includes(p.postcode)) {
+                place = [p.name, p.address_number ? p.address_number + " " + p.street : p.street, p.postcode, p.place, p.country].filter(Boolean).join(", ");
             }
+
+            // Timeout um Mapbox's eigenes Auto-Fill zu überschreiben
+            setTimeout(() => {
+                setVal(place);
+                if (onChange) {
+                    onChange(place);
+                }
+            }, 50);
         }
     };
 
@@ -43,7 +53,7 @@ export default function AIAddressInput({
     return (
         <div className="w-full mb-4">
             {label && (
-                <label className="text-xs font-black uppercase tracking-[0.2em] text-zinc-700 dark:text-zinc-300 mb-2 ml-1 flex items-center gap-1.5 italic leading-none">
+                <label className="search-label-text font-black uppercase tracking-[0.2em] text-zinc-700 dark:text-zinc-300 mb-2 ml-1 flex items-center gap-1.5 italic leading-none">
                     {label}
                 </label>
             )}
@@ -60,6 +70,12 @@ export default function AIAddressInput({
                 <AddressAutofill
                     accessToken={token}
                     onRetrieve={handleRetrieve}
+                    theme={{
+                        variables: {
+                            fontFamily: 'inherit',
+                            unit: 'clamp(0.75rem, 2vw, 1rem)'
+                        }
+                    }}
                     options={{
                         language: searchLanguage,
                         types: 'country,region,place,locality,district,address'
@@ -70,10 +86,10 @@ export default function AIAddressInput({
                         value={val}
                         onChange={handleChange}
                         placeholder={placeholder || "City, Address..."}
-                        autoComplete="off"
+                        autoComplete="address-line1"
                         className={cn(
                             "h-11 min-[760px]:h-14 bg-white/10 dark:bg-zinc-900/10 backdrop-blur-md rounded-2xl font-black italic transition-all focus:ring-0 focus:border-[var(--brand-color)] focus-visible:ring-0 focus-visible:ring-offset-0",
-                            "text-xs min-[760px]:text-sm min-[1200px]:text-base uppercase",
+                            "search-input-text uppercase",
                             error
                                 ? "border-rose-500 dark:border-rose-500"
                                 : "border-zinc-200 dark:border-zinc-800",

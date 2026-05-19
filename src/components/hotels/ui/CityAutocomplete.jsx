@@ -20,7 +20,7 @@ export default function CityAutocomplete({ label, placeholder, onSelect, value, 
     const controls = useAnimation();
     const containerRef = useRef(null);
 
-    const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN;
+    const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
     useEffect(() => {
         if (error && shakeKey > 0) {
@@ -177,7 +177,7 @@ export default function CityAutocomplete({ label, placeholder, onSelect, value, 
                     <div className="relative w-full text-left">
                         <motion.div className="relative w-full" animate={controls}>
                             {label && (
-                                <label className="text-[10px] font-black uppercase italic tracking-[0.2em] text-zinc-500 dark:text-zinc-400 mb-2 block">
+                                <label className="search-label-text font-black uppercase italic tracking-[0.2em] text-zinc-500 dark:text-zinc-400 mb-2 block">
                                     {label}
                                 </label>
                             )}
@@ -201,7 +201,7 @@ export default function CityAutocomplete({ label, placeholder, onSelect, value, 
                                         else if (error && onSelect) onSelect("");
                                     }}
                                     className={cn(
-                                        "w-full h-14 pl-12 pr-4 bg-white dark:bg-zinc-900 border-2 rounded-2xl text-sm font-bold text-zinc-900 dark:text-white placeholder:text-zinc-400 transition-all outline-none",
+                                        "w-full h-14 pl-12 pr-4 bg-white dark:bg-zinc-900 border-2 rounded-2xl search-input-text font-bold text-zinc-900 dark:text-white placeholder:text-zinc-400 transition-all outline-none",
                                         error
                                             ? "border-red-500 animate-shake"
                                             : "border-zinc-200 dark:border-zinc-800 focus:border-[var(--brand-color)]"
@@ -239,21 +239,21 @@ export default function CityAutocomplete({ label, placeholder, onSelect, value, 
                                                     <MapPin size={14} className="text-[var(--brand-color)]" />}
                                             </div>
                                             <div className="flex flex-col overflow-hidden">
-                                                <span className="font-black text-xs text-zinc-700 dark:text-zinc-200 uppercase tracking-tighter truncate italic">
+                                                <span className="font-black search-input-text text-zinc-700 dark:text-zinc-200 uppercase tracking-tighter truncate italic">
                                                     {s.name}
                                                 </span>
-                                                <span className="text-[10px] text-zinc-400 font-bold uppercase truncate">
+                                                <span className="search-label-text text-zinc-400 font-bold uppercase truncate">
                                                     {s.cityName} {s.countryName ? `, ${s.countryName}` : ""}
                                                 </span>
                                             </div>
                                         </div>
                                         {s.iataCode && (
-                                            <span className="font-black bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded text-[10px] italic shrink-0 text-[var(--brand-color)]">
+                                            <span className="font-black bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded search-input-text italic shrink-0 text-[var(--brand-color)]">
                                                 {s.iataCode}
                                             </span>
                                         )}
                                         {s.type === "location" && (
-                                            <span className="font-bold text-[9px] bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded italic shrink-0 text-zinc-400">
+                                            <span className="font-bold search-label-text bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded italic shrink-0 text-zinc-400">
                                                 → IATA
                                             </span>
                                         )}
@@ -261,7 +261,7 @@ export default function CityAutocomplete({ label, placeholder, onSelect, value, 
                                 ))
                             ) : (
                                 <div className="p-4 text-center">
-                                    <span className="text-xs font-bold text-zinc-400 italic">
+                                    <span className="search-label-text font-bold text-zinc-400 italic">
                                         {loading ? (t("search.flight.searching") || "Suche...") : (t("search.flight.noResults") || "Keine Ergebnisse")}
                                     </span>
                                 </div>

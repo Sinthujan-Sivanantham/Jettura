@@ -17,9 +17,9 @@ export default function LanguageSwitcher() {
             title={language === "de" ? "Switch to English" : "Auf Deutsch umstellen"}
         >
             {language === "de" ? (
-                <span className="text-lg leading-none" role="img" aria-label="Deutsch">🇩🇪</span>
+                <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg leading-none" role="img" aria-label="Deutsch">🇩🇪</span>
             ) : (
-                <span className="text-lg leading-none" role="img" aria-label="English">🇬🇧</span>
+                <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg leading-none" role="img" aria-label="English">🇬🇧</span>
             )}
         </Button>
     );

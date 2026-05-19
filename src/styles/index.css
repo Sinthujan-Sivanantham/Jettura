@@ -88,7 +88,7 @@
   --font-size-xl: clamp(1.125rem, 1rem + 0.8vw, 1.5rem);
   --font-size-2xl: clamp(1.5rem, 1.25rem + 1.2vw, 2.25rem);
   --font-size-3xl: clamp(2rem, 1.5rem + 2vw, 3rem);
-  --font-size-4xl: clamp(2.5rem, 2rem + 4vw, 5rem);
+  --font-size-4xl: clamp(2.2rem, 1.8rem + 4vw, 5rem);
   --font-size-display: clamp(3rem, 2.5rem + 6vw, 8rem);
 
   --space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
@@ -203,4 +203,140 @@
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: color-mix(in srgb, var(--brand-color) 40%, transparent);
+}
+/* Responsive Mapbox Autofill */
+mapbox-address-autofill {
+  /* Base (mobile) */
+  --mapbox-search-font-size-base: 12px !important;
+  --mapbox-search-font-size-lg: 14px !important;
+  --mapbox-search-font-size-sm: 10px !important;
+  
+  --font-size-base: 12px !important;
+  --font-size-lg: 14px !important;
+  --font-size-sm: 10px !important;
+}
+
+@media (max-width: 51.25em) {
+  :root {
+    --font-size-xs: 0.65rem;
+    --font-size-sm: 0.75rem;
+    --font-size-base: 0.875rem;
+    --font-size-lg: 1rem;
+    --font-size-xl: 1.125rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.2rem;
+    --font-size-display: 3rem;
+
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1.25rem;
+    --space-lg: 2.5rem;
+    --space-xl: 5rem;
+  }
+
+  mapbox-address-autofill {
+    --mapbox-search-font-size-base: 12px !important;
+    --mapbox-search-font-size-lg: 14px !important;
+    --mapbox-search-font-size-sm: 10px !important;
+    
+    --font-size-base: 12px !important;
+    --font-size-lg: 14px !important;
+    --font-size-sm: 10px !important;
+  }
+}
+
+@media (min-width: 51.3125em) {
+  mapbox-address-autofill {
+    --mapbox-search-font-size-base: 16px !important;
+    --mapbox-search-font-size-lg: 18px !important;
+    --mapbox-search-font-size-sm: 14px !important;
+    
+    --font-size-base: 16px !important;
+    --font-size-lg: 18px !important;
+    --font-size-sm: 14px !important;
+  }
+}
+
+mapbox-address-autofill {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  --mapbox-search-width: 100% !important;
+}
+
+/* Custom Search Form Uniform Typography */
+.search-label-text {
+  font-size: 8px !important;
+}
+@media (min-width: 375px) {
+  .search-label-text {
+    font-size: 9px !important;
+  }
+}
+@media (min-width: 480px) {
+  .search-label-text {
+    font-size: 10px !important;
+  }
+}
+@media (min-width: 640px) {
+  .search-label-text {
+    font-size: 11px !important;
+  }
+}
+@media (min-width: 760px) {
+  .search-label-text {
+    font-size: 12px !important;
+  }
+}
+
+.search-input-text {
+  font-size: 9px !important;
+}
+@media (min-width: 375px) {
+  .search-input-text {
+    font-size: 10px !important;
+  }
+}
+@media (min-width: 480px) {
+  .search-input-text {
+    font-size: 12px !important;
+  }
+}
+@media (min-width: 760px) {
+  .search-input-text {
+    font-size: 14px !important;
+  }
+}
+
+.search-button-text {
+  font-size: 9px !important;
+}
+@media (min-width: 375px) {
+  .search-button-text {
+    font-size: 10px !important;
+  }
+}
+@media (min-width: 480px) {
+  .search-button-text {
+    font-size: 12px !important;
+  }
+}
+@media (min-width: 760px) {
+  .search-button-text {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width: 51.25em) {
+  /* Above 820px, use fluid scaling */
+  .search-label-text {
+    font-size: var(--font-size-sm) !important;
+  }
+  .search-input-text {
+    font-size: var(--font-size-base) !important;
+  }
+  .search-button-text {
+    font-size: var(--font-size-base) !important;
+  }
 }

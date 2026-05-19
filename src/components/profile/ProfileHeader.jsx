@@ -19,7 +19,7 @@ export default function ProfileHeader({ profile, user, uploading, onUpload }) {
                             alt={t("profile.avatar")}
                         />
                     ) : (
-                        <User size={40} sm:size={48} className="opacity-30" />
+                        <User size={40} className="opacity-30" />
                     )}
                 </div>
 
@@ -27,7 +27,7 @@ export default function ProfileHeader({ profile, user, uploading, onUpload }) {
                     {uploading ? (
                         <Loader2 className="animate-spin text-white" />
                     ) : (
-                        <Camera className="text-white" size={20} sm:size={24} />
+                        <Camera className="text-white" size={20} />
                     )}
                     <input
                         type="file"
@@ -42,23 +42,23 @@ export default function ProfileHeader({ profile, user, uploading, onUpload }) {
             {/* Profil-Informationen */}
             <div className="flex-1 space-y-2">
                 <p
-                    className="text-[9px] sm:text-[11px] font-black uppercase tracking-[0.25em] sm:tracking-[0.3em] italic"
+                    className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[11px] font-black uppercase tracking-[0.25em] sm:tracking-[0.3em] italic"
                     style={{ color: "var(--brand-color)" }}
                 >
                     {t("profile.verifiedMember")}
                 </p>
 
-                <h1 className="text-2xl sm:text-4xl font-black italic uppercase tracking-tighter leading-none">
+                <h1 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg sm:text-xl sm:text-2xl sm:text-4xl font-black italic uppercase tracking-tighter leading-none">
                     {profile?.full_name || t("profile.explorer")}
                 </h1>
 
                 <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 mt-2">
-                    <p className="flex items-center gap-2 text-zinc-400 font-bold text-[10px] sm:text-xs uppercase tracking-widest italic leading-none">
-                        <Mail size={12} sm:size={14} style={{ color: "var(--brand-color)" }} />
+                    <p className="flex items-center gap-2 text-zinc-400 font-bold text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs uppercase tracking-widest italic leading-none">
+                        <Mail size={12} style={{ color: "var(--brand-color)" }} />
                         {user?.email}
                     </p>
-                    <p className="flex items-center gap-2 text-zinc-400 font-bold text-[10px] sm:text-xs uppercase tracking-widest italic leading-none">
-                        <MapPin size={12} sm:size={14} style={{ color: "var(--brand-color)" }} />
+                    <p className="flex items-center gap-2 text-zinc-400 font-bold text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs uppercase tracking-widest italic leading-none">
+                        <MapPin size={12} style={{ color: "var(--brand-color)" }} />
                         {t("profile.memberSince")} {new Date(user?.created_at).getFullYear()}
                     </p>
                 </div>

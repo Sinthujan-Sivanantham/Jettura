@@ -21,7 +21,7 @@ export default function AIAdvisorPanel({ plannedRoute }) {
                 <div className="p-2 bg-indigo-500/20 rounded-xl">
                     <Sparkles size={20} className="text-indigo-600 dark:text-indigo-400" />
                 </div>
-                <h2 className="text-sm md:text-base font-black uppercase italic tracking-widest text-zinc-900 dark:text-white">
+                <h2 className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm md:text-base font-black uppercase italic tracking-widest text-zinc-900 dark:text-white">
                     {t("aiPlanner.advisor.title")}
                 </h2>
             </div>
@@ -32,11 +32,11 @@ export default function AIAdvisorPanel({ plannedRoute }) {
                     <div className="space-y-3">
                         <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
                             <Info size={16} />
-                            <span className="text-[10px] font-black uppercase tracking-widest">
+                            <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase tracking-widest">
                                 {t("aiPlanner.advisor.summary")}
                             </span>
                         </div>
-                        <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium">
+                        <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs md:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium">
                             {plannedRoute.summary}
                         </p>
                     </div>
@@ -47,11 +47,11 @@ export default function AIAdvisorPanel({ plannedRoute }) {
                     <div className="space-y-3">
                         <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400">
                             <Lightbulb size={16} />
-                            <span className="text-[10px] font-black uppercase tracking-widest">
+                            <span className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-black uppercase tracking-widest">
                                 {t("aiPlanner.advisor.advice")}
                             </span>
                         </div>
-                        <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium">
+                        <p className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs md:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium">
                             {plannedRoute.general_advice}
                         </p>
                     </div>
@@ -60,7 +60,7 @@ export default function AIAdvisorPanel({ plannedRoute }) {
 
             {/* AI Badge */}
             <div className="pt-4 mt-4 border-t border-zinc-200 dark:border-zinc-800 flex justify-between items-center">
-                <span className="text-[9px] text-zinc-400 uppercase font-bold tracking-tighter italic">
+                <span className="text-[7px] sm:text-[8px] sm:text-[9px] text-zinc-400 uppercase font-bold tracking-tighter italic">
                     {t("aiPlanner.advisor.generatedBy")}
                 </span>
                 <div className="flex gap-1">

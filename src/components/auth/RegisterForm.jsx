@@ -25,7 +25,6 @@ export default function RegisterForm() {
   });
 
   const onSubmit = async (data) => {
-    console.log("Starting Registration...", data); // DEBUG
     setLoading(true);
     setError("");
 
@@ -48,7 +47,6 @@ export default function RegisterForm() {
         setError(signUpError.message);
         setLoading(false);
       } else {
-        console.log("Registration Successful!"); // DEBUG
         setSuccess(true);
         setLoading(false);
       }
@@ -96,7 +94,7 @@ export default function RegisterForm() {
       {error && (
         <Alert variant="destructive" className="rounded-2xl border-none bg-red-500/10 text-red-500">
           <AlertCircle className="h-4 w-4" />
-          <AlertDescription className="text-[10px] font-bold uppercase italic">
+          <AlertDescription className="text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-bold uppercase italic">
             {error.includes("Database error")
               ? t("auth.errors.usernameTaken") || "USERNAME ALREADY TAKEN OR DATABASE ERROR"
               : error}
@@ -114,7 +112,7 @@ export default function RegisterForm() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full h-14 md:h-16 text-white font-black italic uppercase rounded-[1.5rem] md:rounded-[2rem] shadow-2xl transition-all active:scale-95 group relative overflow-hidden md:text-base"
+          className="w-full h-12 sm:h-14 md:h-16 text-white font-black italic uppercase rounded-[1.5rem] md:rounded-[2rem] shadow-2xl transition-all active:scale-95 group relative overflow-hidden text-xs sm:text-sm md:text-base"
           style={{ backgroundColor: "var(--brand-color)", boxShadow: "0 25px 50px -12px color-mix(in srgb, var(--brand-color) 20%, transparent)" }}
         >
           <span className="relative z-10">{loading ? <Loader2 className="animate-spin" /> : t("auth.completeRegistration")}</span>

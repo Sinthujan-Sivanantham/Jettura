@@ -69,7 +69,7 @@ export default function AIPlanner() {
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 pt-12">
         {error && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 bg-red-500/10 text-red-500 rounded-xl text-[10px] font-bold text-center flex items-center justify-center gap-2 border border-red-500/20 uppercase mb-8">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 bg-red-500/10 text-red-500 rounded-xl text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] font-bold text-center flex items-center justify-center gap-2 border border-red-500/20 uppercase mb-8">
             <AlertTriangle size={14} /> {error}
           </motion.div>
         )}
@@ -81,7 +81,7 @@ export default function AIPlanner() {
               {isGenerating ? (
                 <div className="flex flex-col items-center justify-center p-10 gap-2 border border-dashed rounded-3xl border-zinc-200 dark:border-zinc-800 h-full min-h-[300px]">
                   <Loader2 className="animate-spin" size={24} style={{ color: "var(--brand-color)" }} />
-                  <p className="text-[9px] font-black uppercase text-zinc-400">{t("aiPlanner.form.generating")}</p>
+                  <p className="text-[7px] sm:text-[8px] sm:text-[9px] font-black uppercase text-zinc-400">{t("aiPlanner.form.generating")}</p>
                 </div>
               ) : steps.length > 0 ? (
                 <AIRouteList steps={steps} onSelectStep={setSelectedStep} selectedId={selectedStep?.id} searchId={searchId} />

@@ -1,18 +1,25 @@
-import { NavLink } from "react-router-dom";
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function DesktopNav({ navItems, navLinkStyles, t }) {
-    return (
-        <div className="hidden min-[761px]:flex items-center gap-8">
-            {navItems.map((item) => (
-                <NavLink
-                    key={item.path}
-                    to={item.path}
-                    className={({ isActive }) => navLinkStyles({ isActive }).className}
-                    style={({ isActive }) => navLinkStyles({ isActive }).style}
-                >
-                    {t ? t(item.translationKey) : item.name}
-                </NavLink>
-            ))}
-        </div>
-    );
+  const pathname = usePathname();
+
+  return (
+    <div className="hidden min-[761px]:flex items-center gap-8">
+      {navItems.map((item) => {
+        const isActive = pathname === item.path;
+        return (
+          <Link
+            key={item.path}
+            href={item.path}
+            className={navLinkStyles({ isActive }).className}
+            style={navLinkStyles({ isActive }).style}
+          >
+            {t ? t(item.translationKey) : item.name}
+          </Link>
+        );
+      })}
+    </div>
+  );
 }

@@ -1,10 +1,11 @@
+"use client";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useSearchParams } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function useAIPlannerLogic() {
     const { t, language } = useLanguage();
-    const location = useLocation();
+    const searchParams = useSearchParams();
     const [plannedRoute, setPlannedRoute] = useState(null);
     const [selectedStep, setSelectedStep] = useState(null);
     const [isGenerating, setIsGenerating] = useState(false);
@@ -34,13 +35,12 @@ export function useAIPlannerLogic() {
             } catch (e) { console.error(e); }
         }
 
-        // Override destination if passed through navigation state (e.g. from Blog)
-        if (location.state?.destination) {
-            setDestination(location.state.destination);
-            // Clear location state to prevent re-applying on refreshes if desired, 
-            // but usually React Router doesn't clear state on refresh anyway.
+        // Override destination if passed via URL query param (e.g. ?destination=Paris from Blog)
+        const destParam = searchParams.get("destination");
+        if (destParam) {
+            setDestination(destParam);
         }
-    }, [location.state]);
+    }, [searchParams]);
 
     // Save to localStorage
     useEffect(() => {
@@ -100,7 +100,7 @@ export function useAIPlannerLogic() {
             : "You are an expert travel guide. You know real places, addresses, and coordinates worldwide. Respond only with valid JSON. No intro, no markdown. Provide helpful 'advice' in the summary and general_advice fields.";
 
         try {
-            const geminiKey = import.meta.env.VITE_GEMINI_API_KEY;
+            const geminiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
             let response, data;
 
             // Versuche zuerst Gemini (sehr schnell & kostenlos)
@@ -138,7 +138,7 @@ export function useAIPlannerLogic() {
                         }
                     }
                 } catch (geminiError) {
-                    console.log("Gemini Fehler, nutze Groq Fallback:", geminiError);
+                    // Gemini fallback to Groq
                 }
             }
 
@@ -147,7 +147,7 @@ export function useAIPlannerLogic() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`
+                    "Authorization": `Bearer ${process.env.NEXT_PUBLIC_GROQ_API_KEY}`
                 },
                 body: JSON.stringify({
                     model: "llama-3.3-70b-versatile",

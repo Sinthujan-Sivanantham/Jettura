@@ -4,8 +4,7 @@ import AirportAutocomplete from "../ui/AirportAutocomplete";
 import DatePicker from "../ui/DatePicker";
 import { useLanguage } from "@/context/LanguageContext";
 import { format, addDays, startOfDay } from "date-fns";
-
-
+import { de, enGB } from "date-fns/locale";
 
 export default function StandardSearch({
     tripType,
@@ -24,11 +23,11 @@ export default function StandardSearch({
     shakeKey
 }) {
     const { t, language } = useLanguage();
-    const datePlaceholderFormat = language === "de" ? "dd.MM.yyyy" : "MM/dd/yyyy";
+    const currentLocale = language === "de" ? de : enGB;
     const today = new Date();
     const nextWeek = addDays(today, 7);
-    const outboundP = format(today, datePlaceholderFormat);
-    const inboundP = format(nextWeek, datePlaceholderFormat);
+    const outboundP = format(today, "eee, dd. MMM", { locale: currentLocale });
+    const inboundP = format(nextWeek, "eee, dd. MMM", { locale: currentLocale });
 
     const rowStyle = "bg-white/10 dark:bg-zinc-900/10 backdrop-blur-xl fluid-padding rounded-[2rem] sm:rounded-[3rem] border border-transparent shadow-sm transition-all duration-300 my-[var(--space-sm)]";
 
