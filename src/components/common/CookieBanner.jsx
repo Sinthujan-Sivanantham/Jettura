@@ -189,7 +189,7 @@ export default function CookieBanner() {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-4 sm:p-6">
+      <div className="fixed inset-0 z-[9999] flex items-end md:items-center justify-center p-4 md:p-6">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -204,32 +204,32 @@ export default function CookieBanner() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 40, scale: 0.97 }}
           transition={{ type: "spring", damping: 28, stiffness: 300 }}
-          className="relative w-full max-w-2xl bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden flex flex-col max-h-[85vh] sm:max-h-[90vh]"
+          className="relative w-full max-w-[345px] md:max-w-2xl bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden flex flex-col max-h-[85vh] md:max-h-[90vh]"
         >
           {/* Top gradient bar */}
           <div className="h-1 w-full bg-gradient-to-r from-[#3b60ff] via-purple-500 to-cyan-500 flex-shrink-0" />
 
           {/* Sticky Header */}
-          <div className="p-5 sm:p-6 border-b border-zinc-100 dark:border-zinc-800 flex-shrink-0 flex items-center justify-between gap-4 bg-white dark:bg-zinc-900">
+          <div className="p-5 md:p-6 border-b border-zinc-100 dark:border-zinc-800 flex-shrink-0 flex items-center justify-between gap-4 bg-white dark:bg-zinc-900">
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 rounded-2xl bg-[#3b60ff]/10 flex items-center justify-center text-[#3b60ff] flex-shrink-0">
                 <Cookie size={20} />
               </div>
               <div>
-                <h2 className="text-sm sm:text-lg font-black italic uppercase tracking-tight text-zinc-900 dark:text-white leading-none">
+                <h2 className="text-sm md:text-lg font-black italic uppercase tracking-tight text-zinc-900 dark:text-white leading-none">
                   {t.title}
                 </h2>
-                <p className="text-[10px] sm:text-[11px] font-semibold text-[#3b60ff] mt-0.5">{t.subtitle}</p>
+                <p className="text-[10px] md:text-[11px] font-semibold text-[#3b60ff] mt-0.5">{t.subtitle}</p>
               </div>
             </div>
 
             {/* Language toggle */}
-            <div className="flex items-center gap-0.5 bg-zinc-100 dark:bg-zinc-800 rounded-xl p-0.5 sm:p-1 flex-shrink-0">
+            <div className="flex items-center gap-0.5 bg-zinc-100 dark:bg-zinc-800 rounded-xl p-0.5 md:p-1 flex-shrink-0">
               {["de", "en"].map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[9px] sm:text-[11px] font-black uppercase transition-all ${
+                  className={`px-2 md:px-3 py-1 md:py-1.5 rounded-lg text-[9px] md:text-[11px] font-black uppercase transition-all ${
                     lang === l
                       ? "bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm"
                       : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
@@ -242,16 +242,16 @@ export default function CookieBanner() {
           </div>
 
           {/* Scrollable Body */}
-          <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4 custom-scrollbar">
+          <div className="flex-1 overflow-y-auto p-5 md:p-6 space-y-4 custom-scrollbar">
             {/* Description */}
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               {t.description}
             </p>
 
             {/* Customize toggle */}
             <button
               onClick={() => setExpanded(!expanded)}
-              className="flex items-center gap-2 text-[11px] sm:text-[12px] font-black uppercase italic tracking-wider text-[#3b60ff] hover:opacity-80 transition-opacity"
+              className="flex items-center gap-2 text-[11px] md:text-[12px] font-black uppercase italic tracking-wider text-[#3b60ff] hover:opacity-80 transition-opacity"
             >
               {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
               {t.customize}
@@ -279,21 +279,21 @@ export default function CookieBanner() {
                         key={key}
                         className="border border-zinc-200 dark:border-zinc-800 rounded-2xl overflow-hidden"
                       >
-                        <div className="flex items-center justify-between p-3 sm:p-4 gap-3">
+                        <div className="flex items-center justify-between p-3 md:p-4 gap-3">
                           <button
                             onClick={() => setOpenCategory(isOpen ? null : key)}
-                            className="flex items-center gap-2 sm:gap-3 flex-1 text-left"
+                            className="flex items-center gap-2 md:gap-3 flex-1 text-left"
                           >
                             <div className={`h-8 w-8 rounded-xl flex items-center justify-center flex-shrink-0 ${colorClass}`}>
                               <Icon size={15} />
                             </div>
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center gap-2">
-                                <span className="text-[11px] sm:text-xs font-black uppercase italic tracking-wide text-zinc-800 dark:text-zinc-200">
+                                <span className="text-[11px] md:text-xs font-black uppercase italic tracking-wide text-zinc-800 dark:text-zinc-200">
                                   {catT.label}
                                 </span>
                                 {isNecessary && (
-                                  <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                                  <span className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">
                                     {t.alwaysOn}
                                   </span>
                                 )}
@@ -353,18 +353,18 @@ export default function CookieBanner() {
             </AnimatePresence>
 
             {/* Legal note */}
-            <p className="text-[9px] sm:text-[10px] text-zinc-400 leading-relaxed border-l-2 border-zinc-200 dark:border-zinc-700 pl-3">
+            <p className="text-[9px] md:text-[10px] text-zinc-400 leading-relaxed border-l-2 border-zinc-200 dark:border-zinc-700 pl-3">
               {t.legalNote}
             </p>
           </div>
 
           {/* Sticky Footer */}
-          <div className="p-4 sm:p-6 border-t border-zinc-100 dark:border-zinc-800/80 bg-zinc-50/80 dark:bg-zinc-900/80 flex-shrink-0 flex flex-col gap-4">
+          <div className="p-4 md:p-6 border-t border-zinc-100 dark:border-zinc-800/80 bg-zinc-50/80 dark:bg-zinc-900/80 flex-shrink-0 flex flex-col gap-4">
             {/* Action buttons (Uniform layout on mobile) */}
-            <div className="flex flex-col md:flex-row gap-2 sm:gap-3">
+            <div className="flex flex-col md:flex-row gap-2 md:gap-3">
               <button
                 onClick={handleAcceptAll}
-                className="flex-1 order-1 md:order-3 py-3 px-4 rounded-xl text-white text-[11px] sm:text-xs font-black uppercase italic tracking-wider shadow-lg shadow-[#3b60ff]/25 hover:opacity-90 transition-all"
+                className="flex-1 order-1 md:order-3 py-3 px-4 rounded-xl text-white text-[11px] md:text-xs font-black uppercase italic tracking-wider shadow-lg shadow-[#3b60ff]/25 hover:opacity-90 transition-all"
                 style={{ backgroundColor: "#3b60ff" }}
               >
                 {t.acceptAll}
@@ -373,7 +373,7 @@ export default function CookieBanner() {
               {expanded && (
                 <button
                   onClick={handleSaveSelection}
-                  className="flex-1 order-2 md:order-2 py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-center"
+                  className="flex-1 order-2 md:order-2 py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[11px] md:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-center"
                 >
                   {t.saveSelection}
                 </button>
@@ -381,7 +381,7 @@ export default function CookieBanner() {
 
               <button
                 onClick={handleRejectAll}
-                className="flex-1 order-3 md:order-1 py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-center"
+                className="flex-1 order-3 md:order-1 py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[11px] md:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-center"
               >
                 {t.rejectAll}
               </button>
@@ -389,11 +389,11 @@ export default function CookieBanner() {
 
             {/* Links */}
             <div className="flex items-center gap-4 justify-center">
-              <a href="/datenschutz" className="text-[9px] sm:text-[10px] text-zinc-400 hover:text-[#3b60ff] transition-colors underline underline-offset-2">
+              <a href="/datenschutz" className="text-[9px] md:text-[10px] text-zinc-400 hover:text-[#3b60ff] transition-colors underline underline-offset-2">
                 {t.privacyLink}
               </a>
               <span className="text-zinc-300 dark:text-zinc-700">·</span>
-              <a href="/impressum" className="text-[9px] sm:text-[10px] text-zinc-400 hover:text-[#3b60ff] transition-colors underline underline-offset-2">
+              <a href="/impressum" className="text-[9px] md:text-[10px] text-zinc-400 hover:text-[#3b60ff] transition-colors underline underline-offset-2">
                 {t.imprintLink}
               </a>
             </div>
