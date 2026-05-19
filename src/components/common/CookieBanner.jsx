@@ -210,7 +210,7 @@ export default function CookieBanner() {
           <div className="h-1 w-full bg-gradient-to-r from-[#3b60ff] via-purple-500 to-cyan-500 flex-shrink-0" />
 
           {/* Sticky Header */}
-          <div className="p-5 sm:p-6 border-b border-zinc-100 dark:border-zinc-850 flex-shrink-0 flex items-center justify-between gap-4 bg-white dark:bg-zinc-900">
+          <div className="p-5 sm:p-6 border-b border-zinc-100 dark:border-zinc-800 flex-shrink-0 flex items-center justify-between gap-4 bg-white dark:bg-zinc-900">
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 rounded-2xl bg-[#3b60ff]/10 flex items-center justify-center text-[#3b60ff] flex-shrink-0">
                 <Cookie size={20} />
@@ -310,7 +310,7 @@ export default function CookieBanner() {
                           <button
                             onClick={() => toggleCategory(key)}
                             disabled={isNecessary}
-                            className={`relative w-11 h-6 rounded-full transition-all flex-shrink-0 ${
+                            className={`relative w-[44px] h-[24px] rounded-full transition-all flex-shrink-0 ${
                               consent[key]
                                 ? "bg-[#3b60ff]"
                                 : "bg-zinc-300 dark:bg-zinc-700"
@@ -318,8 +318,8 @@ export default function CookieBanner() {
                             aria-label={catT.label}
                           >
                             <span
-                              className={`absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-200 ${
-                                consent[key] ? "translate-x-5" : "translate-x-0"
+                              className={`absolute top-[2px] left-[2px] h-[20px] w-[20px] rounded-full bg-white shadow-sm transition-transform duration-200 ${
+                                consent[key] ? "translate-x-[20px]" : "translate-x-0"
                               }`}
                             />
                           </button>
@@ -359,31 +359,31 @@ export default function CookieBanner() {
           </div>
 
           {/* Sticky Footer */}
-          <div className="p-4 sm:p-6 border-t border-zinc-100 dark:border-zinc-800/80 bg-zinc-50/80 dark:bg-zinc-900/80 flex-shrink-0 flex flex-col gap-3">
-            {/* Action buttons */}
-            <div className="flex flex-col md:flex-row gap-2 md:gap-3">
+          <div className="p-4 sm:p-6 border-t border-zinc-100 dark:border-zinc-800/80 bg-zinc-50/80 dark:bg-zinc-900/80 flex-shrink-0 flex flex-col gap-4">
+            {/* Action buttons (Grid Layout for balanced spacing) */}
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               <button
-                onClick={handleRejectAll}
-                className="flex-1 order-3 md:order-1 py-2.5 sm:py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all"
+                onClick={handleAcceptAll}
+                className="col-span-2 py-2.5 sm:py-3 px-4 rounded-xl text-white text-[11px] sm:text-xs font-black uppercase italic tracking-wider shadow-lg shadow-[#3b60ff]/25 hover:opacity-90 transition-all"
+                style={{ backgroundColor: "#3b60ff" }}
               >
-                {t.rejectAll}
+                {t.acceptAll}
               </button>
-
+              
               {expanded && (
                 <button
                   onClick={handleSaveSelection}
-                  className="flex-1 order-2 md:order-2 py-2.5 sm:py-3 px-4 rounded-xl border border-[#3b60ff] text-[#3b60ff] text-[11px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-[#3b60ff]/5 transition-all"
+                  className="col-span-1 py-2.5 sm:py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[10px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-center"
                 >
                   {t.saveSelection}
                 </button>
               )}
 
               <button
-                onClick={handleAcceptAll}
-                className="flex-1 order-1 md:order-3 py-2.5 sm:py-3 px-4 text-white text-[11px] sm:text-xs font-black uppercase italic tracking-wider shadow-lg shadow-[#3b60ff]/25 hover:opacity-90 transition-all"
-                style={{ backgroundColor: "#3b60ff" }}
+                onClick={handleRejectAll}
+                className={`${expanded ? "col-span-1" : "col-span-2"} py-2.5 sm:py-3 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[10px] sm:text-xs font-black uppercase italic tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-center`}
               >
-                {t.acceptAll}
+                {t.rejectAll}
               </button>
             </div>
 
