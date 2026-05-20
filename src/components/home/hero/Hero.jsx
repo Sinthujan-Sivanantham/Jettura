@@ -61,7 +61,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
         />
       </div>
 
-      <div className="relative z-10 w-full mx-auto text-center text-white px-4 sm:px-6 max-w-5xl mb-8 min-[760px]:mb-24">
+      <div className="relative z-10 w-full mx-auto text-center text-white px-4 sm:px-6 max-w-5xl mb-8 min-[760px]:mb-24" style={{ textAlign: 'center' }}>
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -76,6 +76,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           className="fluid-h1 font-black tracking-tight mb-3 sm:mb-4 drop-shadow-lg italic uppercase leading-tight break-words text-center"
+          style={{ textAlign: 'center', width: '100%' }}
         >
           {displayTitle}
         </motion.h1>
@@ -85,6 +86,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 1 }}
           className="fluid-p text-white/90 leading-relaxed max-w-xl mx-auto font-medium drop-shadow-md italic break-words text-center"
+          style={{ textAlign: 'center' }}
         >
           {displaySubtitle}
         </motion.p>
