@@ -149,7 +149,8 @@ export default function Admin() {
     if (!user) return false;
     if (isAdminDemoMode) return true;
     const email = user.email || "";
-    return email.endsWith("@jettura.com") || email === "admin@jettura.com";
+    const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "admin@jettura.com").split(",").map(e => e.trim());
+    return adminEmails.includes(email) || email.endsWith("@jettura.com");
   }, [user, isAdminDemoMode]);
 
   // Load database data

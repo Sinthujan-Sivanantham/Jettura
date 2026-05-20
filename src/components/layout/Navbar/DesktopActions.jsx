@@ -24,7 +24,8 @@ export default function DesktopActions({ user, profile, handleLogout, setColor, 
     }
   }, []);
 
-  const isAdmin = user?.email?.endsWith("@jettura.com") || user?.email === "admin@jettura.com" || isDemoAdmin;
+  const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "admin@jettura.com").split(",").map(e => e.trim());
+  const isAdmin = adminEmails.includes(user?.email || "") || user?.email?.endsWith("@jettura.com") || isDemoAdmin;
 
   return (
     <div className="hidden min-[761px]:flex items-center gap-6">

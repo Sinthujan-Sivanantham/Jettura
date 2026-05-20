@@ -18,7 +18,8 @@ export default function MobileMenu({ isOpen, setIsOpen, user, profile, handleLog
     }
   }, []);
 
-  const isAdmin = user?.email?.endsWith("@jettura.com") || user?.email === "admin@jettura.com" || isDemoAdmin;
+  const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "admin@jettura.com").split(",").map(e => e.trim());
+  const isAdmin = adminEmails.includes(user?.email || "") || user?.email?.endsWith("@jettura.com") || isDemoAdmin;
 
   const mobileLinkStyles = "block py-2 sm:py-3 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] sm:text-xs sm:text-sm sm:text-base sm:text-lg font-black uppercase tracking-tight transition-colors duration-200 hover:text-[var(--brand-color)] text-zinc-600 dark:text-zinc-400";
   const activeStyle = "italic text-[var(--brand-color)]";
