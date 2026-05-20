@@ -295,7 +295,7 @@ export default function CookieBanner() {
                                   {catT.label}
                                 </span>
                                 {isNecessary && (
-                                  <span className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                                  <span className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full flex-shrink-0 whitespace-nowrap">
                                     {t.alwaysOn}
                                   </span>
                                 )}
