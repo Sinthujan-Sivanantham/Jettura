@@ -204,7 +204,7 @@ export default function CookieBanner() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 40, scale: 0.97 }}
           transition={{ type: "spring", damping: 28, stiffness: 300 }}
-          className="relative w-full max-w-[345px] md:max-w-2xl bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden flex flex-col max-h-[85vh] md:max-h-[90vh]"
+          className="relative w-[345px] md:w-full md:max-w-2xl bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden flex flex-col max-h-[85vh] md:max-h-[90vh] max-[360px]:scale-[0.88] max-[360px]:origin-bottom"
         >
           {/* Top gradient bar */}
           <div className="h-1 w-full bg-gradient-to-r from-[#3b60ff] via-purple-500 to-cyan-500 flex-shrink-0" />
