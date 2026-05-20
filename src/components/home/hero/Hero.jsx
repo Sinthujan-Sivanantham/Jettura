@@ -23,7 +23,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <section className={`relative flex flex-col items-center justify-between overflow-hidden bg-slate-950 rounded-2xl sm:rounded-[4rem] mx-2 sm:mx-6 mt-2 sm:mt-6 border-transparent shadow-none pt-12 min-[760px]:pt-28 pb-0 transition-all duration-700 ${isCompact ? 'min-h-[45vh] md:min-h-[50vh]' : 'min-h-[85vh] md:min-h-[90vh]'}`}>
+    <section className={`relative flex flex-col items-center justify-between overflow-hidden bg-slate-950 rounded-2xl sm:rounded-[4rem] mx-2 sm:mx-6 mt-2 sm:mt-6 border-transparent shadow-none pt-8 min-[760px]:pt-16 pb-0 transition-all duration-700 ${isCompact ? 'min-h-[45vh] md:min-h-[50vh]' : 'min-h-[85vh] md:min-h-[90vh]'}`}>
       {/* Background Container with "Glow" and Animation */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-slate-950">
         <motion.img
@@ -61,7 +61,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
         />
       </div>
 
-      <div className="relative z-10 w-full text-center text-white px-4 sm:px-6 max-w-5xl mb-8 min-[760px]:mb-24">
+      <div className="relative z-10 w-full mx-auto text-center text-white px-4 sm:px-6 max-w-5xl mb-8 min-[760px]:mb-24">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
