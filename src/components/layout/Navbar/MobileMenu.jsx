@@ -26,7 +26,6 @@ export default function MobileMenu({ isOpen, setIsOpen, user, profile, handleLog
   return (
     <>
       <div className="flex min-[761px]:hidden items-center gap-3">
-        <LanguageSwitcher />
         <ThemeToggle />
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -58,7 +57,11 @@ export default function MobileMenu({ isOpen, setIsOpen, user, profile, handleLog
                   </Link>
                 );
               })}
+              
               <hr className="border-zinc-100 dark:border-zinc-800" />
+              <LanguageSwitcher variant="menuItem" />
+              <hr className="border-zinc-100 dark:border-zinc-800" />
+
               {user ? (
                 <div className="flex flex-col gap-4">
                   <Link
