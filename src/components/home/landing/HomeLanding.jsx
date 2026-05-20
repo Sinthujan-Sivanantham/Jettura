@@ -34,7 +34,7 @@ export default function HomeLanding({ onSearchSuccess }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="mx-auto px-4 sm:px-6 pb-20 sm:pb-28 md:pb-36 lg:pb-44 max-w-[1440px] pt-24"
+        className="mx-auto px-4 sm:px-6 pb-20 sm:pb-28 md:pb-36 lg:pb-44 max-w-[1440px] pt-6"
       >
         <Features />
       </motion.section>

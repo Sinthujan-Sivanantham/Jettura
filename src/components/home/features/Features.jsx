@@ -104,7 +104,7 @@ export default function Features() {
   };
 
   return (
-    <section className="w-full relative py-20 overflow-hidden">
+    <section className="w-full relative pt-6 pb-20 overflow-hidden">
       {/* Background Gradients */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,rgba(59,96,255,0.03)_0%,rgba(0,0,0,0)_50%)] pointer-events-none" />
 
