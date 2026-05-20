@@ -23,7 +23,10 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <section className={`relative flex flex-col items-center justify-between overflow-hidden bg-slate-950 rounded-2xl sm:rounded-[4rem] mx-2 sm:mx-6 mt-2 sm:mt-6 border-transparent shadow-none pt-8 min-[760px]:pt-16 pb-0 transition-all duration-700 ${isCompact ? 'min-h-[45vh] md:min-h-[50vh]' : 'min-h-[85vh] md:min-h-[90vh]'}`}>
+    <section
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch', justifyContent: 'space-between' }}
+      className={`relative overflow-hidden bg-slate-950 rounded-2xl sm:rounded-[4rem] mx-2 sm:mx-6 mt-2 sm:mt-6 border-transparent shadow-none pt-8 min-[760px]:pt-16 pb-0 transition-all duration-700 ${isCompact ? 'min-h-[45vh] md:min-h-[50vh]' : 'min-h-[85vh] md:min-h-[90vh]'}`}
+    >
       {/* Background Container with "Glow" and Animation */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-slate-950">
         <motion.img
@@ -37,7 +40,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
           } : { opacity: 0 }}
           transition={{
             duration: 1.2,
-            ease: [0.22, 1, 0.36, 1], // Custom cubic-bezier for smooth reveal
+            ease: [0.22, 1, 0.36, 1],
           }}
           src={randomImage.current}
           alt="Travel Background"
@@ -47,7 +50,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
         {/* Dynamic Glow Layer */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--brand-color)]/5 to-slate-950 mix-blend-overlay opacity-80" />
 
-        {/* Main Darkening Gradient for Text Readability - Updated for Navbar & Content balance */}
+        {/* Main Darkening Gradient for Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/20 to-slate-950" />
 
         {/* Subtle Ambient Light Source */}
@@ -61,22 +64,27 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
         />
       </div>
 
-      <div className="relative z-10 w-full mx-auto text-center text-white px-4 sm:px-6 max-w-5xl mb-8 min-[760px]:mb-24" style={{ textAlign: 'center' }}>
+      {/* Text content – full width, centered */}
+      <div
+        className="relative z-10 px-4 sm:px-6 mb-8 min-[760px]:mb-24"
+        style={{ width: '100%', textAlign: 'center' }}
+      >
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="inline-flex flex-wrap justify-center items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-2xl bg-blue-500/10 border border-blue-400/20 text-blue-300 text-[7px] sm:text-[8px] sm:text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-widest mb-3 sm:mb-4 fluid-xs max-w-full mx-auto"
+          className="inline-flex flex-wrap justify-center items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-2xl bg-blue-500/10 border border-blue-400/20 text-blue-300 uppercase tracking-widest mb-3 sm:mb-4 fluid-xs"
         >
-          <Sparkles size={10} className="sm:w-3 sm:h-3 flex-shrink-0" /> <span className="text-center">{displayTag}</span>
+          <Sparkles size={10} className="sm:w-3 sm:h-3 flex-shrink-0" />
+          <span>{displayTag}</span>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-          className="fluid-h1 font-black tracking-tight mb-3 sm:mb-4 drop-shadow-lg italic uppercase leading-tight break-words text-center"
-          style={{ textAlign: 'center', width: '100%' }}
+          className="fluid-h1 font-black tracking-tight mb-3 sm:mb-4 drop-shadow-lg italic uppercase leading-tight text-white"
+          style={{ textAlign: 'center' }}
         >
           {displayTitle}
         </motion.h1>
@@ -85,20 +93,18 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 1 }}
-          className="fluid-p text-white/90 leading-relaxed max-w-xl mx-auto font-medium drop-shadow-md italic break-words text-center"
-          style={{ textAlign: 'center' }}
+          className="fluid-p text-white/90 leading-relaxed font-medium drop-shadow-md italic"
+          style={{ textAlign: 'center', maxWidth: '36rem', margin: '0 auto' }}
         >
           {displaySubtitle}
         </motion.p>
       </div>
 
-      {
-        children && (
-          <div className="relative z-20 w-full flex justify-center mt-auto">
-            {children}
-          </div>
-        )
-      }
+      {children && (
+        <div className="relative z-20 w-full flex justify-center mt-auto">
+          {children}
+        </div>
+      )}
     </section>
   );
 }
