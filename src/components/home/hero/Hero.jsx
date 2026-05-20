@@ -7,7 +7,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
   const { t } = useLanguage();
 
   // Defaults if no props provided
-  const displayTitle = title || <>{t("hero.title")} <span style={{ color: "var(--brand-color)" }}>Jettura</span></>;
+  const displayTitle = title || <>{t("hero.title")} <span className="text-[var(--brand-color)]">Jettura</span></>;
   const displaySubtitle = subtitle || t("hero.subtitle");
   const displayTag = tag || t("hero.tag");
 
@@ -24,8 +24,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
 
   return (
     <section
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch', justifyContent: 'space-between' }}
-      className={`relative overflow-hidden bg-slate-950 rounded-2xl sm:rounded-[4rem] mx-2 sm:mx-6 mt-2 sm:mt-6 border-transparent shadow-none pt-8 min-[760px]:pt-16 pb-0 transition-all duration-700 ${isCompact ? 'min-h-[45vh] md:min-h-[50vh]' : 'min-h-[85vh] md:min-h-[90vh]'}`}
+      className={`relative flex flex-col items-stretch justify-between overflow-hidden bg-slate-950 rounded-2xl sm:rounded-[4rem] mx-2 sm:mx-6 mt-2 sm:mt-6 border-transparent shadow-none pt-8 min-[760px]:pt-16 pb-0 transition-all duration-700 ${isCompact ? 'min-h-[45vh] md:min-h-[50vh]' : 'min-h-[85vh] md:min-h-[90vh]'}`}
     >
       {/* Background Container with "Glow" and Animation */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-slate-950">
@@ -65,10 +64,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
       </div>
 
       {/* Text content – full width, centered */}
-      <div
-        className="relative z-10 px-4 sm:px-6 mb-8 min-[760px]:mb-24"
-        style={{ width: '100%', textAlign: 'center' }}
-      >
+      <div className="relative z-10 w-full mx-auto text-center px-4 sm:px-6 mb-8 min-[760px]:mb-24">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -83,8 +79,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-          className="fluid-h1 font-black tracking-tight mb-3 sm:mb-4 drop-shadow-lg italic uppercase leading-tight text-white"
-          style={{ textAlign: 'center' }}
+          className="fluid-h1 font-black tracking-tight mb-3 sm:mb-4 drop-shadow-lg italic uppercase leading-tight text-white text-center w-full"
         >
           {displayTitle}
         </motion.h1>
@@ -93,8 +88,7 @@ export default function Hero({ children, title, subtitle, tag, isCompact }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 1 }}
-          className="fluid-p text-white/90 leading-relaxed font-medium drop-shadow-md italic"
-          style={{ textAlign: 'center', maxWidth: '36rem', margin: '0 auto' }}
+          className="fluid-p text-white/90 leading-relaxed font-medium drop-shadow-md italic text-center max-w-xl mx-auto"
         >
           {displaySubtitle}
         </motion.p>
