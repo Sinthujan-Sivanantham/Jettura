@@ -49,7 +49,7 @@ export const translations = {
         // NEU: Dieser Block steuert die Sektion aus deinem Screenshot
         features: {
             badge: "Premium Erlebnis",
-            headline: "EINE APP\nALLES",
+            headline: "EINE APP ALLES",
             subheadline: "Von KI-gestützter Flugsuche bis hin zu kuratierten Hotels und Community-Stories. Erlebe die Zukunft der Reiseplanung"
         },
         filters: {
@@ -539,7 +539,7 @@ export const translations = {
         },
         features: {
             badge: "Premium Experience",
-            headline: "One App\nEverything",
+            headline: "One App Everything",
             subheadline: "From AI-powered flight search to curated hotels and community stories. Experience the future of travel planning"
         },
         filters: {

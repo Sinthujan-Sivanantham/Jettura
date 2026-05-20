@@ -32,7 +32,7 @@ export default function MobileMenu({ isOpen, setIsOpen, user, profile, handleLog
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 text-zinc-600 dark:text-zinc-300 transition-colors duration-200 hover:text-[var(--brand-color)]"
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          <Menu size={28} />
         </button>
       </div>
 
@@ -60,7 +60,7 @@ export default function MobileMenu({ isOpen, setIsOpen, user, profile, handleLog
               })}
               
               <hr className="border-zinc-100 dark:border-zinc-800" />
-              <LanguageSwitcher variant="menuItem" />
+              <LanguageSwitcher variant="menuItem" onClick={() => setIsOpen(false)} />
               <hr className="border-zinc-100 dark:border-zinc-800" />
 
               {user ? (

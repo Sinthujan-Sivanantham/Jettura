@@ -125,9 +125,9 @@ export default function Features() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="fluid-h1 font-[1000] italic uppercase tracking-tighter text-zinc-900 dark:text-white leading-[0.9] text-center whitespace-pre-line"
+          className="fluid-h1 font-[1000] italic uppercase tracking-tighter text-zinc-900 dark:text-white leading-[0.9] text-center"
         >
-          {tSafe("features.headline", "One App.\nEverything.")}
+          {tSafe("features.headline", "One App Everything.")}
         </motion.h2>
 
         <motion.p
