@@ -103,7 +103,7 @@ export default function RegisterForm() {
       )}
 
       <form
-        onSubmit={handleSubmit(onSubmit, (e) => console.error("Form Validation Errors:", e))}
+        onSubmit={handleSubmit(onSubmit)}
         className="space-y-5"
       >
 
