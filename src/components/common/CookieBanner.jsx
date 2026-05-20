@@ -198,14 +198,16 @@ export default function CookieBanner() {
           className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         />
 
-        {/* Panel */}
-        <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 40, scale: 0.97 }}
-          transition={{ type: "spring", damping: 28, stiffness: 300 }}
-          className="relative w-[345px] md:w-full md:max-w-2xl bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden flex flex-col max-h-[85vh] md:max-h-[90vh] max-[360px]:scale-[0.88] max-[360px]:origin-bottom"
-        >
+        {/* Scaling Wrapper for Mobile to preserve iPhone 12 Pro layout */}
+        <div className="flex justify-center w-[358px] md:w-full md:max-w-2xl origin-bottom max-[380px]:scale-[0.96] max-[365px]:scale-[0.92] max-[330px]:scale-[0.82]">
+          {/* Panel */}
+          <motion.div
+            initial={{ opacity: 0, y: 60, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 40, scale: 0.97 }}
+            transition={{ type: "spring", damping: 28, stiffness: 300 }}
+            className="relative w-full bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden flex flex-col max-h-[85vh] md:max-h-[90vh]"
+          >
           {/* Top gradient bar */}
           <div className="h-1 w-full bg-gradient-to-r from-[#3b60ff] via-purple-500 to-cyan-500 flex-shrink-0" />
 
@@ -399,6 +401,7 @@ export default function CookieBanner() {
             </div>
           </div>
         </motion.div>
+        </div>
       </div>
     </AnimatePresence>
   );
