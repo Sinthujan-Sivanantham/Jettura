@@ -1,9 +1,5 @@
 // src/services/amadeusApi.js
 
-const CLIENT_ID = process.env.NEXT_PUBLIC_AMADEUS_CLIENT_ID;
-const CLIENT_SECRET = process.env.NEXT_PUBLIC_AMADEUS_CLIENT_SECRET;
-const AUTH_URL = "/api-gds/v1/security/oauth2/token";
-
 let cachedToken = null;
 let tokenExpiration = 0;
 
@@ -15,22 +11,17 @@ export async function getAmadeusToken() {
     }
 
     try {
-        const body = new URLSearchParams();
-        body.append("grant_type", "client_credentials");
-        body.append("client_id", CLIENT_ID);
-        body.append("client_secret", CLIENT_SECRET);
-
-        const res = await fetch(AUTH_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: body.toString()
-        });
+        const res = await fetch("/api/amadeus/auth");
 
         if (!res.ok) throw new Error("Token-Generierung fehlgeschlagen");
 
         const data = await res.json();
+        
+        if (data.error) throw new Error(data.error);
+        
         cachedToken = data.access_token;
-        tokenExpiration = now + (data.expires_in * 1000) - 60000;
+        // The backend should handle expiration, but we can also cache it briefly on the client
+        tokenExpiration = now + (30 * 60 * 1000); // 30 minutes cache locally, or backend's logic
 
         return cachedToken;
     } catch (e) {

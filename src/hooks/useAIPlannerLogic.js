@@ -100,83 +100,20 @@ export function useAIPlannerLogic() {
             : "You are an expert travel guide. You know real places, addresses, and coordinates worldwide. Respond only with valid JSON. No intro, no markdown. Provide helpful 'advice' in the summary and general_advice fields.";
 
         try {
-            const geminiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
-            let response, data;
-
-            // Versuche zuerst Gemini (sehr schnell & kostenlos)
-            if (geminiKey && geminiKey !== 'DEIN_GEMINI_API_KEY_HIER') {
-                try {
-                    response = await fetch(
-                        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`,
-                        {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({
-                                contents: [{
-                                    parts: [{ text: `${systemContent}\n\n${prompt}` }]
-                                }],
-                                generationConfig: {
-                                    temperature: 0.7, // Etwas mehr Kreativität für bessere Beratung
-                                    maxOutputTokens: 2500,
-                                    responseMimeType: "application/json"
-                                }
-                            })
-                        }
-                    );
-
-                    data = await response.json();
-
-                    if (response.ok && data.candidates?.[0]?.content?.parts?.[0]?.text) {
-                        let content = data.candidates[0].content.parts[0].text.trim();
-                        const parsed = JSON.parse(content);
-
-                        if (parsed.steps && Array.isArray(parsed.steps)) {
-                            setPlannedRoute(parsed);
-                            setSelectedStep(parsed.steps[0]);
-                            setIsGenerating(false);
-                            return; // Erfolg mit Gemini!
-                        }
-                    }
-                } catch (geminiError) {
-                    // Gemini fallback to Groq
-                }
-            }
-
-            // Fallback zu Groq (Llama 3.3 70B - extrem smart)
-            response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            const response = await fetch("/api/ai-planner", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${process.env.NEXT_PUBLIC_GROQ_API_KEY}`
+                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    model: "llama-3.3-70b-versatile",
-                    messages: [
-                        { role: "system", content: systemContent },
-                        { role: "user", content: prompt }
-                    ],
-                    temperature: 0.5,
-                    response_format: { type: "json_object" }
-                })
+                body: JSON.stringify({ systemContent, prompt })
             });
 
-            data = await response.json();
+            const parsed = await response.json();
 
             if (!response.ok) {
-                console.error("API Error:", data);
-                throw new Error(data.error?.message || t("search.error"));
+                console.error("API Error:", parsed);
+                throw new Error(parsed.error || t("search.error"));
             }
-
-            if (!data.choices) throw new Error(t("search.error"));
-
-            let content = data.choices[0].message.content.trim();
-
-            const firstBracket = content.indexOf('{');
-            const lastBracket = content.lastIndexOf('}');
-            if (firstBracket === -1 || lastBracket === -1) throw new Error("Kein gültiges JSON gefunden");
-            content = content.substring(firstBracket, lastBracket + 1);
-
-            const parsed = JSON.parse(content);
 
             if (!parsed.steps || !Array.isArray(parsed.steps)) throw new Error("Ungültige Datenstruktur");
 
